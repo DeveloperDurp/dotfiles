@@ -1,0 +1,21 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "redhat.telemetry.enabled": false,
+    "workbench.startupEditor": "none",
+    "explorer.confirmDragAndDrop": false,
+    "window.restoreWindows": "none",
+    "github.gitAuthentication": false,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "editor.fontFamily": "GoMono Nerd Font Propo",
+    "terminal.integrated.fontFamily": "GoMono Nerd Font Propo",
+    "terminal.integrated.scrollback": -1,
+    "workbench.editor.untitled.hint": "hidden",
+    "terminal.integrated.defaultProfile.osx": "",
+    "editor.fontSize": 15,
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.editor.enablePreview": false
+}   
