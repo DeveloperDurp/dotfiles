@@ -7,6 +7,26 @@ M.dap = {
       "<cmd> DapToggleBreakpoint <CR>",
       "Add breakpoint at line"
     },
+    ["<F5>"] = {
+      "<cmd> DapContinue <CR>",
+      "Start Debugging"
+    },
+    ["<F6>"] = {
+      "<cmd> DapTerminate <CR>",
+      "Stop Debugging"
+    },
+    ["<F10>"] = {
+      "<cmd> DapStepOver <CR>",
+      "Step Over"
+    },
+    ["<F11>"] = {
+      "<cmd> DapStepInto <CR>",
+      "Step Into"
+    },
+    ["<F12>"] = {
+      "<cmd> DapStepOut <CR>",
+      "Stop Out"
+    },
     ["<leader>dus"] = {
       function ()
         local widgets = require('dap.ui.widgets');

@@ -19,6 +19,7 @@ local plugins = {
     "mfussenegger/nvim-dap",
     init = function()
       require("core.utils").load_mappings("dap")
+      require('dap.ext.vscode').load_launchjs('.vscode/launch.json', {})
     end
   },
   {
@@ -46,6 +47,13 @@ local plugins = {
       require "custom.configs.lspconfig"
     end,
   },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    ft = "go, python",
+    opts = function()
+      return require "custom.configs.null-ls"
+    end,
+  },
   -- Golang
   {
     "dreamsofcode-io/nvim-dap-go",
@@ -58,13 +66,6 @@ local plugins = {
       require("dap-go").setup(opts)
       require("core.utils").load_mappings("dap_go")
     end
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = "go",
-    opts = function()
-      return require "custom.configs.null-ls-go"
-    end,
   },
   {
     "olexsmir/gopher.nvim",
@@ -116,13 +117,6 @@ local plugins = {
     end
   },
   --python
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = "python",
-    opts = function()
-      return require "custom.configs.null-ls-python"
-    end,
-  },
   {
     "mfussenegger/nvim-dap-python",
     ft = "python",

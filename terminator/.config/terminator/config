@@ -10,6 +10,7 @@
   switch_to_tab_8 = <Alt>asterisk
   switch_to_tab_9 = <Alt>parenleft
   switch_to_tab_10 = <Alt>parenright
+  full_screen = <Primary><Alt>f
 [profiles]
   [[default]]
     allow_bold = False
