@@ -63,6 +63,10 @@ M.gopher = {
       "<cmd> GoTagAdd json <CR>",
       "Add json struct tags"
     },
+    ["<leader>gse"] = {
+      "<cmd> GoTagAdd env <CR>",
+      "Add env struct tags"
+    },
     ["<leader>gsy"] = {
       "<cmd> GoTagAdd yaml <CR>",
       "Add yaml struct tags"

@@ -26,3 +26,8 @@ export PATH="$HOME/.local/bin:$HOME/gems/bin:/usr/local/go/bin:$HOME/go/bin:$PAT
 export GOBIN=~/go/bin
 alias docker="podman"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+unlockbw ()
+{
+  export BW_SESSION="$(bw unlock --raw)"
+}
