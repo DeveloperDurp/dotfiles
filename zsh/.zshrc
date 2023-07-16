@@ -4,7 +4,6 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export POWERSHELL_TELEMETRY_OPTOUT=1 
 export PROMPT_EOL_MARK=''
 export EDITOR='nvim'
-export VISUAL='nvim'
 eval $(thefuck --alias)
 ZSH_THEME="avit"
 
