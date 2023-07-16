@@ -1,4 +1,5 @@
 [global_config]
+  putty_paste_style_source_clipboard = True
 [keybindings]
   switch_to_tab_1 = <Alt>exclam
   switch_to_tab_2 = <Alt>at
@@ -16,6 +17,7 @@
     allow_bold = False
     background_darkness = 0.75
     background_type = transparent
+    cursor_color = "#aaaaaa"
     font = GoMono Nerd Font Propo 12
     show_titlebar = False
     use_system_font = False
