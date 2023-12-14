@@ -11,7 +11,11 @@ local plugins = {
         "black",
         "debugpy",
         "powershell-editor-services",
-        "bash-language-server"
+        "bash-language-server",
+        "eslint-lsp",
+        "js-debug-adapter",
+        "prettier",
+        "typescript-language-server"
       },
     },
   },

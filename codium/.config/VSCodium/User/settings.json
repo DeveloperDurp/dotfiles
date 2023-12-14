@@ -14,7 +14,6 @@
     "terminal.integrated.fontFamily": "GoMono Nerd Font Propo",
     "terminal.integrated.scrollback": -1,
     "workbench.editor.untitled.hint": "hidden",
-    "terminal.integrated.defaultProfile.osx": "",
     "editor.fontSize": 15,
     "go.toolsManagement.autoUpdate": true,
     "workbench.editor.enablePreview": false,
@@ -40,5 +39,6 @@
     "powershell.codeFormatting.autoCorrectAliases": true,
     "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
     "powershell.codeFormatting.useCorrectCasing": true,
-    "git.openRepositoryInParentFolders": "never"
+    "git.openRepositoryInParentFolders": "never",
+    "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/lua/custom/init.lua"
 }

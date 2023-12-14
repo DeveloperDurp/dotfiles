@@ -1,4 +1,6 @@
 [global_config]
+  title_use_system_font = False
+  title_font = GoMono Nerd Font 9
   putty_paste_style_source_clipboard = True
 [keybindings]
   switch_to_tab_1 = <Alt>exclam
