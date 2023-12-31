@@ -151,6 +151,23 @@ local plugins = {
         async_api_key_cmd = "bw get password ChatGPT-APIKey",
       })
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function()
+      local opts = require "plugins.configs.treesitter"
+      opts.ensure_installed = {
+        "lua",
+        "javascript",
+        "typescript",
+        "tsx",
+        "go",
+        "terraform",
+        "c_sharp",
+        "bash",
+      }
+      return opts
+    end,
   }
 }
 return plugins
