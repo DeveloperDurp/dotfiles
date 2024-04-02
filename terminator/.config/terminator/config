@@ -1,0 +1,34 @@
+[global_config]
+  title_use_system_font = False
+  title_font = GoMono Nerd Font 9
+  putty_paste_style_source_clipboard = True
+[keybindings]
+  switch_to_tab_1 = <Alt>exclam
+  switch_to_tab_2 = <Alt>at
+  switch_to_tab_3 = <Alt>numbersign
+  switch_to_tab_4 = <Alt>dollar
+  switch_to_tab_5 = <Alt>percent
+  switch_to_tab_6 = <Alt>asciicircum
+  switch_to_tab_7 = <Alt>ampersand
+  switch_to_tab_8 = <Alt>asterisk
+  switch_to_tab_9 = <Alt>parenleft
+  switch_to_tab_10 = <Alt>parenright
+  full_screen = <Primary><Alt>f
+[profiles]
+  [[default]]
+    allow_bold = False
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = GoMono Nerd Font Propo 12
+    show_titlebar = False
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

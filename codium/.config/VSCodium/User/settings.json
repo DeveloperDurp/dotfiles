@@ -1,0 +1,44 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "redhat.telemetry.enabled": false,
+    "workbench.startupEditor": "none",
+    "explorer.confirmDragAndDrop": false,
+    "window.restoreWindows": "none",
+    "github.gitAuthentication": false,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "editor.fontFamily": "GoMono Nerd Font Propo",
+    "terminal.integrated.fontFamily": "GoMono Nerd Font Propo",
+    "terminal.integrated.scrollback": -1,
+    "workbench.editor.untitled.hint": "hidden",
+    "editor.fontSize": 15,
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.editor.enablePreview": false,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "powershell.promptToUpdatePowerShell": false,
+    "editor.formatOnSave": true,
+    "editor.lineNumbers": "relative",
+    "terminal.integrated.fontSize": 15,
+    "editor.minimap.enabled": false,
+    "vscode-neovim.highlightGroups.highlights": {
+        "IncSearch": {
+            "backgroundColor": "theme.editor.findMatchBackground",
+            "borderColor": "theme.editor.findMatchBorder"
+        },
+        "Search": {
+            "backgroundColor": "theme.editor.findMatchHighlightBackground",
+            "borderColor": "theme.editor.findMatchHighlightBorder"
+        },
+        "Visual": {
+            "backgroundColor": "theme.editor.selectionBackground"
+        }
+    },
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "git.openRepositoryInParentFolders": "never",
+    "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/lua/custom/init.lua"
+}
