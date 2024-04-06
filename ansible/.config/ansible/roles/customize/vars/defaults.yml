@@ -1,8 +1,8 @@
 dconf:
-      - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings', value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"}
-      - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding', value: "'<Super>t'"}
-      - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command', value: "'terminator'"}
-      - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name', value: "'Terminator'"}
+  #      - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings', value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"}
+  #      - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding', value: "'<Super>t'"}
+  #      - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command', value: "'terminator'"}
+  #      - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name', value: "'Terminator'"}
       - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings', value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"}
       - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding', value: "'<Super>w'"}
       - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command', value: "'flatpak run io.gitlab.librewolf-community'"}
