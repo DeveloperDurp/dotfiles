@@ -1,6 +1,4 @@
 [global_config]
-  title_use_system_font = False
-  title_font = GoMono Nerd Font 9
   putty_paste_style_source_clipboard = True
 [keybindings]
   switch_to_tab_1 = <Alt>exclam
@@ -17,12 +15,16 @@
 [profiles]
   [[default]]
     allow_bold = False
-    background_darkness = 0.9
+    background_color = "#1e1e2e"
+    background_darkness = 0.95
     background_type = transparent
-    cursor_color = "#aaaaaa"
+    cursor_color = "#cdd6f4"
     font = GoMono Nerd Font Propo 12
+    foreground_color = "#cdd6f4"
     show_titlebar = False
+    palette = "#45475a:#f38ba8:#a6e3a1:#f9e2af:#89b4fa:#f5c2e7:#94e2d5:#bac2de:#585b70:#f38ba8:#a6e3a1:#f9e2af:#89b4fa:#f5c2e7:#94e2d5:#a6adc8"
     use_system_font = False
+    background_image = None
 [layouts]
   [[default]]
     [[[window0]]]
