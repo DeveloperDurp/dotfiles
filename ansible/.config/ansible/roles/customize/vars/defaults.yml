@@ -7,3 +7,5 @@ dconf:
       - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding', value: "'<Super>w'"}
       - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command', value: "'flatpak run io.gitlab.librewolf-community'"}
       - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name', value: "'Librewolf'"}
+      - {key: '/org/gnome/desktop/background/picture-uri', value: "'file:///home/user/.config/ansible/roles/customize/files/wallpaper.png'"}
+      - {key: '/org/gnome/desktop/background/picture-uri-dark', value: "'file:///home/user/.config/ansible/roles/customize/files/wallpaper.png'"}
