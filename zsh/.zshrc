@@ -90,4 +90,4 @@ reload-domains () {
   ssh root@192.168.21.252 umount -A /mnt/pve/domains && mount -a
 }
 
-eval "$(bw completion --shell zsh); compdef _bw bw;"
+#eval "$(bw completion --shell zsh); compdef _bw bw;"

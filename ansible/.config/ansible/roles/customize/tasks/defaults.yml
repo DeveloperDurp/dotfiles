@@ -1,0 +1,6 @@
+- name: set gnome config
+  become_user: user
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:  "{{ dconf }}"      
