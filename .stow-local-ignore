@@ -1,3 +1,4 @@
+.env
 ansible
 Makefile
 ansible.cfg

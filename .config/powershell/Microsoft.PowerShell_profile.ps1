@@ -24,3 +24,18 @@ Set-PSReadLineOption -PredictionSource History
 
 $env:POWERSHELL_TELEMETRY_OPTOUT = 1
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
+
+$tokens = @(
+  @{
+    name = "GITLAB_TOKEN"
+    value = "cli-gitlab" 
+  }
+)
+
+function unlockbw {
+  $env:BW_SESSION = "$(bw unlock --raw)"
+
+  foreach ($token in $tokens) {
+    Set-Variable -Name $token.name -Value $(bw get password $token.value) -Scope script
+  }
+}
