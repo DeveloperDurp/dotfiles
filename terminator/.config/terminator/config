@@ -1,4 +1,5 @@
 [global_config]
+  borderless = True
   putty_paste_style_source_clipboard = True
 [keybindings]
   switch_to_tab_1 = <Alt>exclam
@@ -15,6 +16,7 @@
 [profiles]
   [[default]]
     allow_bold = False
+    icon_bell = False
     background_color = "#1e1e2e"
     background_darkness = 0.95
     background_type = transparent
