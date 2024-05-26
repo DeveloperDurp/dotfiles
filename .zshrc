@@ -15,49 +15,9 @@ alias k=kubectl
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
+alias pwsh='pwsh -NoLogo'
 
-source ~/.fzf.completion.zsh
-source ~/.fzf.key-bindings.zsh
-
-unlockbw ()
-{
-  export BW_SESSION="$(bw unlock --raw)"
-  export GITLAB_TOKEN="$(bw get password cli-gitlab)"
-  export VAULT_UNSEAL="$(bw get password cli-vault-unseal)"
-  export VAULT_TOKEN="$(bw get password vault.internal.durp.info)"
-}
-lockbw ()
-{
-  unset BW_SESSION
-  unset GITLAB_TOKEN
-  unset VAULT_UNSEAL
-  unset VAULT_TOKEN
-}
-
-unlockvault() {
-    local POD_NAME="vault-0"
-    local NAMESPACE="vault"
-    local UNSEAL_KEY=$VAULT_UNSEAL
-    local PASSWORD=$VAULT_TOKEN
-    local K8S_API_SERVER=$(kubectl exec -it $POD_NAME -n $NAMESPACE -- printenv | grep KUBERNETES_SERVICE_HOST | cut -d "=" -f2)
-    local JWT=$(kubectl exec -it $POD_NAME -n $NAMESPACE -- cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-
-    kubectl exec -it $POD_NAME -n $NAMESPACE -- /bin/sh << EOF
-    vault operator unseal $UNSEAL_KEY
-    vault login $PASSWORD
-    vault write auth/kubernetes/config \
-       token_reviewer_jwt="${JWT}" \
-       kubernetes_host="https://${K8S_API_SERVER}:443" \
-       kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-EOF
-}
-
-load-profile () {
-  ansible-playbook /home/user/.dotfiles/ansible/.config/ansible/local.yml -K
-}
-#eval "$(bw completion --shell zsh); compdef _bw bw;"
 #
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 ## Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -140,8 +100,49 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Shell integrations
-#eval "$(fzf --zsh)"
+eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(bw completion --shell zsh); compdef _bw bw;"
+
+source ~/.fzf.completion.zsh
+source ~/.fzf.key-bindings.zsh
+
+unlockbw ()
+{
+  export BW_SESSION="$(bw unlock --raw)"
+  export GITLAB_TOKEN="$(bw get password cli-gitlab)"
+  export VAULT_UNSEAL="$(bw get password cli-vault-unseal)"
+  export VAULT_TOKEN="$(bw get password vault.internal.durp.info)"
+}
+lockbw ()
+{
+  unset BW_SESSION
+  unset GITLAB_TOKEN
+  unset VAULT_UNSEAL
+  unset VAULT_TOKEN
+}
+
+unlockvault() {
+    local POD_NAME="vault-0"
+    local NAMESPACE="vault"
+    local UNSEAL_KEY=$VAULT_UNSEAL
+    local PASSWORD=$VAULT_TOKEN
+    local K8S_API_SERVER=$(kubectl exec -it $POD_NAME -n $NAMESPACE -- printenv | grep KUBERNETES_SERVICE_HOST | cut -d "=" -f2)
+    local JWT=$(kubectl exec -it $POD_NAME -n $NAMESPACE -- cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+
+    kubectl exec -it $POD_NAME -n $NAMESPACE -- /bin/sh << EOF
+    vault operator unseal $UNSEAL_KEY
+    vault login $PASSWORD
+    vault write auth/kubernetes/config \
+       token_reviewer_jwt="${JWT}" \
+       kubernetes_host="https://${K8S_API_SERVER}:443" \
+       kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+EOF
+}
+
+load-profile () {
+  ansible-playbook /home/user/.dotfiles/ansible/.config/ansible/local.yml -K
+}
 
 function omz_urlencode() {
   emulate -L zsh
@@ -230,11 +231,4 @@ function open_command() {
   fi
 
   ${=open_cmd} "$@" &>/dev/null
-}
-
-# take functions
-
-# mkcd is equivalent to takedir
-function mkcd takedir() {
-  mkdir -p $@ && cd ${@:$#}
 }

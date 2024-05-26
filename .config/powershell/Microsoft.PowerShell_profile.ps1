@@ -1,4 +1,3 @@
-clear-host
 oh-my-posh init pwsh --config ~/.config/powershell/config.json | Invoke-Expression
 Set-PSReadLineOption -PredictionSource History
 

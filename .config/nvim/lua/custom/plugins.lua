@@ -156,6 +156,8 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     opts = function()
       local opts = require "plugins.configs.treesitter"
+      require "custom.configs.treesitter"
+      require'nvim-treesitter.install'.prefer_git = true
       opts.ensure_installed = {
         "lua",
         "javascript",
