@@ -1,0 +1,29 @@
+install_homebrew_if_missing: true
+
+required_packages_brew:
+  - lazygit
+  - fzf
+  - glab
+  - go
+  - neovim
+  - oh-my-posh
+  - tpm
+  - terraform
+  - kubernetes-cli
+  - zsh-autosuggestions
+
+apt_keys:
+  - https://packages.microsoft.com/keys/microsoft.asc
+apt_repo:
+  - deb [arch=amd64] https://packages.microsoft.com/ubuntu/22.04/prod jammy main
+
+required_packages_apt:
+  - powershell
+  - curl
+
+flatpak_remote:
+  - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
+
+required_packages_flatpak:
+  - VSCodium
+

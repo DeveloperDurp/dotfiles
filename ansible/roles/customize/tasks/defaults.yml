@@ -1,0 +1,29 @@
+- name: install fonts
+  include_tasks: "./scripts/install_fonts.yml"
+
+- name: set gnome config
+  become_user: user
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:  "{{ dconf }}"      
+  when: dconf is defined   
+
+- user:
+    name: "user"
+    shell: /usr/bin/zsh
+
+- name: Create bin folder
+  become_user: user
+  ansible.builtin.file:
+    path: ~/.local/bin
+    owner: "user"
+    group: "user"
+    mode: '0770'     
+    state: directory 
+
+- name: run stow
+  become_user: user
+  shell: "stow --adopt ."
+  args:
+    chdir: ~/.dotfiles

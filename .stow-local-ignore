@@ -1,1 +1,4 @@
 ansible
+Makefile
+ansible.cfg
+inventory

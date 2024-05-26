@@ -1,7 +1,8 @@
----
 - hosts: localhost
   connection: local
+  become: true
     #  vars_prompt:
 
   roles:
+    - packages
     - customize
