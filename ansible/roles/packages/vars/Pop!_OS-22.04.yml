@@ -12,6 +12,8 @@ required_packages_brew:
   - kubernetes-cli
   - zsh-autosuggestions
   - bitwarden-cli
+  - hashicorp/tap/vault
+
 
 apt_keys:
   - https://packages.microsoft.com/keys/microsoft.asc

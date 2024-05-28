@@ -16,6 +16,7 @@ alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
 alias pwsh='pwsh -NoLogo'
+alias pbpaste='xclip -selection clipboard -o'
 
 #
 ## Initialization code that may require console input (password prompts, [y/n]
