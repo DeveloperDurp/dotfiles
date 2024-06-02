@@ -8,14 +8,6 @@
   become_user: user
   ansible.builtin.command: pwsh -f ./scripts/configure_gitlab.ps1 "{{ GITLAB_TOKEN }}"
 
-- name: set gnome config
-  become_user: user
-  dconf:
-    key: "{{ item.key }}"
-    value: "{{ item.value }}"
-  with_items:  "{{ dconf }}"      
-  when: dconf is defined   
-
 - user:
     name: "user"
     shell: /usr/bin/zsh
@@ -34,3 +26,11 @@
   shell: "stow --adopt ."
   args:
     chdir: ~/.dotfiles
+
+- name: set gnome config
+  become_user: user
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:  "{{ dconf }}"      
+  when: dconf is defined   

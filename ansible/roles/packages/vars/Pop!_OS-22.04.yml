@@ -13,7 +13,9 @@ required_packages_brew:
   - zsh-autosuggestions
   - bitwarden-cli
   - hashicorp/tap/vault
-
+  - ffmpeg
+  - ttyd
+  - waybar
 
 apt_keys:
   - https://packages.microsoft.com/keys/microsoft.asc
