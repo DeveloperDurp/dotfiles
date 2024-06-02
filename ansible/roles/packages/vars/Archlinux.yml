@@ -13,11 +13,13 @@ required_packages_pacman:
   - neovim
   - ffmpeg
   - ttyd
-  - waybar
   - wl-clipboard  
+  - xsel
   - pavucontrol
   - wofi
   - swaybg
   - swayidle
   - swaylock
   - swayimg
+  - pipewire
+  - pipewire-pulse
