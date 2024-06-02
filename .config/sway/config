@@ -19,7 +19,7 @@ include /etc/sway/config-vars.d/*
 # Default wallpaper 
 output * bg ~/.config/configfiles/wallpaper.png fill
 #
-output eDP-1 disable
+#output eDP-1 disable
 output DP-6 resolution 2560x1440 position 9440,1440
 output DP-7 resolution 3440x1440 position 6000,1440
 output DP-5 resolution 3440x1440 position 6000,0
@@ -203,8 +203,8 @@ bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; pk
 bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; pkill -RTMIN+8 waybar"
 
 # Brightness
-bindsym XF86MonBrightnessDown exec light -U 10
-bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 
 default_border none 
 include /etc/sway/config.d/*

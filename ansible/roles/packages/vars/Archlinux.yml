@@ -23,3 +23,4 @@ required_packages_pacman:
   - swayimg
   - pipewire
   - pipewire-pulse
+  - openssh
