@@ -4,5 +4,8 @@
 - name: install flatpak
   include_tasks: "./scripts/install_flatpak.yml"
 
-- name: install brew
-  include_tasks: "./scripts/install_brew.yml"
+  #- name: install brew
+  #  include_tasks: "./scripts/install_brew.yml"
+
+- name: install pacman
+  include_tasks: "./scripts/install_pacman.yml"

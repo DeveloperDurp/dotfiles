@@ -4,9 +4,9 @@
 - name: generate ssh keys
   include_tasks: "./scripts/configure_ssh.yml"
 
-- name: Configure Gitlab SSH
-  become_user: user
-  ansible.builtin.command: pwsh -f ./scripts/configure_gitlab.ps1 "{{ GITLAB_TOKEN }}"
+  #- name: Configure Gitlab SSH
+  #  become_user: user
+  #  ansible.builtin.command: pwsh -f ./scripts/configure_gitlab.ps1 "{{ GITLAB_TOKEN }}"
 
 - user:
     name: "user"

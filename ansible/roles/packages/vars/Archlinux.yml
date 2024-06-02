@@ -1,0 +1,23 @@
+required_packages_pacman:
+  - sway
+  - waybar
+  - stow
+  - lazygit
+  - terminator
+  - tmux
+  - fzf
+  - zoxide
+  - bitwarden-cli
+  - glab
+  - go
+  - neovim
+  - ffmpeg
+  - ttyd
+  - waybar
+  - wl-clipboard  
+  - pavucontrol
+  - wofi
+  - swaybg
+  - swayidle
+  - swaylock
+  - swayimg

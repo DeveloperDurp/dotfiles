@@ -1,0 +1,14 @@
+- name: Upgrade Packages
+  community.general.pacman:
+    state: latest 
+    update_cache: yes
+  become: yes
+  when: required_packages_pacman is defined   
+
+- name: Install Packages
+  community.general.pacman:
+    state: present
+    update_cache: yes
+    name: "{{ required_packages_pacman }}"
+  become: yes
+  when: required_packages_pacman is defined   
