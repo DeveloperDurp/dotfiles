@@ -23,10 +23,12 @@ exec_always "pkill kanshi; kanshi"
 
 ### Idle configuration
 #
+ exec pkill swayidle
  exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000'
+          timeout 300 'swaylock -f -c 000000 -i ~/.config/configfiles/lockscreen.jpg' \
+          timeout 600 'swaymsg "output * dpms off"' \
+          resume 'swaymsg "output * dpms on"' \
+          before-sleep 'swaylock -f -c 000000 -i ~/.config/configfiles/lockscreen.jpg'
 
 ### Input configuration
 #

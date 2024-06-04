@@ -34,7 +34,7 @@
     }
   },
   "pulseaudio": {
-    "format": "{icon}      {volume}%",
+    "format": "{icon} {volume}%",
     "format-icons": {
       "default": ["\uf026", "\uf027", "\uf028"]
     },
