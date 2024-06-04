@@ -27,6 +27,11 @@ required_packages_pacman:
   - xorg-xwayland
   - wayland
   - kanshi
+  - xdg-desktop-portal-gtk
+  - gnome-tweaks
+  - nautilus
+  - eza 
+  - bat
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
@@ -35,4 +40,6 @@ required_packages_flatpak:
   - com.discordapp.Discord
   - io.gitlab.librewolf-community
   - org.gtk.Gtk3theme.Pop-dark
+  - com.github.tchx84.Flatseal
+  - com.vscodium.codium
 

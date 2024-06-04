@@ -5,7 +5,7 @@
   "spacing": 15,
   "modules-left": ["sway/workspaces","sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": ["battery","pulseaudio","tray"],
+  "modules-right": ["tray", "battery","pulseaudio"],
   "sway/mode": {
     "format": "{}"
   },
@@ -24,7 +24,7 @@
     "format-plugged": "Battery: {capacity}% (plugged)",
   },
   "clock": {
-    "format": "{:%H:%M    %m/%d/%Y}",
+    "format": "{:%I:%M %p   %m/%d/%Y}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "format": {

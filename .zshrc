@@ -8,6 +8,7 @@ export EDITOR='nvim'
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/.local/bin:$HOME/gems/bin:/usr/local/go/bin:$HOME/go/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
 export GOBIN=~/go/bin
+export BAT_THEME="Catppuccin Mocha"
 #eval $(thefuck --alias)
 #
 alias tf=terraform
@@ -17,6 +18,10 @@ alias vim='nvim'
 alias c='clear'
 alias pwsh='pwsh -NoLogo'
 alias pbpaste='xclip -selection clipboard -o'
+alias ls='eza'
+alias ll='eza -l'
+alias tree='eza -T'
+alias cat='bat'
 
 #
 ## Initialization code that may require console input (password prompts, [y/n]
