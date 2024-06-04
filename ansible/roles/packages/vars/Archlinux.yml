@@ -24,3 +24,14 @@ required_packages_pacman:
   - pipewire
   - pipewire-pulse
   - openssh
+  - xorg-xwayland
+  - wayland
+
+flatpak_remote:
+  - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
+
+required_packages_flatpak:
+  - com.discordapp.Discord
+  - io.gitlab.librewolf-community
+  - org.gtk.Gtk3theme.Pop-dark
+
