@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre",
     config = function()
       require "configs.conform"
     end,
@@ -26,14 +26,14 @@ return {
         "eslint-lsp",
         "js-debug-adapter",
         "prettier",
-        "typescript-language-server"
+        "typescript-language-server",
       },
     },
   },
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
         "lua",
         "javascript",
         "typescript",
@@ -42,14 +42,71 @@ return {
         "terraform",
         "c_sharp",
         "bash",
-  		},
-  	},
+      },
+    },
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-     require("nvchad.configs.lspconfig").defaults()
-     require "configs.lspconfig"
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
+  },
+  {
+    "tpope/vim-fugitive",
+  },
+  -- Golang
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    config = function(_, opts)
+      require("gopher").setup(opts)
+    end,
+    build = function()
+      vim.cmd [[silent! GoInstallDeps]]
+    end,
+  },
+  -- Dap
+  {
+    "mfussenegger/nvim-dap",
+  },
+  {
+    "nvim-neotest/nvim-nio",
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = "mfussenegger/nvim-dap",
+    config = function()
+      local dap = require "dap"
+      local dapui = require "dapui"
+      dapui.setup()
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+    end,
+  },
+  {
+    "dreamsofcode-io/nvim-dap-go",
+    ft = "go",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+    },
+    config = function(_, opts)
+      require("dap-go").setup(opts)
+      --    require("core.utils").load_mappings "dap_go"
     end,
   },
 }
