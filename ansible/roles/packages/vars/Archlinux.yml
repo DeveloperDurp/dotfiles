@@ -26,6 +26,7 @@ required_packages_pacman:
   - openssh
   - xorg-xwayland
   - wayland
+  - kanshi
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
