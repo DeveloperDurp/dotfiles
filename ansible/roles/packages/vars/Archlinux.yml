@@ -32,6 +32,11 @@ required_packages_pacman:
   - nautilus
   - eza 
   - bat
+  - wget
+  - curl
+  - nmap
+  - kubectl
+  - terraform
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}

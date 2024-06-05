@@ -5,12 +5,19 @@
   "spacing": 15,
   "modules-left": ["sway/workspaces","sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "battery","pulseaudio"],
+  "modules-right": ["tray","network", "battery","pulseaudio"],
   "sway/mode": {
     "format": "{}"
   },
   "sway/window": {
     "format": "{title}"
+  },
+  "network": {
+        "format-wifi": "󰖩 {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈁 {ifname} {bandwidthUpBits} {bandwidthDownBits}",
+        "format-linked": " (No IP) ",
+        "format-disconnected": "󰖪",
+        "interval": 1
   },
   "battery": {
     "bat": "BAT0",
