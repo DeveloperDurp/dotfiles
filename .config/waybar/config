@@ -13,9 +13,8 @@
     "format": "{title}"
   },
   "network": {
-        "format-wifi": "󰖩 {essid} ({signalStrength}%)",
-        "format-ethernet": "󰈁 {ifname} {bandwidthUpBits} {bandwidthDownBits}",
-        "format-linked": " (No IP) ",
+        "interface": "wlan0",
+        "format-wifi": "󰖩 {essid}",
         "format-disconnected": "󰖪",
         "interval": 1
   },
