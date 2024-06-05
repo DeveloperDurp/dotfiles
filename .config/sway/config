@@ -14,12 +14,12 @@ output * bg ~/.config/configfiles/wallpaper.png fill
 exec_always "pkill kanshi; kanshi"
 
 ### Idle configuration
-exec pkill swayidle
-exec swayidle -w \
-        timeout 300 'swaylock -f -c 000000 -i ~/.config/configfiles/lockscreen.jpg' \
-        timeout 600 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
-        before-sleep 'swaylock -f -c 000000 -i ~/.config/configfiles/lockscreen.jpg'
+#exec_always pkill swayidle
+#exec swayidle -w \
+#  timeout 300 'swaylock -f' \
+#  timeout 600  'swaymsg "output * dpms off"' \
+#  resume 'swaymsg "output * dpms on"' \
+#  before-sleep 'swaylock -f'
 
 ### Input configuration
 input "1267:12573:ELAN0412:00_04F3:311D_Touchpad" {
