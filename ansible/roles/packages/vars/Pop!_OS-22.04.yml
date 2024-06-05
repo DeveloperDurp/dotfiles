@@ -25,6 +25,11 @@ apt_repo:
 required_packages_apt:
   - powershell
   - curl
+  - wofi
+  - swaybg
+  - swayidle
+  - swaylock
+  - swayimg
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
