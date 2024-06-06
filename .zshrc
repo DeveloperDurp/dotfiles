@@ -23,6 +23,8 @@ alias ll='eza -l'
 alias tree='eza -T'
 alias cat='bat'
 alias network='nmtui'
+alias docker='podman'
+alias sudo='sudo '
 
 #
 ## Initialization code that may require console input (password prompts, [y/n]

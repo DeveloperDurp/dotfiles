@@ -9,3 +9,6 @@
 
 - name: install pacman
   include_tasks: "./scripts/install_pacman.yml"
+
+- name: configure systemd
+  include_tasks: "./scripts/configure_systemd.yml"

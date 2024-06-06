@@ -1,0 +1,7 @@
+- name: Enable Systemd Services
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items: "{{ systemd_service }}"
+  when: systemd_service is defined   
