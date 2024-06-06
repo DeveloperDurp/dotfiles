@@ -16,6 +16,8 @@ required_packages_brew:
   - ffmpeg
   - ttyd
   - waybar
+  - bat
+  - eza
 
 apt_keys:
   - https://packages.microsoft.com/keys/microsoft.asc
