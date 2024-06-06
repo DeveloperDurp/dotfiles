@@ -37,6 +37,5 @@
 - name: Install Brew Packages
   become_user: user
   community.general.homebrew: 
-    name: "{{ item }}"
-  with_items: "{{ required_packages_brew }}"
+    name: "{{ required_packages_brew }}"
   when: required_packages_brew is defined

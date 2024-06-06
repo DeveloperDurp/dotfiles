@@ -15,9 +15,10 @@ required_packages_brew:
   - hashicorp/tap/vault
   - ffmpeg
   - ttyd
-  - waybar
   - bat
   - eza
+  - podman
+  - fastfetch
 
 apt_keys:
   - https://packages.microsoft.com/keys/microsoft.asc
@@ -32,6 +33,9 @@ required_packages_apt:
   - swayidle
   - swaylock
   - swayimg
+  - kanshi
+  - waybar
+  - libappindicator1
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}

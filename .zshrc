@@ -9,6 +9,7 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/.local/bin:$HOME/gems/bin:/usr/local/go/bin:$HOME/go/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
 export GOBIN=~/go/bin
 export BAT_THEME="Catppuccin Mocha"
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=white,bold"
 #eval $(thefuck --alias)
 #
 alias tf=terraform
@@ -73,6 +74,7 @@ zinit snippet OMZP::copypath
 zinit snippet OMZP::copyfile
 zinit snippet OMZP::copybuffer
 zinit snippet OMZP::dirhistory
+zinit snippet OMZP::history-substring-search
 
 # Load completions
 autoload -Uz compinit && compinit

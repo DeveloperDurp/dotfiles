@@ -14,8 +14,7 @@ output * bg ~/.config/configfiles/wallpaper.png fill
 exec_always "pkill kanshi; kanshi"
 
 ### Idle configuration
-#exec_always pkill swayidle
-#exec swayidle -w \
+#exec_always pkill swayidle && swayidle -w \
 #  timeout 300 'swaylock -f' \
 #  timeout 600  'swaymsg "output * dpms off"' \
 #  resume 'swaymsg "output * dpms on"' \
