@@ -8,17 +8,19 @@ set $term terminator
 set $menu wofi 
 
 include /etc/sway/config-vars.d/*
-
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 ### Output configuration
 output * bg ~/.config/configfiles/wallpaper.png fill
 exec_always "pkill kanshi; kanshi"
 
 ### Idle configuration
-#exec_always pkill swayidle && swayidle -w \
-#  timeout 300 'swaylock -f' \
-#  timeout 600  'swaymsg "output * dpms off"' \
-#  resume 'swaymsg "output * dpms on"' \
-#  before-sleep 'swaylock -f'
+exec_always pkill swayidle 
+exec_always sleep 1
+exec_always swayidle -w \
+  timeout 300 'swaylock -f' \
+  timeout 600  'swaymsg "output * dpms off"' \
+  resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f'
 
 ### Input configuration
 input "1267:12573:ELAN0412:00_04F3:311D_Touchpad" {
