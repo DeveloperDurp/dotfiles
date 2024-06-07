@@ -21,6 +21,7 @@ required_packages_pacman:
   - swayidle
   - swaylock
   - swayimg
+  - swaync
   - pipewire
   - pipewire-pulse
   - openssh
@@ -38,6 +39,8 @@ required_packages_pacman:
   - kubectl
   - terraform
   - podman
+  - grim
+  - slurp
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}

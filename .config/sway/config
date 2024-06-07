@@ -1,3 +1,8 @@
+exec_always "pkill kanshi"
+exec_always "pkill swayidle"
+exec_always "pkill swaync"
+exec_always "sleep 1"
+
 ### Variables
 set $mod Mod4
 set $left h
@@ -9,18 +14,17 @@ set $menu wofi
 
 include /etc/sway/config-vars.d/*
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 ### Output configuration
 output * bg ~/.config/configfiles/wallpaper.png fill
-exec_always "pkill kanshi; kanshi"
+exec_always "kanshi"
 
 ### Idle configuration
-exec_always pkill swayidle 
-exec_always sleep 1
 exec_always swayidle -w \
-  timeout 300 'swaylock -f' \
-  timeout 600  'swaymsg "output * dpms off"' \
-  resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f'
+timeout 300 'swaylock -f' \
+timeout 600  'swaymsg "output * dpms off"' \
+resume 'swaymsg "output * dpms on"' \
+before-sleep 'swaylock -f'
 
 ### Input configuration
 input "1267:12573:ELAN0412:00_04F3:311D_Touchpad" {
@@ -28,6 +32,12 @@ input "1267:12573:ELAN0412:00_04F3:311D_Touchpad" {
     tap enabled
     middle_emulation enabled
 }
+
+# Notification Daemon
+exec_always swaync
+
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
 ### Key bindings
 
