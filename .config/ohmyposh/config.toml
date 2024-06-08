@@ -40,10 +40,20 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     foreground = 'yellow'
     background = 'transparent'
-    template = '{{ .FormattedMs }}'
+    template = '{{ .FormattedMs }} '
 
     [blocks.segments.properties]
       threshold = 5000
+
+  [[blocks.segments]]
+    type = 'path'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'blue'
+    template = '{{ .Shell }}'
+
+    [blocks.segments.properties]
+      style = 'full'
 
 [[blocks]]
   type = 'prompt'
