@@ -61,7 +61,20 @@ return {
   {
     "tpope/vim-fugitive",
   },
-  -- Golang
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      filters = {
+        enable = false,
+      },
+    },
+  },
+  {
+    "TheLeoP/powershell.nvim",
+    opts = {
+      bundle_path = vim.fn.stdpath "data" .. "/man/packages/powershell-editor-services",
+    },
+  },
   {
     "olexsmir/gopher.nvim",
     ft = "go",
@@ -72,7 +85,17 @@ return {
       vim.cmd [[silent! GoInstallDeps]]
     end,
   },
-  -- Dap
+  {
+    "dreamsofcode-io/nvim-dap-go",
+    ft = "go",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+    },
+    config = function(_, opts)
+      require("dap-go").setup(opts)
+    end,
+  },
   {
     "mfussenegger/nvim-dap",
   },
@@ -95,18 +118,6 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
-    end,
-  },
-  {
-    "dreamsofcode-io/nvim-dap-go",
-    ft = "go",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "rcarriga/nvim-dap-ui",
-    },
-    config = function(_, opts)
-      require("dap-go").setup(opts)
-      --    require("core.utils").load_mappings "dap_go"
     end,
   },
 }

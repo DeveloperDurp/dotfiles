@@ -41,6 +41,9 @@ required_packages_pacman:
   - podman
   - grim
   - slurp
+  - helm
+  - networkmanager-openvpn
+  - openresolv
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}

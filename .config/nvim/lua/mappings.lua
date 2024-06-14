@@ -28,3 +28,17 @@ map("", "<leader>dus", function()
   local sidebar = widgets.sidebar(widgets.scopes)
   sidebar.open()
 end, { desc = "Open debugging Window" })
+
+-- Movement
+map("n", "<C-d>", "<c-d>zz", { noremap = true })
+map("n", "<C-u>", "<c-u>zz", { noremap = true })
+map("n", "n", "nzzzv", { noremap = true })
+map("n", "N", "Nzzzv", { noremap = true })
+
+-- Powershell
+map("n", "<leader>E", function()
+  require("powershell").eval()
+end, { noremap = true })
+map("n", "<leader>P", function()
+  require("powershell").toggle_term()
+end, { noremap = true })

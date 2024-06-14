@@ -26,6 +26,7 @@ alias cat='bat'
 alias network='nmtui'
 alias docker='podman'
 alias sudo='sudo '
+alias connectvpn='sudo openvpn ~/Documents/openvpn/openvpn.ovpn'
 
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.toml)"
 
