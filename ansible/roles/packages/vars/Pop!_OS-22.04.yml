@@ -34,7 +34,6 @@ required_packages_apt:
   - swayimg
   - kanshi
   - waybar
-  - libappindicator1
   #- sway-notification-center
   - grim
   - slurp
