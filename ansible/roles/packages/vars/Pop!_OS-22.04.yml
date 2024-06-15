@@ -17,7 +17,6 @@ required_packages_brew:
   - ttyd
   - bat
   - eza
-  - podman
   - fastfetch
 
 apt_keys:
@@ -36,7 +35,11 @@ required_packages_apt:
   - kanshi
   - waybar
   - libappindicator1
-  - sway-notification-center
+  #- sway-notification-center
+  - grim
+  - slurp
+  - openresolv
+  - podman
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}

@@ -13,7 +13,7 @@
     "format": "{title}"
   },
   "network": {
-    "interface": "wlan0",
+    "interface": "wlp0s20f3",
     "format-wifi": "󰖩 {essid}",
     "format-disconnected": "󰖪",
     "interval": 1
