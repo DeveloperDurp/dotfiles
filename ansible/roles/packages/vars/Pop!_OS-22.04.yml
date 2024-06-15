@@ -36,6 +36,7 @@ required_packages_apt:
   - kanshi
   - waybar
   - libappindicator1
+  - sway-notification-center
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}

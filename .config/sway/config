@@ -15,6 +15,10 @@ set $menu wofi
 include /etc/sway/config-vars.d/*
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
+exec_always {
+  gsettings set org.gnome.desktop.interface gtk-theme 'catppuccin-mocha-mauve-standard+default'
+}
+
 ### Output configuration
 output * bg ~/.config/configfiles/wallpaper.png fill
 exec_always "kanshi"

@@ -13,10 +13,10 @@
     "format": "{title}"
   },
   "network": {
-        "interface": "wlan0",
-        "format-wifi": "󰖩 {essid}",
-        "format-disconnected": "󰖪",
-        "interval": 1
+    "interface": "wlan0",
+    "format-wifi": "󰖩 {essid}",
+    "format-disconnected": "󰖪",
+    "interval": 1
   },
   "battery": {
     "bat": "BAT0",
