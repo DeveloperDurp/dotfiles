@@ -3,3 +3,6 @@ ansible
 Makefile
 ansible.cfg
 inventory
+.git
+.gitignore
+
