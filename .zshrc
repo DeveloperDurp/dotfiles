@@ -9,9 +9,10 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/.local/bin:$HOME/gems/bin:/usr/local/go/bin:$HOME/go/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
 export GOBIN=~/go/bin
 export BAT_THEME="Catppuccin Mocha"
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=white,bold"
 #eval $(thefuck --alias)
-#
+
 alias tf=terraform
 alias k=kubectl
 alias ls='ls --color'
@@ -22,7 +23,7 @@ alias pbpaste='xclip -selection clipboard -o'
 alias ls='eza'
 alias ll='eza -l'
 alias tree='eza -T'
-alias cat='bat'
+alias cat='bat -P'
 alias network='nmtui'
 alias docker='podman'
 alias sudo='sudo '
@@ -104,12 +105,21 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(bw completion --shell zsh); compdef _bw bw;"
+#eval "$(fzf --zsh)"
+#eval "$(zoxide init --cmd cd zsh)"
+#eval "$(bw completion --shell zsh); compdef _bw bw;"
 
 source ~/.fzf.completion.zsh
 source ~/.fzf.key-bindings.zsh
+source ~/.zoxide.completions.zsh
+source ~/.bw.completions.zsh
+
+runinti ()
+{
+  fzf --zsh > ~/.fzf.completion.zsh
+  zoxide init --cmd cd zsh > ~/.zoxide.completions.zsh
+  bw completion --shell zsh > ~/.bw.completions.zsh
+}
 
 unlockbw ()
 {

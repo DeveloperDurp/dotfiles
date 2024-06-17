@@ -186,5 +186,8 @@ bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 # ScreenShot
 bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
 
-default_border none 
+# Border
+default_border pixel 
+gaps inner 5
+
 include /etc/sway/config.d/*

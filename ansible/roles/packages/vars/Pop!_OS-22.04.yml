@@ -18,6 +18,7 @@ required_packages_brew:
   - bat
   - eza
   - fastfetch
+  - vivid
 
 apt_keys:
   - https://packages.microsoft.com/keys/microsoft.asc

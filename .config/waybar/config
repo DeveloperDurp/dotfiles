@@ -5,7 +5,7 @@
   "spacing": 15,
   "modules-left": ["sway/workspaces","sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": ["tray","network", "battery","pulseaudio"],
+  "modules-right": ["tray","idle_inhibitor","network", "battery","pulseaudio"],
   "sway/mode": {
     "format": "{}"
   },
@@ -51,4 +51,11 @@
     "icon-size": 20,
     "spacing": 10
   },
+  "idle_inhibitor": { 
+    "format": "{icon}", 
+    "format-icons": { 
+      "activated": "\uf06e", 
+      "deactivated": "\uf070" 
+    } 
+  }
 }
