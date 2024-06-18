@@ -40,6 +40,7 @@ required_packages_apt:
   - slurp
   - openresolv
   - podman
+  - brightnessctl
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
