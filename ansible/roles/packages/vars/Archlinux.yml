@@ -29,7 +29,6 @@ required_packages_pacman:
   - wayland
   - kanshi
   - xdg-desktop-portal-gtk
-  - gnome-tweaks
   - nautilus
   - eza 
   - bat
@@ -45,6 +44,7 @@ required_packages_pacman:
   - networkmanager-openvpn
   - openresolv
   - xsettingsd
+  - vivid
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
@@ -56,3 +56,5 @@ required_packages_flatpak:
   - com.github.tchx84.Flatseal
   - com.vscodium.codium
 
+systemd_service:
+  - ly.service
