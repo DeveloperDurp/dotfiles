@@ -44,6 +44,7 @@ required_packages_pacman:
   - helm
   - networkmanager-openvpn
   - openresolv
+  - xsettingsd
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
