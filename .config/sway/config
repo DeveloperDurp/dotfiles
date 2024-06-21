@@ -184,6 +184,12 @@ bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; pkill -R
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 
+# File Browser
+bindsym $mod+Shift+t exec nautilus
+
+# File Browser
+bindsym $mod+Shift+f exec flatpak run io.gitlab.librewolf-community 
+
 # ScreenShot
 bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
 
