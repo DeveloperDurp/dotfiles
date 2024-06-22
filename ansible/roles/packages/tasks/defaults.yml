@@ -1,9 +1,6 @@
 - name: install apt
   include_tasks: "./scripts/install_apt.yml"
 
-- name: install flatpak
-  include_tasks: "./scripts/install_flatpak.yml"
-
 - name: install brew
   include_tasks: "./scripts/install_brew.yml"
 
@@ -12,6 +9,9 @@
 
 - name: install go apps
   include_tasks: "./scripts/install_goapps.yml"
+
+- name: install flatpak
+  include_tasks: "./scripts/install_flatpak.yml"
 
 - name: configure systemd
   include_tasks: "./scripts/configure_systemd.yml"

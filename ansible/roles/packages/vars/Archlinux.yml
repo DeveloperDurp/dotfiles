@@ -62,6 +62,9 @@ required_packages_pacman:
   - dmidecode
   - libguestfs
   - polkit-kde-agent
+  - libusb
+  - qemu-hw-usb-host
+  - flatpak
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
