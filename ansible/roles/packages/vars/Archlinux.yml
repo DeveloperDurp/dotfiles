@@ -47,6 +47,10 @@ required_packages_pacman:
   - vivid
   - lxappearance
   - qt5ct
+  - gnome-calculator
+  - powertop
+  - iptables
+  - gnome-disk-utility
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
