@@ -10,5 +10,8 @@
 - name: install pacman
   include_tasks: "./scripts/install_pacman.yml"
 
+- name: install go apps
+  include_tasks: "./scripts/install_goapps.yml"
+
 - name: configure systemd
   include_tasks: "./scripts/configure_systemd.yml"

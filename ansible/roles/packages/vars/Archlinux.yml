@@ -51,6 +51,17 @@ required_packages_pacman:
   - powertop
   - iptables
   - gnome-disk-utility
+  - ranger
+  - qemu-base 
+  - virt-manager 
+  - virt-viewer 
+  - dnsmasq 
+  - vde2 
+  - bridge-utils 
+  - openbsd-netcat 
+  - dmidecode
+  - libguestfs
+  - polkit-kde-agent
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
@@ -64,3 +75,9 @@ required_packages_flatpak:
 
 systemd_service:
   - ly.service
+  - libvirtd.service
+
+go_apps:
+  - github.com/jorgerojas26/lazysql@latest
+  - github.com/charmbracelet/vhs@latest
+  - github.com/charmbracelet/glow@latest

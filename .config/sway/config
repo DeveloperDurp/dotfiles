@@ -1,3 +1,4 @@
+exec "/usr/lib/polkit-kde-authentication-agent-1"
 exec_always "pkill kanshi"
 exec_always "pkill swayidle"
 exec_always "pkill swaync"
