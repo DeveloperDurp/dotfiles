@@ -65,6 +65,7 @@ required_packages_pacman:
   - libusb
   - qemu-hw-usb-host
   - flatpak
+  - ly
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
