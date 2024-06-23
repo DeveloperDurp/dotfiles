@@ -85,3 +85,4 @@ go_apps:
   - github.com/jorgerojas26/lazysql@latest
   - github.com/charmbracelet/vhs@latest
   - github.com/charmbracelet/glow@latest
+  - github.com/swaggo/swag/cmd/swag@latest
