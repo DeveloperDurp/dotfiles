@@ -66,6 +66,7 @@ required_packages_pacman:
   - qemu-hw-usb-host
   - flatpak
   - ly
+  - seahorse
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
