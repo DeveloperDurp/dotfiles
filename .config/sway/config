@@ -28,10 +28,10 @@ exec_always "kanshi"
 exec_always swayidle -w \
 timeout 300 'swaylock -f' \
 timeout 600  'swaymsg "output * dpms off"' \
-timeout 1200  'systemctl suspend' \
 resume 'swaymsg "output * dpms on"' \
 before-sleep 'swaylock -f'
 
+#timeout 1200  'systemctl suspend' \
 ### Input configuration
 input "1267:12573:ELAN0412:00_04F3:311D_Touchpad" {
     dwt enabled
