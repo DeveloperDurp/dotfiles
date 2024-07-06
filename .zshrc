@@ -13,7 +13,8 @@ export LS_COLORS="$(vivid generate catppuccin-mocha)"
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=white,bold"
 #eval $(thefuck --alias)
 
-alias tf=terraform
+alias tf=tofu
+alias terraform=tofu
 alias k=kubectl
 alias ls='ls --color'
 alias vim='nvim'
@@ -27,6 +28,7 @@ alias cat='bat -P'
 alias network='nmtui'
 alias docker='podman'
 alias sudo='sudo '
+alias grep='rg'
 alias connectvpn='sudo openvpn ~/Documents/openvpn/openvpn.ovpn'
 
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.toml)"

@@ -42,3 +42,7 @@ end, { noremap = true })
 map("n", "<leader>P", function()
   require("powershell").toggle_term()
 end, { noremap = true })
+
+-- Obsidian
+map("", "<leader>of", "<cmd> ObsidianFollowLink <CR>", { desc = "Follow Link" })
+map("", "<leader>ol", "<cmd> ObsidianLinks <CR>", { desc = "Show All Links" })

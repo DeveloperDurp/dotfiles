@@ -41,6 +41,7 @@ required_packages_apt:
   - openresolv
   - podman
   - brightnessctl
+  - pavucontrol
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
