@@ -30,6 +30,14 @@ $tokens = @(
     name = "GITLAB_TOKEN"
     value = "cli-gitlab" 
   }
+  @{
+    name = "GITHUB_TOKEN"
+    value = "cli-github" 
+  }
+  @{
+    name = "GITEA_TOKEN"
+    value = "cli-gitea" 
+  }
 )
 
 function unlockbw
