@@ -24,14 +24,13 @@ let g:WhichKey_PrefixColor = "#f335b2"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 
 " NerdTree
-plug 'preservim/nerdtree'
-set NerdTree
-nnoremap <C-n> :NerdTree<CR>
+Plug 'preservim/nerdtree'
+nnoremap <C-n> :NERDTree<CR>
 
-let g:NerdTreeWinSize = 30
-let g:NerdTreeMapPreview = 0
-let g:NerdTreeActivateNode = 'l'
-let g:NERDTreeMapJumpParent = 'h'
+let g:NERDTreeWinSize=30
+let g:NERDTreeMapPreview=0
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
 
 let mapleader=' '
 
@@ -64,6 +63,7 @@ nnoremap <C-u> <C-u>zz
 map <leader>% <action>(SplitVertically)
 map <leader>" <action>(SplitHorizontally)
 map <leader>x <action>(CloseContent)
+map <leader>wm <action>(MoveEditorToOppositeTabGroup)
 
 " Popup Navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
@@ -103,9 +103,11 @@ map <leader>ep <action>(ReSharperGotoPrevErrorInSolution)
 
 " Menu
 map <leader>mm <action>(MainMenu)
-map <leader>my <action>(GotoTypeDeclaraton)
-map <leader>mi <action>(GotoImplementation)
-map <leader>mu <action>(ShowUsages)
-map <leader>mt <action>(GotoTest)
-map <leader>mf <action>(Back)
-map <leader>mb <action>(Forward)
+map <leader>ma <action>(AnalyzeMenu)
+map <leader>mb <action>(BuildMenu)
+map <leader>mc <action>(CodeMenu)
+map <leader>mf <action>(FindMenuGroup)
+map <leader>mg <action>(GoToMenu)
+map <leader>ms <action>(ScopeViewPopupMenu)
+map <leader>mt <action>(EditorTabPopupMenu)
+map <leader>mw <action>(ToolWindowsGroup)

@@ -23,6 +23,7 @@ alias pwsh='pwsh -NoLogo'
 alias pbpaste='xclip -selection clipboard -o'
 alias ls='eza'
 alias ll='eza -l'
+alias lg='lazygit'
 alias tree='eza -T'
 alias cat='bat -P'
 alias network='nmtui'
@@ -33,9 +34,20 @@ alias connectvpn='sudo openvpn ~/Documents/openvpn/openvpn.ovpn'
 
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.toml)"
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux attach
+if command -v tmux &> /dev/null && [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+    cwd=$(pwd)
+    session_name="goland-$(basename "$cwd" | tr -d '.')"
+
+    if tmux has-session -t $session_name; then
+        tmux attach -t $session_name
+    else
+        tmux new -s $session_name
+    fi
 fi
+
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux attach
+#fi
 
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
