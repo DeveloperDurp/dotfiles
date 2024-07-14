@@ -32,3 +32,9 @@ Plug 'tpope/vim-commentary'
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
+"
+"
+"
+set NERDTree
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
