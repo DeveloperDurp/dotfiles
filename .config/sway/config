@@ -39,6 +39,10 @@ input "1267:12573:ELAN0412:00_04F3:311D_Touchpad" {
     middle_emulation enabled
 }
 
+input "type:pointer" {
+    accel_profile "flat" 
+    pointer_accel 0
+}
 # Notification Daemon
 exec_always swaync
 
@@ -62,7 +66,7 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
   # Despite the name, also works for non-floating windows.
   # Change normal to inverse to use left mouse button for resizing and right
   # mouse button for dragging.
-  floating_modifier control normal
+  #floating_modifier control normal
 
   # Reload the configuration file
   bindsym $mod+Shift+c reload
