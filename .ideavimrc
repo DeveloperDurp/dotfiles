@@ -1,40 +1,111 @@
-" .ideavimrc is a configuration file for IdeaVim plugin. It uses
-"   the same commands as the original .vimrc configuration.
-" You can find a list of commands here: https://jb.gg/h38q75
-" Find more examples here: https://jb.gg/share-ideavimrc
-
-
-"" -- Suggested options --
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
-
-" Do incremental searching.
+set number relativenumber
+set ideajoin
+set linenumber
+set showmode
+set showcmd
 set incsearch
+set hlsearch
+set scrolloff=10
+set visualbell
+set ignorecase
+set smartcase
+set notimeout
+set clipboard+=unnamed
 
-" Don't use Ex mode, use Q for formatting.
-map Q gq
+" 3rd party
+set which-key
+set surround
+set highlightedyank
 
-" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+" Which Key
+let g:WhichKey_FontSize = 16
+let g:WhichKey_CommandColor = "#41ead4"
+let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
 
-" Highlight copied text
-Plug 'machakann/vim-highlightedyank'
-" Commentary plugin
-Plug 'tpope/vim-commentary'
+" NerdTree
+plug 'preservim/nerdtree'
+set NerdTree
+nnoremap <C-n> :NerdTree<CR>
 
+let g:NerdTreeWinSize = 30
+let g:NerdTreeMapPreview = 0
+let g:NerdTreeActivateNode = 'l'
+let g:NERDTreeMapJumpParent = 'h'
 
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
+let mapleader=' '
 
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
+noremap <leader>lr :action ExtractMethod<CR>
 
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
-"
-"
-"
-set NERDTree
-let g:NERDTreeMapActivateNode='l'
-let g:NERDTreeMapJumpParent='h'
+" Manage Projects
+noremap <C-Space>s :action ManageRecentProjects<CR>
+
+" Tab Navigation
+noremap <Tab> :action NextTab<CR>
+noremap <S-Tab> :action PreviousTab<CR>
+
+" Pane Navigation
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
+noremap <C-k> <C-w>k
+noremap <C-j> <C-w>j
+
+" File Navigation
+map <leader>ff <action>(GoToFile)
+map <leader><leader> <action>(RecentFiles)
+map <leader>fl <action>(RecentLocations)
+map <leader>fs <action>(NewScratchFile)
+
+" Center Screen with Page up and down
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Window Management
+map <leader>% <action>(SplitVertically)
+map <leader>" <action>(SplitHorizontally)
+map <leader>x <action>(CloseContent)
+
+" Popup Navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+" Debug options
+map <leader>dd <action>(Debug)
+map <leader>db <action>(ToggleLineBreakpoint)
+
+" Actions
+map <leader>am <action>(ShowIntentionActions)
+map <leader>as <action>(SearchEverywhere)
+
+" Refactoring
+map <leader>rn <action>(RenameElement)
+map <leader>re <action>(ExtractMethod)
+map <leader>rv <action>(IntroduceVariable)
+map <leader>rf <action>(IntroduceField)
+map <leader>rs <action>(ChangeSignature)
+map <leader>rr <action>(Refactorings.QuickListPopupAction)
+
+" Go To Code
+map <leader>gd <action>(GoToDeclaration)
+map <leader>gy <action>(GotoTypeDeclaraton)
+map <leader>gi <action>(GotoImplementation)
+map <leader>gu <action>(ShowUsages)
+map <leader>gt <action>(GotoTest)
+map <leader>gf <action>(Back)
+map <leader>gb <action>(Forward)
+
+" Go Tag
+map <leader>gt :action IntentionActionAsAction_com.goide.inspections.tag.GoTagAddKeyIntention<CR>
+
+" Errors
+map <leader>en <action>(ReSharperGotoNextErrorInSolution)
+map <leader>ep <action>(ReSharperGotoPrevErrorInSolution)
+
+" Menu
+map <leader>mm <action>(MainMenu)
+map <leader>my <action>(GotoTypeDeclaraton)
+map <leader>mi <action>(GotoImplementation)
+map <leader>mu <action>(ShowUsages)
+map <leader>mt <action>(GotoTest)
+map <leader>mf <action>(Back)
+map <leader>mb <action>(Forward)
