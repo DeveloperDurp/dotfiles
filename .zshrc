@@ -36,7 +36,7 @@ eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.toml)"
 
 if command -v tmux &> /dev/null && [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     cwd=$(pwd)
-    session_name="goland-$(basename "$cwd" | tr -d '.')"
+    session_name="$JetBrainsEditor-$(basename "$cwd" | tr -d '.')"
 
     if tmux has-session -t $session_name; then
         tmux attach -t $session_name
