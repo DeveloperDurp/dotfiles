@@ -19,6 +19,7 @@ required_packages_brew:
   - eza
   - fastfetch
   - vivid
+  - yazi
 
 apt_keys:
   - https://packages.microsoft.com/keys/microsoft.asc
@@ -42,6 +43,7 @@ required_packages_apt:
   - podman
   - brightnessctl
   - pavucontrol
+  - kitty
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}

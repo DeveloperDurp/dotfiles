@@ -3,7 +3,6 @@ required_packages_pacman:
   - waybar
   - stow
   - lazygit
-  - terminator
   - tmux
   - fzf
   - zoxide
@@ -67,6 +66,7 @@ required_packages_pacman:
   - flatpak
   - ly
   - seahorse
+  - kitty
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
