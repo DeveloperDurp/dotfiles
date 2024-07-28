@@ -1,6 +1,8 @@
 require "nvchad.options"
 
--- add yours here!
+vim.opt.guicursor = ""
 
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.api.nvim_set_option("clipboard", "unnamedplus")
+vim.opt_local.conceallevel = 2

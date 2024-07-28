@@ -32,8 +32,6 @@ alias sudo='sudo '
 alias grep='rg'
 alias connectvpn='sudo openvpn ~/Documents/openvpn/openvpn.ovpn'
 
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.toml)"
-
 if command -v tmux &> /dev/null && [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     cwd=$(pwd)
     session_name="JediTerm-$(basename "$cwd" | tr -d '.')"
@@ -59,6 +57,8 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.toml)"
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
