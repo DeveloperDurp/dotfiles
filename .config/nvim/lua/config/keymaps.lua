@@ -1,4 +1,7 @@
-require "nvchad.mappings"
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+--
 
 local map = vim.keymap.set
 
@@ -24,7 +27,7 @@ map("", "<leader>dso", "<cmd> DapStepOver <CR>", { desc = "Step Over" })
 map("", "<leader>dsi", "<cmd> DapStepInto <CR>", { desc = "Step Into" })
 map("", "<leader>dst", "<cmd> DapStepOut <CR>", { desc = "Step Out" })
 map("", "<leader>dus", function()
-  local widgets = require "dap.ui.widgets"
+  local widgets = require("dap.ui.widgets")
   local sidebar = widgets.sidebar(widgets.scopes)
   sidebar.open()
 end, { desc = "Open debugging Window" })

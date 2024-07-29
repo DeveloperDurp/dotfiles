@@ -34,14 +34,13 @@ let g:NERDTreeMapJumpParent='h'
 
 let mapleader=' '
 
-noremap <leader>lr :action ExtractMethod<CR>
 
 " Manage Projects
 noremap <C-Space>s :action ManageRecentProjects<CR>
 
 " Tab Navigation
-noremap <Tab> :action NextTab<CR>
-noremap <S-Tab> :action PreviousTab<CR>
+noremap <S-l> :action NextTab<CR>
+noremap <S-h> :action PreviousTab<CR>
 
 " Pane Navigation
 sethandler <c-j> a:vim

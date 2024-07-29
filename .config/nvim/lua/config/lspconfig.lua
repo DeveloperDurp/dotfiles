@@ -1,9 +1,9 @@
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+--local on_attach = require("nvchad.configs.lspconfig").on_attach
+--local on_init = require("nvchad.configs.lspconfig").on_init
+--local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
-local util = require "lspconfig/util"
+local util = require("lspconfig/util")
 --local servers = { "html", "cssls" }
 
 -- lsps with default config
@@ -16,16 +16,16 @@ local util = require "lspconfig/util"
 --end
 
 -- typescript
-lspconfig.tsserver.setup {
+lspconfig.tsserver.setup({
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
-}
+})
 
-lspconfig.gopls.setup {
+lspconfig.gopls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = {"gopls"},
+  cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
@@ -37,12 +37,12 @@ lspconfig.gopls.setup {
       },
     },
   },
-}
+})
 
 lspconfig.pyright.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {"python"},
+  filetypes = { "python" },
 })
 
 lspconfig.powershell_es.setup({
@@ -56,6 +56,6 @@ omnisharp_bin = vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp"
 lspconfig.omnisharp.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "cs"},
-  cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) }
+  filetypes = { "cs" },
+  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
 })

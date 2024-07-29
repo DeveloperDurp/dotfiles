@@ -31,6 +31,9 @@ alias docker='podman'
 alias sudo='sudo '
 alias grep='rg'
 alias connectvpn='sudo openvpn ~/Documents/openvpn/openvpn.ovpn'
+alias gc='git commit -a'
+alias gd='git diff'
+alias gp='git push'
 
 if command -v tmux &> /dev/null && [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     cwd=$(pwd)
