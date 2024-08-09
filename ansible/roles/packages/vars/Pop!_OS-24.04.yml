@@ -23,10 +23,10 @@ required_packages_brew:
   - ansible
   - zsh-history-substring-search
 
-apt_keys:
-  - https://packages.microsoft.com/keys/microsoft.asc
-apt_repo:
-  - deb [arch=amd64] https://packages.microsoft.com/ubuntu/24.04/prod noble main
+#apt_keys:
+#  - https://packages.microsoft.com/keys/microsoft.asc
+#apt_repo:
+#  - deb [arch=amd64] https://packages.microsoft.com/ubuntu/24.04/prod noble main
 
 required_packages_apt:
   #  - powershell
@@ -54,6 +54,12 @@ required_packages_apt:
   - apt-transport-https
   - software-properties-common
   - wdisplays
+  - eza
+  - bat
+  - ripgrep
+  - fzf
+  - zoxide
+  - flameshot
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
@@ -64,4 +70,4 @@ required_packages_flatpak:
   - me.proton.Pass
   - me.proton.Mail
   - com.protonvpn.www
-
+  - org.flameshot.Flameshot
