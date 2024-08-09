@@ -60,4 +60,8 @@ flatpak_remote:
 
 required_packages_flatpak:
   - io.gitlab.librewolf-community
+  - org.gnome.eog
+  - me.proton.Pass
+  - me.proton.Mail
+  - com.protonvpn.www
 
