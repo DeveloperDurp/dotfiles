@@ -193,7 +193,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 
 # File Browser
-bindsym $mod+Shift+t exec nautilus
+bindsym $mod+Shift+t exec cosmic-files
 
 # File Browser
 bindsym $mod+Shift+f exec flatpak run io.gitlab.librewolf-community 

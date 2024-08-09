@@ -95,7 +95,7 @@ zinit snippet OMZP::copypath
 zinit snippet OMZP::copyfile
 zinit snippet OMZP::copybuffer
 zinit snippet OMZP::dirhistory
-zinit snippet OMZP::history-substring-search
+#zinit snippet OMZP::history-substring-search
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -138,8 +138,8 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 source ~/.fzf.completion.zsh
 source ~/.fzf.key-bindings.zsh
-source ~/.zoxide.completions.zsh
-source ~/.bw.completions.zsh
+#source ~/.zoxide.completions.zsh
+#source ~/.bw.completions.zsh
 
 runinti ()
 {
@@ -278,3 +278,4 @@ if [ -e /home/user/.nix-profile/etc/profile.d/nix.sh ]; then . /home/user/.nix-p
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh

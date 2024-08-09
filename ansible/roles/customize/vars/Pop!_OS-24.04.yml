@@ -1,0 +1,3 @@
+fonts:
+  - {name: 'GoMonoNerd', url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Go-Mono.zip"}
+  - {name: 'FiraCodeNerd', url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip"}

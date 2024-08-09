@@ -1,0 +1,63 @@
+install_homebrew_if_missing: true
+
+required_packages_brew:
+  - lazygit
+  - fzf
+  - glab
+  - go
+  - neovim
+  - oh-my-posh
+  - tpm
+  - terraform
+  - kubernetes-cli
+  - zsh-autosuggestions
+  - bitwarden-cli
+  # - hashicorp/tap/vault
+  - ffmpeg
+  - ttyd
+  - bat
+  - eza
+  - fastfetch
+  - vivid
+  - yazi
+  - ansible
+  - zsh-history-substring-search
+
+apt_keys:
+  - https://packages.microsoft.com/keys/microsoft.asc
+apt_repo:
+  - deb [arch=amd64] https://packages.microsoft.com/ubuntu/24.04/prod noble main
+
+required_packages_apt:
+  #  - powershell
+  - sway
+  - zsh
+  - curl
+  - wofi
+  - swaybg
+  - swayidle
+  - swaylock
+  - swayimg
+  - kanshi
+  - waybar
+  - sway-notification-center
+  - grim
+  - slurp
+  - xsel
+  #  - openresolv
+  - wl-clipboard  
+  - podman
+  - brightnessctl
+  - pavucontrol
+  - kitty
+  - wget
+  - apt-transport-https
+  - software-properties-common
+  - wdisplays
+
+flatpak_remote:
+  - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
+
+required_packages_flatpak:
+  - io.gitlab.librewolf-community
+
