@@ -53,8 +53,8 @@ __fzf_select() {
   local item
   FZF_DEFAULT_COMMAND=${FZF_CTRL_T_COMMAND:-} \
   FZF_DEFAULT_OPTS=$(__fzf_defaults "--reverse --walker=file,dir,follow,hidden --scheme=path" "${FZF_CTRL_T_OPTS-} -m") \
-  FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd) "$@" < /dev/tty | while read item; do
-    echo -n "${(q)item} "
+  FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd) "$@" < /dev/tty | while read -r item; do
+    echo -n -E "${(q)item} "
   done
   local ret=$?
   echo
@@ -107,16 +107,24 @@ fi
 
 # CTRL-R - Paste the selected command from history into the command line
 fzf-history-widget() {
-  local selected num
-  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  selected="$(fc -rl 1 | awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' |
-    FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m") \
-    FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd))"
+  local selected
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases noglob nobash_rematch 2> /dev/null
+  # Ensure the associative history array, which maps event numbers to the full
+  # history lines, is loaded, and that Perl is installed for multi-line output.
+  if zmodload -F zsh/parameter p:history 2>/dev/null && (( ${#commands[perl]} )); then
+    selected="$(printf '%s\t%s\000' "${(kv)history[@]}" |
+      perl -0 -ne 'if (!$seen{(/^\s*[0-9]+\**\t(.*)/s, $1)}++) { s/\n/\n\t/g; print; }' |
+      FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --wrap-sign '\t↳ ' --highlight-line ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m --read0") \
+      FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd))"
+  else
+    selected="$(fc -rl 1 | awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' |
+      FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --wrap-sign '\t↳ ' --highlight-line ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m") \
+      FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd))"
+  fi
   local ret=$?
   if [ -n "$selected" ]; then
-    num=$(awk '{print $1}' <<< "$selected")
-    if [[ "$num" =~ '^[1-9][0-9]*\*?$' ]]; then
-      zle vi-fetch-history -n ${num%\*}
+    if [[ $(awk '{print $1; exit}' <<< "$selected") =~ ^[1-9][0-9]* ]]; then
+      zle vi-fetch-history -n $MATCH
     else # selected is a custom query, not from history
       LBUFFER="$selected"
     fi
@@ -295,7 +303,8 @@ __fzf_generic_path_completion() {
       [ -z "$dir" ] && dir='.'
       [ "$dir" != "/" ] && dir="${dir/%\//}"
       matches=$(
-        export FZF_DEFAULT_OPTS=$(__fzf_defaults "--reverse --scheme=path" "${FZF_COMPLETION_OPTS-}")
+        export FZF_DEFAULT_OPTS
+        FZF_DEFAULT_OPTS=$(__fzf_defaults "--reverse --scheme=path" "${FZF_COMPLETION_OPTS-}")
         unset FZF_DEFAULT_COMMAND FZF_DEFAULT_OPTS_FILE
         if declare -f "$compgen" > /dev/null; then
           eval "$compgen $(printf %q "$dir")" | __fzf_comprun "$cmd" ${(Q)${(Z+n+)fzf_opts}} -q "$leftover"
@@ -308,9 +317,9 @@ __fzf_generic_path_completion() {
             rest=${FZF_COMPLETION_PATH_OPTS-}
           fi
           __fzf_comprun "$cmd" ${(Q)${(Z+n+)fzf_opts}} -q "$leftover" --walker "$walker" --walker-root="$dir" ${(Q)${(Z+n+)rest}} < /dev/tty
-        fi | while read item; do
+        fi | while read -r item; do
           item="${item%$suffix}$suffix"
-          echo -n "${(q)item} "
+          echo -n -E "${(q)item} "
         done
       )
       matches=${matches% }
@@ -335,11 +344,11 @@ _fzf_dir_completion() {
     "" "/" ""
 }
 
-_fzf_feed_fifo() (
+_fzf_feed_fifo() {
   command rm -f "$1"
   mkfifo "$1"
-  cat <&0 > "$1" &
-)
+  cat <&0 > "$1" &|
+}
 
 _fzf_complete() {
   setopt localoptions ksh_arrays
@@ -402,13 +411,14 @@ _fzf_complete_telnet() {
 # The first and the only argument is the LBUFFER without the current word that contains the trigger.
 # The current word without the trigger is in the $prefix variable passed from the caller.
 _fzf_complete_ssh() {
-  local tokens=(${(z)1})
+  local -a tokens
+  tokens=(${(z)1})
   case ${tokens[-1]} in
     -i|-F|-E)
       _fzf_path_completion "$prefix" "$1"
       ;;
     *)
-      local user=
+      local user
       [[ $prefix =~ @ ]] && user="${prefix%%@*}@"
       _fzf_complete +m -- "$@" < <(__fzf_list_hosts | awk -v user="$user" '{print user $0}')
       ;;
@@ -434,7 +444,7 @@ _fzf_complete_unalias() {
 }
 
 _fzf_complete_kill() {
-  _fzf_complete -m --header-lines=1 --preview 'echo {}' --preview-window down:3:wrap --min-height 15 -- "$@" < <(
+  _fzf_complete -m --header-lines=1 --no-preview --wrap -- "$@" < <(
     command ps -eo user,pid,ppid,start,time,command 2> /dev/null ||
       command ps -eo user,pid,ppid,time,args # For BusyBox
   )

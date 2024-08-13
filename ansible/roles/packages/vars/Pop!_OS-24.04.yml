@@ -12,7 +12,7 @@ required_packages_brew:
   - kubernetes-cli
   - zsh-autosuggestions
   - bitwarden-cli
-  # - hashicorp/tap/vault
+  - "hashicorp/tap/vault"
   - ffmpeg
   - ttyd
   - bat
@@ -70,4 +70,10 @@ required_packages_flatpak:
   - me.proton.Pass
   - me.proton.Mail
   - com.protonvpn.www
-  - org.flameshot.Flameshot
+  - org.remmina.Remmina
+
+go_apps:
+  - github.com/charmbracelet/vhs@latest
+  - github.com/charmbracelet/glow@latest
+  - github.com/swaggo/swag/cmd/swag@latest
+  - github.com/air-verse/air@latest

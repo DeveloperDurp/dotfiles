@@ -131,22 +131,23 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# Shell integrations
-#eval "$(fzf --zsh)"
-#eval "$(zoxide init --cmd cd zsh)"
-#eval "$(bw completion --shell zsh); compdef _bw bw;"
+# Generate Completions if not found
+if [ ! -f ~/.fzf.completion.zsh ]; then
+  fzf --zsh > ~/.fzf.completion.zsh
+fi
+
+if [ ! -f ~/.zoxide.completions.zsh ]; then
+  zoxide init --cmd cd zsh > ~/.zoxide.completions.zsh
+fi
+
+if [ ! -f ~/.bw.completions.zsh ]; then
+  bw completion --shell zsh > ~/.bw.completions.zsh
+fi
 
 source ~/.fzf.completion.zsh
 source ~/.fzf.key-bindings.zsh
-#source ~/.zoxide.completions.zsh
-#source ~/.bw.completions.zsh
-
-runinti ()
-{
-  fzf --zsh > ~/.fzf.completion.zsh
-  zoxide init --cmd cd zsh > ~/.zoxide.completions.zsh
-  bw completion --shell zsh > ~/.bw.completions.zsh
-}
+source ~/.zoxide.completions.zsh
+source ~/.bw.completions.zsh
 
 unlockbw ()
 {
