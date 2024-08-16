@@ -1,1 +1,11 @@
-{}
+{
+    0: (
+        name: "Main",
+        command: "",
+        syntax_theme_dark: "COSMIC Dark",
+        syntax_theme_light: "COSMIC Light",
+        tab_title: "",
+        working_directory: "",
+        hold: false,
+    ),
+}

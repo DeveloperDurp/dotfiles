@@ -1,8 +1,6 @@
 [
     "io.gitlab.librewolf-community",
     "com.system76.CosmicFiles",
-    "com.system76.CosmicEdit",
     "kitty",
-    "com.system76.CosmicStore",
     "com.system76.CosmicSettings",
 ]
