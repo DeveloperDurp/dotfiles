@@ -73,6 +73,7 @@ required_packages_apt:
   - virtinst 
   - libvirt-daemon 
   - virt-manager 
+  - nautilus
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
