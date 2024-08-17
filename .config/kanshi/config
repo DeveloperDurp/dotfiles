@@ -47,6 +47,11 @@ profile {
 }
 
 profile {
+  output DP-1 enable position 0,1440
+  output DP-2 enable position 0,0
+}
+
+profile {
   output eDP-1 enable position 0,0
 }
 

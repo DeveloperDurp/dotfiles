@@ -31,6 +31,7 @@ required_packages_brew:
 required_packages_apt:
   #  - powershell
   - sway
+  - htop
   - stow
   - zsh
   - curl

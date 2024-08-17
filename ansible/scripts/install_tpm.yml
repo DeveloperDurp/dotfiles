@@ -1,0 +1,4 @@
+- name: Install tmux TPM
+  become_user: user
+  shell: "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+  ignore_errors: yes
