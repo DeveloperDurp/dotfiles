@@ -1,0 +1,11 @@
+- name: set default network
+  shell: "{{ item }}"
+  with_items: 
+    - "virsh net-start default"
+    - "virsh net-autostart default"
+  ignore_errors: yes
+
+- name: add user to libvirt
+  user: 
+    name: user
+    groups: libvirt,libvirt-qemu,kvm,input,disk

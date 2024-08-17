@@ -20,6 +20,14 @@
     - not homebrew_check.stat.exists
     - install_homebrew_if_missing
 
+- name: Load Brew shellenv
+  become_user: user
+  shell: eval "$(/home/linuxbrew/.linuxbrew/bin brew shellenv)"
+  when:
+    - required_packages_brew is defined
+    - not homebrew_check.stat.exists
+    - install_homebrew_if_missing
+
 - name: Install Brew Taps
   become_user: user
   community.general.homebrew_tap: 
