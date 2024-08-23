@@ -33,10 +33,13 @@ before-sleep 'swaylock -f'
 
 #timeout 1200  'systemctl suspend' \
 ### Input configuration
-input "1267:12573:ELAN0412:00_04F3:311D_Touchpad" {
+input "type:touchpad" {
+    accel_profile "flat"
     dwt enabled
     tap enabled
     middle_emulation enabled
+    natural_scroll disabled
+    scroll_factor 0.2
 }
 
 input "type:pointer" {
