@@ -23,6 +23,7 @@ required_packages_brew:
   - ansible
   - zsh-history-substring-search
   - opentofu
+  - helm
 
 #apt_keys:
 #  - https://packages.microsoft.com/keys/microsoft.asc
@@ -87,6 +88,7 @@ required_packages_flatpak:
   - me.proton.Mail
   - com.protonvpn.www
   - org.remmina.Remmina
+  - org.gnome.Calculator
 
 go_apps:
   - github.com/charmbracelet/vhs@latest

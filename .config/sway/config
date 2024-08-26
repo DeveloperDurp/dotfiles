@@ -34,7 +34,6 @@ before-sleep 'swaylock -f'
 #timeout 1200  'systemctl suspend' \
 ### Input configuration
 input "type:touchpad" {
-    accel_profile "flat"
     dwt enabled
     tap enabled
     middle_emulation enabled
@@ -207,5 +206,9 @@ bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
 # Border
 default_border pixel 
 gaps inner 5
+
+# Guesture
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
 
 include /etc/sway/config.d/*
