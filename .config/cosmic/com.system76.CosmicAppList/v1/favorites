@@ -1,6 +1,4 @@
 [
     "io.gitlab.librewolf-community",
-    "com.system76.CosmicFiles",
     "kitty",
-    "com.system76.CosmicSettings",
 ]

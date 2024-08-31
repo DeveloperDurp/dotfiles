@@ -1,0 +1,3 @@
+[submodule "DesktopAnsible"]
+	path = DesktopAnsible
+	url = git@gitlab.com:developerdurp/DesktopAnsible.git
