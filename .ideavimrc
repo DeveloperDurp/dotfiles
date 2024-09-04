@@ -9,6 +9,8 @@ set scrolloff=10
 set visualbell
 set ignorecase
 set smartcase
+set incsearch
+set hlsearch
 set notimeout
 set clipboard+=unnamed
 
@@ -25,14 +27,15 @@ let g:WhichKey_SortOrder = "by_key_prefix_first"
 
 " NerdTree
 Plug 'preservim/nerdtree'
+nnoremap <C-n> :NERDTree<CR>
 
 let g:NERDTreeWinSize=30
 let g:NERDTreeMapPreview=0
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 
-let mapleader=' '
 
+let mapleader=" "
 
 " Manage Projects
 noremap <C-Space>s :action ManageRecentProjects<CR>
@@ -49,9 +52,9 @@ noremap <C-l> <C-w>l
 noremap <C-k> <C-w>k
 noremap <C-j> <C-w>j
 
-
-let g:WhichKeyDesc_GoToFile = "<leader>e Toggle Tree"
-map <leader>e <action>(ActivateProjectToolWindow)
+" Center Screen with Page up and down
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 
 " Navigation
 let g:WhichKeyDesc_GoToFile = "<leader>ff Go to file"
@@ -63,36 +66,30 @@ map <leader><leader> <action>(RecentFiles)
 map <leader>fl <action>(RecentLocations)
 map <leader>fs <action>(NewScratchFile)
 
-" Center Screen with Page up and down
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
 
 " Window Management
 let g:WhichKeyDesc_WindowManagement = "<leader>% Window management"
 let g:WhichKeyDesc_SplitVertically = "<leader>% Split vertically"
 let g:WhichKeyDesc_SplitHorizontally = "<leader>\" Split horizontally"
 let g:WhichKeyDesc_CloseContent = "<leader>x Close content"
-let g:WhichKeyDesc_MoveEditorToOppositeTabGroup = "<leader>wm Move editor to opposite tab group"
 map <leader>% <action>(SplitVertically)
 map <leader>" <action>(SplitHorizontally)
-map <leader>wm <action>(MoveEditorToOppositeTabGroup)
+map <leader>x <action>(CloseContent)
 
 " Popup Navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
 inoremap <C-k> <Action>(PopupMenu-selectPrev)
 
-" Buffers
-let g:WhichKeyDesc_Buffers = "<leader>b Buffer" 
-let g:WhichKeyDesc_Buffers_Delete = "<leader>bd Buffer Delete"
-map <leader>bd <action>(CloseContent)
-
 " Debug options
-let g:WhichKeyDesc_DebugOptions = "<leader>dd Debug options"
-let g:WhichKeyDesc_ToggleLineBreakpoint = "<leader>db Toggle line breakpoint"
-map <leader>dd <action>(Debug)
-map <leader>dr <action>(Run)
-map <leader>ds <action>(Stop)
-map <leader>db <action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_debug = "<leader>d Dubug"
+let g:WhichKeyDesc_debug_menu = "<leader>dd Dubug menu"
+let g:WhichKeyDesc_debug_run = "<leader>dr Dubug Run"
+let g:WhichKeyDesc_debug_stop = "<leader>ds Dubug Stop"
+let g:WhichKeyDesc_debug_breakpoint = "<leader>db Toggle Line Breakpoint"
+map <leader>dd <Action>(Debug)
+map <leader>dr <Action>(Run)
+map <leader>ds <Action>(Stop)
+map <leader>db <Action>(ToggleLineBreakpoint)
 
 " Actions
 let g:WhichKeyDesc_Actions = "<leader>a Actions"
@@ -124,7 +121,7 @@ let g:WhichKeyDesc_GotoImplementation = "<leader>gi Goto implementation"
 let g:WhichKeyDesc_ShowUsages = "<leader>gu Show usages"
 let g:WhichKeyDesc_GotoTest = "<leader>gt Goto test"
 let g:WhichKeyDesc_Back = "<leader>gb Back"
-clet g:WhichKeyDesc_Forward = "<leader>gf Forward"
+let g:WhichKeyDesc_Forward = "<leader>gf Forward"
 map <leader>gd <action>(GoToDeclaration)
 map <leader>gy <action>(GotoTypeDeclaraton)
 map <leader>gi <action>(GotoImplementation)
@@ -134,27 +131,15 @@ map <leader>gb <action>(Back)
 map <leader>gf <action>(Forward)
 
 " Go Tag
-let g:WhichKeyDesc_GoTag = "<leader>gt Go tag"
 let g:WhichKeyDesc_GoTag_AddKey = "<leader>gt Add Tag"
 map <leader>gt :action IntentionActionAsAction_com.goide.inspections.tag.GoTagAddKeyIntention<CR>
 
-" Git 
-let g:WhichKeyDesc_Git = "<leader>G Git"
-let g:WhichKeyDesc_GitCompare = "<leader>Gc Commit"
-let g:WhichKeyDesc_GitDiff = "<leader>Gd Diff"
-let g:WhichKeyDesc_GitPull = "<leader>Gp Pull"
-let g:WhichKeyDesc_GitPush = "<leader>GP Push"
-map <leader>Gd <action>(Compare.SameVersion)
-map <leader>GP <action>(Vcs.Push)
-map <leader>Gp <action>(Git.Pull)
-map <leader>Gc <action>(CheckinProject)
-map <leader>Gb <action>(Git.CreateNewBranch)
 " Errors
-let g:WhichKeyDesc_Errors = "<leader>E Errors"
-let g:WhichKeyDesc_NextError = "<leader>En Next error in solution"
-let g:WhichKeyDesc_PrevError = "<leader>Ep Previous error in solution"
-map <leader>En <action>(ReSharperGotoNextErrorInSolution)
-map <leader>Ep <action>(ReSharperGotoPrevErrorInSolution)
+let g:WhichKeyDesc_Errors = "<leader>e Errors"
+let g:WhichKeyDesc_NextError = "<leader>en Next error in solution"
+let g:WhichKeyDesc_PrevError = "<leader>ep Previous error in solution"
+map <leader>en <action>(ReSharperGotoNextErrorInSolution)
+map <leader>ep <action>(ReSharperGotoPrevErrorInSolution)
 
 " Menu
 let g:WhichKeyDesc_Menu = "<leader>m Menu"
@@ -176,6 +161,50 @@ map <leader>mg <action>(GoToMenu)
 map <leader>ms <action>(ScopeViewPopupMenu)
 map <leader>mt <action>(EditorTabPopupMenu)
 map <leader>mw <action>(ToolWindowsGroup)
+
+" New files
+let g:WhichKeyDesc_new_file = "<leader>n New Files"
+let g:WhichKeyDesc_new_gofile = "<leader>ng New Go File"
+let g:WhichKeyDesc_new_dir = "<leader>nD New Directory"
+let g:WhichKeyDesc_new_html = "<leader>nh New HTML File"
+let g:WhichKeyDesc_new_docker = "<leader>nd New Docker File"
+let g:WhichKeyDesc_new_powershell = "<leader>np New Powershell File"
+let g:WhichKeyDesc_new_file = "<leader>nf New File"
+map <leader>ng <Action>(Go.NewGoFile)
+map <leader>nD <Action>(NewDir)
+map <leader>nh <Action>(NewHtmlFile)
+map <leader>nd <Action>(NewDockerfile)
+map <leader>np <Action>(NewPowerShellFile)
+map <leader>nf <Action>(NewFile)
+
+" Git windows
+let g:WhichKeyDesc_git = "<leader>G Git/Go Operations"
+let g:WhichKeyDesc_git_commit = "<leader>Gc Open Git commit dialog"
+let g:WhichKeyDesc_git_branches = "<leader>Gb Open Git branches list"
+let g:WhichKeyDesc_git_pull = "<leader>Gp Open Git Pull"
+map <leader>Gc <Action>(CheckinProject)
+map <leader>Gb <Action>(Git.Branches)
+map <leader>Gp <Action>(Git.Pull)
+map <leader>GP <Action>(Vcs.Push)
+
+" Tools
+let g:WhichKeyDesc_Tools = "<leader>t Tools"
+let g:WhichKeyDesc_git_Tools_Copilot = "<leader>tc Copilot"
+let g:WhichKeyDesc_git_Tools_Debug = "<leader>td Debug"
+let g:WhichKeyDesc_git_Tools_Terminal = "<leader>tt Terminal"
+let g:WhichKeyDesc_tools_mergerequest = "<leader>tm Merge Request"
+let g:WhichKeyDesc_tools_services = "<leader>ts Services"
+let g:WhichKeyDesc_tools_run = "<leader>tr Run"
+map <leader>tc <Action>(copilot.chat.show)
+map <leader>td <Action>(ActivateDebugToolWindow)
+map <leader>tt <Action>(ActivateTerminalToolWindow)
+map <leader>tm <Action>(ActivateMergeRequestsToolWindow)
+map <leader>tr <Action>(ActivateRunToolWindow)
+map <leader>ts <Action>(ActivateServicesToolWindow)
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
 
 " Run
 map <leader>rc <action>(RunClass)
