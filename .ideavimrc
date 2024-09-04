@@ -135,11 +135,11 @@ let g:WhichKeyDesc_GoTag_AddKey = "<leader>gt Add Tag"
 map <leader>gt :action IntentionActionAsAction_com.goide.inspections.tag.GoTagAddKeyIntention<CR>
 
 " Errors
-let g:WhichKeyDesc_Errors = "<leader>e Errors"
-let g:WhichKeyDesc_NextError = "<leader>en Next error in solution"
-let g:WhichKeyDesc_PrevError = "<leader>ep Previous error in solution"
-map <leader>en <action>(ReSharperGotoNextErrorInSolution)
-map <leader>ep <action>(ReSharperGotoPrevErrorInSolution)
+let g:WhichKeyDesc_Errors = "<leader>E Errors"
+let g:WhichKeyDesc_NextError = "<leader>En Next error in solution"
+let g:WhichKeyDesc_PrevError = "<leader>Ep Previous error in solution"
+map <leader>En <action>(ReSharperGotoNextErrorInSolution)
+map <leader>Ep <action>(ReSharperGotoPrevErrorInSolution)
 
 " Menu
 let g:WhichKeyDesc_Menu = "<leader>m Menu"
