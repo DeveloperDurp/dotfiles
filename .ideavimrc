@@ -25,7 +25,6 @@ let g:WhichKey_SortOrder = "by_key_prefix_first"
 
 " NerdTree
 Plug 'preservim/nerdtree'
-nnoremap <C-n> :NERDTree<CR>
 
 let g:NERDTreeWinSize=30
 let g:NERDTreeMapPreview=0
@@ -50,6 +49,10 @@ noremap <C-l> <C-w>l
 noremap <C-k> <C-w>k
 noremap <C-j> <C-w>j
 
+
+let g:WhichKeyDesc_GoToFile = "<leader>e Toggle Tree"
+map <leader>e <action>(ActivateProjectToolWindow)
+
 " Navigation
 let g:WhichKeyDesc_GoToFile = "<leader>ff Go to file"
 let g:WhichKeyDesc_RecentFiles = "<leader><leader> Recent files"
@@ -72,12 +75,16 @@ let g:WhichKeyDesc_CloseContent = "<leader>x Close content"
 let g:WhichKeyDesc_MoveEditorToOppositeTabGroup = "<leader>wm Move editor to opposite tab group"
 map <leader>% <action>(SplitVertically)
 map <leader>" <action>(SplitHorizontally)
-map <leader>x <action>(CloseContent)
 map <leader>wm <action>(MoveEditorToOppositeTabGroup)
 
 " Popup Navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
 inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+" Buffers
+let g:WhichKeyDesc_Buffers = "<leader>b Buffer" 
+let g:WhichKeyDesc_Buffers_Delete = "<leader>bd Buffer Delete"
+map <leader>bd <action>(CloseContent)
 
 " Debug options
 let g:WhichKeyDesc_DebugOptions = "<leader>dd Debug options"
@@ -117,7 +124,7 @@ let g:WhichKeyDesc_GotoImplementation = "<leader>gi Goto implementation"
 let g:WhichKeyDesc_ShowUsages = "<leader>gu Show usages"
 let g:WhichKeyDesc_GotoTest = "<leader>gt Goto test"
 let g:WhichKeyDesc_Back = "<leader>gb Back"
-let g:WhichKeyDesc_Forward = "<leader>gf Forward"
+clet g:WhichKeyDesc_Forward = "<leader>gf Forward"
 map <leader>gd <action>(GoToDeclaration)
 map <leader>gy <action>(GotoTypeDeclaraton)
 map <leader>gi <action>(GotoImplementation)
@@ -131,12 +138,23 @@ let g:WhichKeyDesc_GoTag = "<leader>gt Go tag"
 let g:WhichKeyDesc_GoTag_AddKey = "<leader>gt Add Tag"
 map <leader>gt :action IntentionActionAsAction_com.goide.inspections.tag.GoTagAddKeyIntention<CR>
 
+" Git 
+let g:WhichKeyDesc_Git = "<leader>G Git"
+let g:WhichKeyDesc_GitCompare = "<leader>Gc Commit"
+let g:WhichKeyDesc_GitDiff = "<leader>Gd Diff"
+let g:WhichKeyDesc_GitPull = "<leader>Gp Pull"
+let g:WhichKeyDesc_GitPush = "<leader>GP Push"
+map <leader>Gd <action>(Compare.SameVersion)
+map <leader>GP <action>(Vcs.Push)
+map <leader>Gp <action>(Git.Pull)
+map <leader>Gc <action>(CheckinProject)
+map <leader>Gb <action>(Git.CreateNewBranch)
 " Errors
-let g:WhichKeyDesc_Errors = "<leader>e Errors"
-let g:WhichKeyDesc_NextError = "<leader>en Next error in solution"
-let g:WhichKeyDesc_PrevError = "<leader>ep Previous error in solution"
-map <leader>en <action>(ReSharperGotoNextErrorInSolution)
-map <leader>ep <action>(ReSharperGotoPrevErrorInSolution)
+let g:WhichKeyDesc_Errors = "<leader>E Errors"
+let g:WhichKeyDesc_NextError = "<leader>En Next error in solution"
+let g:WhichKeyDesc_PrevError = "<leader>Ep Previous error in solution"
+map <leader>En <action>(ReSharperGotoNextErrorInSolution)
+map <leader>Ep <action>(ReSharperGotoPrevErrorInSolution)
 
 " Menu
 let g:WhichKeyDesc_Menu = "<leader>m Menu"
