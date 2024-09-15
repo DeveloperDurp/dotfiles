@@ -11,6 +11,8 @@ set $down j
 set $up k
 set $right l
 set $term kitty
+set $files cosmic-files
+set $browser flatpak run io.gitlab.librewolf-community 
 set $menu wofi 
 
 include /etc/sway/config-vars.d/*
@@ -59,6 +61,12 @@ bindsym $mod+Shift+i exec /opt/goland/bin/goland.sh
 # Basics:
   # Start a terminal
   bindsym $mod+Return exec $term
+
+  # File Browser
+  bindsym $mod+Shift+t exec $files
+  
+  # Browser
+  bindsym $mod+Shift+f exec $browser
 
   # Kill focused window
   bindsym $mod+Shift+q kill
@@ -194,11 +202,6 @@ bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; pkill -R
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 
-# File Browser
-bindsym $mod+Shift+t exec cosmic-files
-
-# File Browser
-bindsym $mod+Shift+f exec flatpak run io.gitlab.librewolf-community 
 
 # ScreenShot
 bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy

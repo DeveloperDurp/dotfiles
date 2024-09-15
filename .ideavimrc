@@ -64,7 +64,6 @@ let g:WhichKeyDesc_NewScratchFile = "<leader>fs New scratch file"
 map <leader>ff <action>(GoToFile)
 map <leader><leader> <action>(RecentFiles)
 map <leader>fl <action>(RecentLocations)
-map <leader>fs <action>(NewScratchFile)
 
 
 " Window Management
@@ -135,11 +134,11 @@ let g:WhichKeyDesc_GoTag_AddKey = "<leader>gt Add Tag"
 map <leader>gt :action IntentionActionAsAction_com.goide.inspections.tag.GoTagAddKeyIntention<CR>
 
 " Errors
-let g:WhichKeyDesc_Errors = "<leader>E Errors"
-let g:WhichKeyDesc_NextError = "<leader>En Next error in solution"
-let g:WhichKeyDesc_PrevError = "<leader>Ep Previous error in solution"
-map <leader>En <action>(ReSharperGotoNextErrorInSolution)
-map <leader>Ep <action>(ReSharperGotoPrevErrorInSolution)
+let g:WhichKeyDesc_Errors = "<leader>e Errors"
+let g:WhichKeyDesc_NextError = "<leader>en Next error in solution"
+let g:WhichKeyDesc_PrevError = "<leader>ep Previous error in solution"
+map <leader>en <action>(ReSharperGotoNextErrorInSolution)
+map <leader>ep <action>(ReSharperGotoPrevErrorInSolution)
 
 " Menu
 let g:WhichKeyDesc_Menu = "<leader>m Menu"
@@ -170,12 +169,14 @@ let g:WhichKeyDesc_new_html = "<leader>nh New HTML File"
 let g:WhichKeyDesc_new_docker = "<leader>nd New Docker File"
 let g:WhichKeyDesc_new_powershell = "<leader>np New Powershell File"
 let g:WhichKeyDesc_new_file = "<leader>nf New File"
+let g:WhichKeyDesc_new_scratch = "<leader>nf Scratch File"
 map <leader>ng <Action>(Go.NewGoFile)
 map <leader>nD <Action>(NewDir)
 map <leader>nh <Action>(NewHtmlFile)
 map <leader>nd <Action>(NewDockerfile)
 map <leader>np <Action>(NewPowerShellFile)
 map <leader>nf <Action>(NewFile)
+map <leader>ns <action>(NewScratchFile)
 
 " Git windows
 let g:WhichKeyDesc_git = "<leader>G Git/Go Operations"
@@ -189,13 +190,13 @@ map <leader>GP <Action>(Vcs.Push)
 
 " Tools
 let g:WhichKeyDesc_Tools = "<leader>t Tools"
-let g:WhichKeyDesc_git_Tools_Copilot = "<leader>tc Copilot"
+let g:WhichKeyDesc_git_Tools_Copilot = "<leader>tc Continue"
 let g:WhichKeyDesc_git_Tools_Debug = "<leader>td Debug"
 let g:WhichKeyDesc_git_Tools_Terminal = "<leader>tt Terminal"
 let g:WhichKeyDesc_tools_mergerequest = "<leader>tm Merge Request"
 let g:WhichKeyDesc_tools_services = "<leader>ts Services"
 let g:WhichKeyDesc_tools_run = "<leader>tr Run"
-map <leader>tc <Action>(copilot.chat.show)
+map <leader>tc <Action>(continue.focusContinueInputWithoutClear)
 map <leader>td <Action>(ActivateDebugToolWindow)
 map <leader>tt <Action>(ActivateTerminalToolWindow)
 map <leader>tm <Action>(ActivateMergeRequestsToolWindow)
