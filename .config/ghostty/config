@@ -5,3 +5,4 @@ macos-titlebar-proxy-icon = hidden
 window-theme = system
 gtk-titlebar = false
 gtk-tabs-location = hidden
+font-family = "GoMono Nerd Font"
