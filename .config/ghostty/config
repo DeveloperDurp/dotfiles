@@ -1,0 +1,7 @@
+theme = catppuccin-mocha
+shell-integration = none
+title = " "
+macos-titlebar-proxy-icon = hidden
+window-theme = system
+gtk-titlebar = false
+gtk-tabs-location = hidden
