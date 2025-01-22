@@ -12,7 +12,8 @@ set smartcase
 set incsearch
 set hlsearch
 set notimeout
-set clipboard+=unnamed
+" set clipboard+=unnamedplus
+set clipboard^=ideaput
 
 " 3rd party
 set which-key

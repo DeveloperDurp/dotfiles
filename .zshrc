@@ -1,5 +1,4 @@
 # Path to your oh-my-zsh installation.
-export GOROOT="$(brew --prefix golang)/libexec"
 export ZSH="$HOME/.oh-my-zsh"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export POWERSHELL_TELEMETRY_OPTOUT=1 
