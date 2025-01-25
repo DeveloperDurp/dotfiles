@@ -151,17 +151,15 @@ source ~/.bw.completions.zsh
 
 unlockbw ()
 {
-  export BW_SESSION="$(bw unlock --raw)"
+  export BW_SESSION="$(bw unlock $(secret-tool lookup drive bitwarden) --raw)"
   export GITLAB_TOKEN="$(bw get password cli-gitlab)"
-  export VAULT_UNSEAL="$(bw get password cli-vault-unseal)"
-  export VAULT_TOKEN="$(bw get password vault.internal.durp.info)"
+  export OLLAMA_TOKEN="$(bw get password cli-ollama-token)"
 }
 lockbw ()
 {
   unset BW_SESSION
   unset GITLAB_TOKEN
-  unset VAULT_UNSEAL
-  unset VAULT_TOKEN
+  unset OLLAMA_TOKEN
 }
 
 unlockvault() {
@@ -180,6 +178,11 @@ unlockvault() {
        kubernetes_host="https://${K8S_API_SERVER}:443" \
        kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
 EOF
+}
+
+tmux-new () {
+  local -r name=${(U)1-"$(basename $(pwd))"}
+  tmux new-session -d -s $name
 }
 
 load-profile () {
