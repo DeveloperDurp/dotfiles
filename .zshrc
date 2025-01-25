@@ -34,6 +34,7 @@ alias connectvpn='sudo openvpn ~/Documents/openvpn/openvpn.ovpn'
 alias gc='git commit -a'
 alias gd='git diff'
 alias gp='git push'
+alias bw='NODE_OPTIONS="--no-deprecation" bw --version'
 
 if command -v tmux &> /dev/null && [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     cwd=$(pwd)
@@ -183,6 +184,7 @@ EOF
 tmux-new () {
   local -r name=${(U)1-"$(basename $(pwd))"}
   tmux new-session -d -s $name
+  tmux switch-client -t $name
 }
 
 load-profile () {
