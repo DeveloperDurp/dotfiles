@@ -14,6 +14,12 @@ map("", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "window right" })
 map("", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "window down" })
 map("", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "window up" })
 
+-- Resize
+map("", "<A-h>", "<cmd> vertical resize -5<CR>", { desc = "Resize Left" })
+map("", "<A-l>", "<cmd> vertical resize +5<CR>", { desc = "Resize Right" })
+map("", "<A-j>", "<cmd> horizontal resize -5<CR>", { desc = "Resize Down" })
+map("", "<A-k>", "<cmd> horizontal resize +5<CR>", { desc = "Resize Up" })
+
 -- Go
 map("", "<leader>gsj", "<cmd> GoTagAdd json <CR>", { desc = "Add json struct tags" })
 map("", "<leader>gsy", "<cmd> GoTagAdd yaml <CR>", { desc = "Add yaml struct tags" })
@@ -49,3 +55,7 @@ end, { noremap = true })
 -- Obsidian
 map("", "<leader>of", "<cmd> ObsidianFollowLink <CR>", { desc = "Follow Link" })
 map("", "<leader>ol", "<cmd> ObsidianLinks <CR>", { desc = "Show All Links" })
+
+-- CodeCopmanion
+map("", "<leader>Ca", "<cmd>CodeCompanionActions <CR>", { desc = "CodeCompanion Actions" })
+map("", "<leader>Cc", "<cmd>CodeCompanionChat <CR>", { desc = "CodeCompanion Chat" })

@@ -34,7 +34,7 @@ alias connectvpn='sudo openvpn ~/Documents/openvpn/openvpn.ovpn'
 alias gc='git commit -a'
 alias gd='git diff'
 alias gp='git push'
-alias bw='NODE_OPTIONS="--no-deprecation" bw --version'
+alias bw='NODE_OPTIONS="--no-deprecation" bw'
 
 if command -v tmux &> /dev/null && [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     cwd=$(pwd)
