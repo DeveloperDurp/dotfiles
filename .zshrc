@@ -82,20 +82,21 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
+zinit wait lucid for OMZP::{'git','sudo','archlinux','aws','kubectl','kubectx','command-not-found','web-search','jsontools','copypath','copyfile','copybuffer','dirhistory'}
 # Add in snippets
-zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
-zinit snippet OMZP::command-not-found
-zinit snippet OMZP::web-search
-zinit snippet OMZP::jsontools
-zinit snippet OMZP::copypath
-zinit snippet OMZP::copyfile
-zinit snippet OMZP::copybuffer
-zinit snippet OMZP::dirhistory
+#zinit snippet OMZP::git
+#zinit snippet OMZP::sudo
+#zinit snippet OMZP::archlinux
+#zinit snippet OMZP::aws
+#zinit snippet OMZP::kubectl
+#zinit snippet OMZP::kubectx
+#zinit snippet OMZP::command-not-found
+#zinit snippet OMZP::web-search
+#zinit snippet OMZP::jsontools
+#zinit snippet OMZP::copypath
+#zinit snippet OMZP::copyfile
+#zinit snippet OMZP::copybuffer
+#zinit snippet OMZP::dirhistory
 #zinit snippet OMZP::history-substring-search
 
 # Load completions
@@ -207,7 +208,7 @@ function omz_urlencode() {
   local safe_encodings
   safe_encodings=(UTF-8 utf8 US-ASCII)
   if [[ -z ${safe_encodings[(r)$encoding]} ]]; then
-    str=$(echo -E "$str" | iconv -f $encoding -t UTF-8)
+    str=$(echo -E "$str" | iconv )
     if [[ $? != 0 ]]; then
       echo "Error converting string from $encoding to UTF-8" >&2
       return 1

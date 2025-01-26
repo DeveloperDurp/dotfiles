@@ -1,5 +1,6 @@
 [
     "io.gitlab.librewolf-community",
-    "kitty",
+    "com.system76.CosmicTerm",
+    "com.mitchellh.ghostty",
     "com.system76.CosmicFiles",
 ]
