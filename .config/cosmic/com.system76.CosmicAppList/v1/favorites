@@ -1,6 +1,6 @@
 [
-    "io.gitlab.librewolf-community",
-    "com.system76.CosmicTerm",
+    "zen",
+    "jetbrains-goland",
     "com.mitchellh.ghostty",
     "com.system76.CosmicFiles",
 ]

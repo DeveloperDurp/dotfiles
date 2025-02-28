@@ -1,0 +1,17 @@
+export ZSH="$HOME/.oh-my-zsh"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export POWERSHELL_TELEMETRY_OPTOUT=1 
+export PROMPT_EOL_MARK=''
+export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
+export EDITOR='nvim'
+export GEM_HOME="$HOME/gems"
+export GOBIN=~/go/bin
+export BAT_THEME="Catppuccin Mocha"
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=white,bold"
+#eval $(thefuck --alias)
+export GEM_HOME="$HOME/gems"
+
+export PATH="$HOME/.local/bin:$HOME/gems/bin:/usr/local/go/bin:$HOME/go/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh

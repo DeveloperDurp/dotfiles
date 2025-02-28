@@ -1,0 +1,22 @@
+alias tf=tofu
+alias terraform=tofu
+alias k=kubectl
+alias ls='ls --color'
+alias vim='nvim'
+alias c='clear'
+alias pwsh='pwsh -NoLogo'
+alias pbpaste='xclip -selection clipboard -o'
+alias ls='eza'
+alias ll='eza -l'
+alias lg='lazygit'
+alias tree='eza -T'
+alias cat='bat -P'
+alias network='nmtui'
+#alias docker='podman'
+alias sudo='sudo '
+alias grep='rg'
+alias connectvpn='sudo openvpn ~/Documents/openvpn/openvpn.ovpn'
+alias gc='git commit -a'
+alias gd='git diff'
+alias gp='git push'
+alias bw='NODE_OPTIONS="--no-deprecation" bw'

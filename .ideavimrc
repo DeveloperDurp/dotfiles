@@ -71,10 +71,13 @@ map <leader>fl <action>(RecentLocations)
 let g:WhichKeyDesc_WindowManagement = "<leader>% Window management"
 let g:WhichKeyDesc_SplitVertically = "<leader>% Split vertically"
 let g:WhichKeyDesc_SplitHorizontally = "<leader>\" Split horizontally"
-let g:WhichKeyDesc_CloseContent = "<leader>x Close content"
 map <leader>% <action>(SplitVertically)
 map <leader>" <action>(SplitHorizontally)
-map <leader>x <action>(CloseContent)
+
+" Buffers
+let g:WhichKeyDesc_Buffer = "<leader>b Buffers"
+let g:WhichKeyDesc_BufferDelete = "<leader>x Buffer Delete"
+map <leader>bx <action>(CloseContent)
 
 " Popup Navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
