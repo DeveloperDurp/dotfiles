@@ -1,4 +1,5 @@
 [
+    "io.gitlab.librewolf-community",
     "zen",
     "jetbrains-goland",
     "com.mitchellh.ghostty",
