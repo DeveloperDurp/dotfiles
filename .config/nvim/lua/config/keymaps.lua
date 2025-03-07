@@ -1,8 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
---
-
 local map = vim.keymap.set
 
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -52,10 +47,17 @@ map("n", "<leader>P", function()
   require("powershell").toggle_term()
 end, { noremap = true })
 
--- Obsidian
-map("", "<leader>of", "<cmd> ObsidianFollowLink <CR>", { desc = "Follow Link" })
-map("", "<leader>ol", "<cmd> ObsidianLinks <CR>", { desc = "Show All Links" })
-
 -- CodeCopmanion
 map("", "<leader>Ca", "<cmd>CodeCompanionActions <CR>", { desc = "CodeCompanion Actions" })
 map("", "<leader>Cc", "<cmd>CodeCompanionChat <CR>", { desc = "CodeCompanion Chat" })
+
+-- Custom
+map("", "<leader>rw", '"hy:%s/<C-r>h//g<left><left>', { noremap = true, silent = true, desc = "Replace Word" })
+
+map("", "<leader>rt", ":VtrSendLinesToRunner<CR>", {
+  noremap = true,
+  silent = true,
+  desc = "Send selected text to tmux pane",
+})
+
+map("", "<leader>rp", ":VtrAttachToPane<CR>", { noremap = true, silent = true, desc = "Attach to tmux pane" })
