@@ -1,12 +1,20 @@
-unlockbw ()
+set-cred ()
 {
   export BW_SESSION="$(bw unlock $(secret-tool lookup drive bitwarden) --raw)"
-  export GITLAB_TOKEN="$(bw get password cli-gitlab)"
-  export OLLAMA_TOKEN="$(bw get password cli-ollama-token)"
-}
-lockbw ()
-{
+  printf "$(bw get password cli-gitlab)" | secret-tool store --label='Gitlab Token for CLI' 'token' 'GITLAB_TOKEN' 
+  printf "$(bw get password cli-ollama-token)" | secret-tool store --label='Ollama Token for CLI' 'token' 'OLLAMA_TOKEN' 
+
   unset BW_SESSION
+}
+
+set-env ()
+{
+  export GITLAB_TOKEN="$(secret-tool lookup token GITLAB_TOKEN)"
+  export OLLAMA_TOKEN="$(secret-tool lookup token OLLAMA_TOKEN)"
+}
+
+clear-env ()
+{
   unset GITLAB_TOKEN
   unset OLLAMA_TOKEN
 }
@@ -39,7 +47,7 @@ tmux-new () {
   tmux send-keys -t "$name:1.1" 'nvim -c "Neotree filesystem reveal left"' C-m
 
   sleep 0.1
-  tmux send-keys -t "$name:1.3" 'unlockbw; nvim +CodeCompanionChat -c only' C-m
+  tmux send-keys -t "$name:1.3" 'set-env; nvim +CodeCompanionChat -c only' C-m
 
   sleep 1
   tmux send-keys -t "$name:2" 'lg' C-m
