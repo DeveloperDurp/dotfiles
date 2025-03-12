@@ -74,7 +74,9 @@ return {
       {
         "<leader>fp",
         function()
-          require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root })
+          require("telescope.builtin").find_files({
+            cwd = require("lazy.core.config").options.root,
+          })
         end,
         desc = "Find Plugin File",
       },
@@ -113,7 +115,8 @@ return {
         },
         tsserver = {},
         powershell_es = {
-          bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
+          bundle_path = vim.fn.stdpath("data")
+            .. "/mason/packages/powershell-editor-services",
         },
       },
     },
@@ -127,7 +130,8 @@ return {
   {
     "TheLeoP/powershell.nvim",
     opts = {
-      bundle_path = vim.fn.stdpath("data") .. "/man/packages/powershell-editor-services",
+      bundle_path = vim.fn.stdpath("data")
+        .. "/man/packages/powershell-editor-services",
     },
   },
   {

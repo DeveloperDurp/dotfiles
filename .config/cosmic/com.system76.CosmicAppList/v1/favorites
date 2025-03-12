@@ -1,6 +1,5 @@
 [
-    "io.gitlab.librewolf-community",
-    "jetbrains-goland",
-    "com.mitchellh.ghostty",
+    "app.zen_browser.zen",
+    "kitty",
     "com.system76.CosmicFiles",
 ]
