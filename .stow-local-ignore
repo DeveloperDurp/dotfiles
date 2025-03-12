@@ -5,3 +5,4 @@ ansible.cfg
 inventory
 .git
 .gitignore
+DesktopAnsible

@@ -1,7 +1,11 @@
 exec "/usr/lib/polkit-kde-authentication-agent-1"
-exec_always "pkill kanshi"
-exec_always "pkill swayidle"
-exec_always "pkill swaync"
+
+exec_always {
+    pkill kanshi
+    pkill swayidle
+    pkill swaync
+}
+
 exec_always "sleep 1"
 
 ### Variables
@@ -11,9 +15,9 @@ set $down j
 set $up k
 set $right l
 set $term kitty
-set $files cosmic-files
-set $browser flatpak run io.gitlab.librewolf-community 
-set $menu wofi 
+set $files nautilus
+set $browser flatpak run app.zen_browser.zen
+set $menu wofi
 
 include /etc/sway/config-vars.d/*
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -28,8 +32,8 @@ exec_always "kanshi"
 
 ### Idle configuration
 exec_always swayidle -w \
-timeout 300 'swaylock -f' \
-timeout 600  'swaymsg "output * dpms off"' \
+timeout 120 'swaylock -f' \
+timeout 240  'swaymsg "output * dpms off"' \
 resume 'swaymsg "output * dpms on"' \
 before-sleep 'swaylock -f'
 
@@ -40,7 +44,7 @@ input "type:touchpad" {
     tap enabled
     middle_emulation enabled
     natural_scroll disabled
-    scroll_factor 0.2
+    scroll_factor 0.5
 }
 
 input "type:pointer" {
