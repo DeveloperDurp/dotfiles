@@ -19,12 +19,19 @@ autocmd("FileType", {
 
 function FormatGoCurrentLine()
   local line = vim.api.nvim_get_current_line()
-  local formatted_line = line:gsub("%(", "(\n"):gsub(",%s*", ",\n"):gsub("%)", ",\n)")
+  local formatted_line =
+    line:gsub("%(", "(\n"):gsub(",%s*", ",\n"):gsub("%)", ",\n)")
   formatted_line = formatted_line:gsub(",\n%)", "\n)")
   local lines = vim.split(formatted_line, "\n")
   -- Ensure the last parameter has a comma
   if #lines > 2 and not lines[#lines - 1]:match(",$") then
     lines[#lines - 1] = lines[#lines - 1] .. ","
   end
-  vim.api.nvim_buf_set_lines(0, vim.fn.line(".") - 1, vim.fn.line("."), false, lines)
+  vim.api.nvim_buf_set_lines(
+    0,
+    vim.fn.line(".") - 1,
+    vim.fn.line("."),
+    false,
+    lines
+  )
 end

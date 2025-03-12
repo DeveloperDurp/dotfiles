@@ -12,10 +12,16 @@ lockbw ()
 }
 
 tmux-new () {
-local dir=$(find $HOME/Documents/gitlab  -mindepth 1 -maxdepth 1 -type d| awk -F/ '{print $(NF-1)"/"$NF " " $0}' | fzf --with-nth=1 | awk '{print $2}')
+  local dir=${1:-}
+  [ -z "${dir}" ] && local dir=$(find $HOME/Documents/gitlab  -mindepth 1 -maxdepth 1 -type d| awk -F/ '{print $(NF-1)"/"$NF " " $0}' | fzf --with-nth=1 | awk '{print $2}')
   [ -z "$dir" ] && return 1
 
   local name=$(basename "$dir")
+
+  if [[ $name == .* ]]; then
+    name=${name#.}
+  fi
+
   tmux new-session -d -s "$name" -c "$dir"
 
   RIGHT_PANE_WIDTH=60
