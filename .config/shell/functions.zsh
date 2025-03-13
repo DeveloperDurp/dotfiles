@@ -21,8 +21,10 @@ clear-env ()
 
 tmux-new () {
   local dir=${1:-}
+
   [ -z "${dir}" ] && local dir=$(find $HOME/Documents/gitlab  -mindepth 1 -maxdepth 1 -type d| awk -F/ '{print $(NF-1)"/"$NF " " $0}' | fzf --with-nth=1 | awk '{print $2}')
   [ -z "$dir" ] && return 1
+
 
   local name=$(basename "$dir")
 
@@ -30,6 +32,7 @@ tmux-new () {
     name=${name#.}
   fi
 
+  tmux has-session -t ${name} > /dev/null && { tmux switch-client -t ${name}; return; }
   tmux new-session -d -s "$name" -c "$dir"
 
   RIGHT_PANE_WIDTH=60
@@ -54,10 +57,10 @@ tmux-new () {
 
   tmux select-window -t "$name:1"
   tmux select-pane -t "$name:1.1"
+
   tmux switch-client -t "$name"
 }
 
 load-profile () {
   ansible-playbook /home/user/.dotfiles/ansible/.config/ansible/local.yml -K
 }
-

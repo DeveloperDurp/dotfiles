@@ -35,7 +35,7 @@ exec_always swayidle -w \
 timeout 120 'swaylock -f' \
 timeout 240  'swaymsg "output * dpms off"' \
 resume 'swaymsg "output * dpms on"' \
-before-sleep 'swaylock -f'
+befor-sleep 'swaylock -f'
 
 #timeout 1200  'systemctl suspend' \
 ### Input configuration
@@ -211,7 +211,8 @@ bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
 
 # Border
-default_border pixel 
+client.focused "#4c00b0" "#4c00b0" "#ffffff" "#4c00b0"
+default_border pixel 5
 gaps inner 5
 
 # Guesture
