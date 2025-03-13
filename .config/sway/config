@@ -27,7 +27,7 @@ exec_always {
 }
 
 ### Output configuration
-output * bg ~/.config/configfiles/wallpaper.png fill
+output * bg ~/.config/configfiles/wallpaper.jpg fill
 exec_always "kanshi"
 
 ### Idle configuration
