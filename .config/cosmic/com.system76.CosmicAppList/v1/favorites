@@ -1,5 +1,6 @@
 [
     "app.zen_browser.zen",
+    "jetbrains-goland",
     "kitty",
     "com.system76.CosmicFiles",
 ]

@@ -11,6 +11,7 @@ export LS_COLORS="$(vivid generate catppuccin-mocha)"
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=white,bold"
 #eval $(thefuck --alias)
 export GEM_HOME="$HOME/gems"
+export XCURSOR_SIZE=24
 
 export PATH="$HOME/.local/bin:$HOME/gems/bin:/usr/local/go/bin:$HOME/go/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
 
