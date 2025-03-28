@@ -64,3 +64,19 @@ tmux-new () {
 load-profile () {
   ansible-playbook /home/user/.dotfiles/ansible/.config/ansible/local.yml -K
 }
+
+decode_base64_url() {
+  local len=$((${#1} % 4))
+  local result="$1"
+  if [ $len -eq 2 ]; then result="$1"'=='
+  elif [ $len -eq 3 ]; then result="$1"'=' 
+  fi
+  echo "$result" | tr '_-' '/+' | openssl enc -d -base64
+}
+
+decode-jwtpayload(){
+   decode_base64_url $(echo -n $1 | cut -d "." -f '2') | jq .
+}
+decode-jwtheader(){
+   decode_base64_url $(echo -n $1 | cut -d "." -f '1') | jq .
+}

@@ -76,8 +76,12 @@ map <leader>" <action>(SplitHorizontally)
 
 " Buffers
 let g:WhichKeyDesc_Buffer = "<leader>b Buffers"
-let g:WhichKeyDesc_BufferDelete = "<leader>x Buffer Delete"
-map <leader>bx <action>(CloseContent)
+let g:WhichKeyDesc_BufferDelete = "<leader>bd Delete Buffer"
+let g:WhichKeyDesc_BufferDelete = "<leader>bo Delete Other Buffers"
+let g:WhichKeyDesc_BufferDelete = "<leader>bp Toggle Pin"
+map <leader>bd <action>(CloseContent)
+map <leader>bo <action>(CloseAllEditorsButActive)
+map <leader>bp <action>(PinActiveEditorTab)
 
 " Popup Navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
