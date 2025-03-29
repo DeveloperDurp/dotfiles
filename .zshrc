@@ -24,7 +24,9 @@ if command -v tmux &> /dev/null && [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTer
     if tmux has-session -t $session_name; then
         tmux attach -t $session_name
     else
-        tmux new -s $session_name
+        tmux new-session -s $session_name -c $cwd -d
+        tmux send-keys -t $session_name "tmux set-option status off;clear" Enter
+        tmux attach -t $session_name
     fi
 fi
 
