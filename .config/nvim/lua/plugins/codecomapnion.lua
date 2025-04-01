@@ -1,4 +1,5 @@
 local OLLAMA_TOKEN = os.getenv("OLLAMA_TOKEN")
+local LITELLM_TOKEN = os.getenv("LITELLM_TOKEN")
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -25,20 +26,20 @@ return {
             },
             url = "https://litellm.durp.info",
             env = {
-              api_key = "sk-8lkQVLNLOMYeblJhaqcaCw",
+              api_key = LITELLM_TOKEN,
             },
           })
         end,
         ollama = function()
           return require("codecompanion.adapters").extend("ollama", {
-            name = "ollama",
+            name = "mistral",
             schema = {
               model = {
-                default = "llama3.1:latest",
+                default = "mistral:latest",
               },
             },
             env = {
-              url = "https://litellm.durp.info",
+              url = "https://ollama.durp.info",
             },
             headers = {
               ["Content-Type"] = "application/json",
