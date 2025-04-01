@@ -11,7 +11,7 @@ return {
     opts = {
       strategies = {
         chat = { adapter = "openai" },
-        inline = { adapter = "ollama" },
+        inline = { adapter = "mistral" },
       },
       adapters = {
         opts = {

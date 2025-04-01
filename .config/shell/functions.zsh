@@ -3,6 +3,7 @@ set-cred ()
   export BW_SESSION="$(bw unlock $(secret-tool lookup drive bitwarden) --raw)"
   printf "$(bw get password cli-gitlab)" | secret-tool store --label='Gitlab Token for CLI' 'token' 'GITLAB_TOKEN' 
   printf "$(bw get password cli-ollama-token)" | secret-tool store --label='Ollama Token for CLI' 'token' 'OLLAMA_TOKEN' 
+  printf "$(bw get password cli-litellm-token)" | secret-tool store --label='LiteLLM Token for CLI' 'token' 'LITELLM_TOKEN' 
 
   unset BW_SESSION
 }
@@ -11,12 +12,14 @@ set-env ()
 {
   export GITLAB_TOKEN="$(secret-tool lookup token GITLAB_TOKEN)"
   export OLLAMA_TOKEN="$(secret-tool lookup token OLLAMA_TOKEN)"
+  export LITELLM_TOKEN="$(secret-tool lookup token LITELLM_TOKEN)"
 }
 
 clear-env ()
 {
   unset GITLAB_TOKEN
   unset OLLAMA_TOKEN
+  unset LITELLM_TOKEN
 }
 
 tmux-new () {
