@@ -10,8 +10,8 @@ return {
     config = true,
     opts = {
       strategies = {
-        chat = { adapter = "openai" },
-        inline = { adapter = "mistral" },
+        chat = { adapter = "ollama" },
+        inline = { adapter = "ollama" },
       },
       adapters = {
         opts = {
@@ -19,6 +19,7 @@ return {
         },
         openai = function()
           return require("codecompanion.adapters").extend("openai", {
+            name = "openai",
             schema = {
               model = {
                 default = "gpt-4o-mini",
@@ -32,7 +33,7 @@ return {
         end,
         ollama = function()
           return require("codecompanion.adapters").extend("ollama", {
-            name = "mistral",
+            name = "ollama",
             schema = {
               model = {
                 default = "mistral:latest",
