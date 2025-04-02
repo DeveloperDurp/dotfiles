@@ -1,6 +1,7 @@
 set-cred ()
 {
   export BW_SESSION="$(bw unlock $(secret-tool lookup drive bitwarden) --raw)"
+  bw sync
   printf "$(bw get password cli-gitlab)" | secret-tool store --label='Gitlab Token for CLI' 'token' 'GITLAB_TOKEN' 
   printf "$(bw get password cli-ollama-token)" | secret-tool store --label='Ollama Token for CLI' 'token' 'OLLAMA_TOKEN' 
   printf "$(bw get password cli-litellm-token)" | secret-tool store --label='LiteLLM Token for CLI' 'token' 'LITELLM_TOKEN' 
