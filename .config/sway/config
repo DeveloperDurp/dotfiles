@@ -131,6 +131,7 @@ bindsym $mod+Shift+i exec /opt/goland/bin/goland.sh
   bindsym $mod+8 workspace number 8
   bindsym $mod+9 workspace number 9
   bindsym $mod+0 workspace number 10
+  
   # Move focused container to workspace
   bindsym $mod+control+1 move container to workspace number 1
   bindsym $mod+control+2 move container to workspace number 2
@@ -143,10 +144,13 @@ bindsym $mod+Shift+i exec /opt/goland/bin/goland.sh
   bindsym $mod+control+9 move container to workspace number 9
   bindsym $mod+control+0 move container to workspace number 10
 
-  bindsym $mod+control+$left move workspace to output left
-  bindsym $mod+control+$down move workspace to output down
-  bindsym $mod+control+$up move workspace to output up
-  bindsym $mod+control+$right move workspace to output right
+  bindsym $mod+control+l workspace next
+  bindsym $mod+control+h workspace prev
+
+ # bindsym $mod+control+$left move workspace to output left
+ # bindsym $mod+control+$down move workspace to output down
+ # bindsym $mod+control+$up move workspace to output up
+ # bindsym $mod+control+$right move workspace to output right
 
 # Layout stuff:
 
@@ -210,10 +214,12 @@ bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 # ScreenShot
 bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
 
+bindsym $mod+shift+p exec grim - | wl-copy
+
 # Border
 client.focused "#4c00b0" "#4c00b0" "#ffffff" "#4c00b0"
-default_border pixel 5
-gaps inner 5
+default_border pixel 2
+gaps inner 2
 
 # Guesture
 bindgesture swipe:right workspace prev
