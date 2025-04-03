@@ -23,7 +23,7 @@ tmux split-window -v -t "$name:1.1" -c "$dir"
 tmux resize-pane -t "$name:1.1" -y $(($(tmux display -p '#{window_height}') - $BOTTOM_PANE_WIDTH))
 tmux new-window "$name" -n lazygit -c "$dir"
 sleep 1
-tmux send-keys -t "$name:1.1" 'nvim -c "Neotree filesystem reveal left"' C-m
+tmux send-keys -t "$name:1.1" 'nvim' C-m
 sleep 0.1
 tmux send-keys -t "$name:1.3" 'set-env; nvim +CodeCompanionChat -c only' C-m
 sleep 1
