@@ -1,5 +1,5 @@
 local OLLAMA_TOKEN = os.getenv("OLLAMA_TOKEN")
-local LITELLM_TOKEN = os.getenv("LITELLM_TOKEN")
+local OPENAI_TOKEN = os.getenv("OPENAI_TOKEN")
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -25,9 +25,8 @@ return {
                 default = "gpt-4o-mini",
               },
             },
-            url = "https://litellm.durp.info",
             env = {
-              api_key = LITELLM_TOKEN,
+              api_key = OPENAI_TOKEN,
             },
           })
         end,

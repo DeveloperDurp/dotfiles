@@ -5,6 +5,7 @@ set-cred ()
   printf "$(bw get password cli-gitlab)" | secret-tool store --label='Gitlab Token for CLI' 'token' 'GITLAB_TOKEN' 
   printf "$(bw get password cli-ollama-token)" | secret-tool store --label='Ollama Token for CLI' 'token' 'OLLAMA_TOKEN' 
   printf "$(bw get password cli-litellm-token)" | secret-tool store --label='LiteLLM Token for CLI' 'token' 'LITELLM_TOKEN' 
+  printf "$(bw get password cli-openai)" | secret-tool store --label='OpenAI Token for CLI' 'token' 'OPENAI_TOKEN' 
 
   unset BW_SESSION
 }
@@ -14,6 +15,7 @@ set-env ()
   export GITLAB_TOKEN="$(secret-tool lookup token GITLAB_TOKEN)"
   export OLLAMA_TOKEN="$(secret-tool lookup token OLLAMA_TOKEN)"
   export LITELLM_TOKEN="$(secret-tool lookup token LITELLM_TOKEN)"
+  export OPENAI_TOKEN="$(secret-tool lookup token OPENAI_TOKEN)"
 }
 
 clear-env ()
@@ -21,10 +23,11 @@ clear-env ()
   unset GITLAB_TOKEN
   unset OLLAMA_TOKEN
   unset LITELLM_TOKEN
+  unset OPENAI_TOKEN
 }
 
 tmux-new () {
-  . $HOME/.config/scripts/new-session.sh
+". $HOME/.config/scripts/new-session.sh"
 }
 
 load-profile () {
