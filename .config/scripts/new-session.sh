@@ -2,7 +2,7 @@
 
 dir=${1:-}
 
-[ -z "${dir}" ] && dir=$(find $HOME/Documents/gitlab -mindepth 1 -maxdepth 1 -type d | awk -F/ '{print $(NF-1)"/"$NF " " $0}' | fzf --with-nth=1 | awk '{print $2}')
+[ -z "${dir}" ] && dir=$(find $HOME/Documents/gitlab -mindepth 2 -maxdepth 2 -type d | awk -F/ '{print $(NF-1)"/"$NF " " $0}' | fzf --with-nth=1 | awk '{print $2}')
 [ -z "$dir" ] && return 1
 
 name=$(basename "$dir")
