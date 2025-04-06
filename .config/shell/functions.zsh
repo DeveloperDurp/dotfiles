@@ -27,7 +27,7 @@ clear-env ()
 }
 
 tmux-new () {
-  . $HOME/.config/scripts/new-session.sh
+  ~/.config/scripts/sessions.sh new $1
 }
 
 load-profile () {
