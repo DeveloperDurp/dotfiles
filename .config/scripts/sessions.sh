@@ -29,6 +29,7 @@ switch() {
 
   tmux list-sessions -F '#{?session_attached,,#{session_name}}' |
     sed '/^popup/d' |
+    sed '/^scratch/d' |
     sed '/^$/d' |
     fzf --reverse --header 'Switch Session' --preview 'tmux capture-pane -pt {}' \
       --bind 'enter:execute(tmux switch-client -t {})+accept'
@@ -39,6 +40,8 @@ delete() {
 
   tmux list-sessions -F '#{?session_attached,,#{session_name}}' |
     sed '/^popup/d' |
+    sed '/^scratch/d' |
+    sed '/^general/d' |
     sed '/^$/d' |
     fzf --reverse --header 'Delete Session' --preview 'tmux capture-pane -pt {}' \
       --bind 'enter:execute(tmux kill-session -t {})+accept'
