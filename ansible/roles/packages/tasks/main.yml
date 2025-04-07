@@ -1,11 +1,15 @@
+- name: Load devpod variables if DEVPOD is true
+  include_vars: "vars/devpod.yml"
+  when: DEVPOD | bool
+
 - name: Load a variable file
   include_vars: "{{ item }}"
   with_first_found:
-  - "vars/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-  - "vars/{{ ansible_distribution }}.yml"
-  - "vars/{{ ansible_os_family }}.yml"
-  - "vars/defaults.yml"
+    - "vars/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - "vars/{{ ansible_distribution }}.yml"
+    - "vars/{{ ansible_os_family }}.yml"
+    - "vars/defaults.yml"
+  when: not DEVPOD | bool
 
 - name:
   include_tasks: "defaults.yml"
-

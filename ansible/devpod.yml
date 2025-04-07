@@ -2,9 +2,7 @@
   connection: local
   become: true
   vars:
-    GITLAB_TOKEN: "{{ lookup('env', 'GITLAB_TOKEN') }}"
-    DEVPOD: false
-    #  vars_prompt:
+    DEVPOD: true
 
   roles:
     - packages
