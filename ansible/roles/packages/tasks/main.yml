@@ -2,7 +2,7 @@
   include_vars: "{{ item }}"
   with_first_found:
     - "vars/devpod.yml"
-  when: DEVPOD | bool
+  when: DEVPOD 
 
 - name: Load a variable file
   include_vars: "{{ item }}"
@@ -11,7 +11,7 @@
     - "vars/{{ ansible_distribution }}.yml"
     - "vars/{{ ansible_os_family }}.yml"
     - "vars/defaults.yml"
-  when: not DEVPOD | bool
+  when: not DEVPOD
 
 - name:
   include_tasks: "defaults.yml"
