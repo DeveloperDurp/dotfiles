@@ -27,7 +27,6 @@ required_packages_apt:
   - xsel
   - wget
   - apt-transport-https
-  - vault
   - fzf
   - ripgrep
   - libsecret-tools
