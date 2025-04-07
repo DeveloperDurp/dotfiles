@@ -1,0 +1,11 @@
+dconf:
+  - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings', value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"}
+  - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding', value: "'<Super>t'"}
+  - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command', value: "'terminator'"}
+  - {key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name', value: "'Terminator'"}
+  - {key: '/org/gnome/desktop/background/picture-uri', value: "'file://${HOME}/.config/configfiles/wallpaper.png'"}
+  - {key: '/org/gnome/desktop/background/picture-uri-dark', value: "'file://${HOME}/.config/configfiles/wallpaper.png'"}
+
+fonts:
+  - {name: 'GoMonoNerd', url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Go-Mono.zip"}
+  - {name: 'FiraCodeNerd', url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip"}

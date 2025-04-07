@@ -1,0 +1,7 @@
+- name: Copy Public certs
+  copy:
+    src: durp.crt
+    dest: /etc/ca-certificates/trust-source/anchors/durp.crt
+
+- name: Trust certs
+  command: trust extract-compat

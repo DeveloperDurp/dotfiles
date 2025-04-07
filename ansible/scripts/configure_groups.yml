@@ -1,0 +1,7 @@
+- name: adding existing user '{{ user }}' to group sudo
+  user:
+    groups: '{{ item }}'
+    name: user
+    append: yes
+  with_items: "{{ user_groups }}"
+  when: user_groups is defined   

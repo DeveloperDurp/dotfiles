@@ -1,0 +1,49 @@
+- name: Ensuring Homebrew Is Installed
+  stat:
+    path: /home/linuxbrew/.linuxbrew/bin/
+  register: homebrew_check
+  when: required_packages_brew is defined
+
+- name: Fail If Homebrew Is Not Installed and install_homebrew_if_missing Is False
+  fail:
+    msg: Homebrew is missing, install from http://brew.sh
+  when:
+    - required_packages_brew is defined
+    - not homebrew_check.stat.exists
+    - not install_homebrew_if_missing
+
+- name: Installing Homebrew
+  become_user: user
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when:
+    - required_packages_brew is defined
+    - not homebrew_check.stat.exists
+    - install_homebrew_if_missing
+
+- name: Load Brew shellenv
+  become_user: user
+  shell: eval "$(/home/linuxbrew/.linuxbrew/bin brew shellenv)"
+  when:
+    - required_packages_brew is defined
+    - not homebrew_check.stat.exists
+    - install_homebrew_if_missing
+
+- name: Install Brew Taps
+  become_user: user
+  community.general.homebrew_tap: 
+    name: "{{ item }}"
+  with_items: "{{ required_taps }}"
+  when: required_taps is defined
+
+- name: Install Brew Casks
+  become_user: user
+  community.general.homebrew_cask: 
+    name: "{{ item }}"
+  with_items: "{{ required_packages_casks }}"
+  when: required_packages_casks is defined
+
+- name: Install Brew Packages
+  become_user: user
+  community.general.homebrew: 
+    name: "{{ required_packages_brew }}"
+  when: required_packages_brew is defined

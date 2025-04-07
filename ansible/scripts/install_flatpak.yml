@@ -1,0 +1,22 @@
+- name: configure flatpak
+  community.general.flatpak_remote:
+    name: "{{ item.name }}"
+    state: present
+    flatpakrepo_url: "{{ item.url }}"
+    method: system
+  with_items:  "{{ flatpak_remote }}"      
+  when: flatpak_remote is defined   
+
+- name: update flatpaks
+  become_user: user
+  shell:
+    cmd: flatpak update --noninteractive    
+  when: required_packages_flatpak is defined   
+
+- name: install flatpak
+  become_user: user
+  community.general.flatpak:
+    name: "{{ item }}"
+  with_items:  "{{ required_packages_flatpak }}"     
+  when: required_packages_flatpak is defined   
+  ignore_errors: yes

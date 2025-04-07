@@ -1,0 +1,14 @@
+- name: Create ssh folder
+  become_user: user
+  ansible.builtin.file:
+    path: ~/.ssh
+    owner: "user"
+    group: "user"
+    mode: '0700'     
+    state: directory 
+
+- name: Generate an OpenSSH keypair 
+  become_user: user
+  community.crypto.openssh_keypair:
+    path: ~/.ssh/id_ed25519
+    type: ed25519

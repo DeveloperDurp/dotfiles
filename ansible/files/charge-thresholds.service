@@ -1,0 +1,10 @@
+[Unit]
+Description=Set the charge threshold at startup.
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=system76-power charge-thresholds 75 80
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,23 @@
+- name: ensure fonts directory
+  become_user: user
+  file:
+    path: "~/.fonts"
+    state: directory
+  when: fonts is defined   
+
+- name: Ensuring Fonts Exists
+  become_user: user
+  shell: "ls ~/.fonts/*{{ item.name }}*"
+  register: fonts_exist
+  ignore_errors: yes
+  with_items:  "{{ fonts }}"   
+  when: fonts is defined   
+
+- name: Download Fonts
+  when: fonts_exist is failed
+  become_user: user
+  ansible.builtin.unarchive:
+    src: "{{ item.url }}" 
+    dest: "~/.fonts/"
+    remote_src: yes
+  with_items:  "{{ fonts }}"     

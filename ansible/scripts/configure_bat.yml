@@ -1,0 +1,3 @@
+- name: Build Bat Cache
+  become_user: user
+  shell: "bat cache --build"
