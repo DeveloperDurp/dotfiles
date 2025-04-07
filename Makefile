@@ -2,7 +2,7 @@ include .env
 export
 
 run:
-	ansible-playbook ./DesktopAnsible/local.yml -K
+	ansible-playbook ./ansible/local.yml -K
 
 devpod:
-	ansible-playbook ./DesktopAnsible/local.yml
+	ansible-playbook ./ansible/local.yml
