@@ -33,9 +33,7 @@ required_packages_apt:
   - rclone
 
 go_apps:
-  - github.com/charmbracelet/vhs@latest
-  - github.com/charmbracelet/glow@latest
   - github.com/swaggo/swag/cmd/swag@latest
   - github.com/air-verse/air@latest
-  - github.com/minio/mc@latest
+  - golang.org/x/tools/gopls@latest
 

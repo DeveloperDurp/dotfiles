@@ -127,6 +127,7 @@ go_apps:
   - github.com/charmbracelet/glow@latest
   - github.com/swaggo/swag/cmd/swag@latest
   - github.com/air-verse/air@latest
+  - golang.org/x/tools/gopls@latest
 
 yay:
   - nwg-look

@@ -13,8 +13,8 @@
 - name: install go apps
   include_tasks: "./scripts/install_goapps.yml"
 
-- name: configure bat
-  include_tasks: "./scripts/configure_bat.yml"
-
-- name: trust internal certs
-  include_tasks: "./scripts/install_local_ca.yml"
+- name: run stow
+  become_user: user
+  shell: "stow --adopt ."
+  args:
+    chdir: ~/dotfiles
