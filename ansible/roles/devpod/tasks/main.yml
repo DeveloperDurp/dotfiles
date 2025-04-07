@@ -1,0 +1,20 @@
+- name: Load devpod variables if DEVPOD is true
+  include_vars: "vars/devpod.yml"
+
+- name: install apt
+  include_tasks: "./scripts/install_apt.yml"
+
+- name: install brew
+  include_tasks: "./scripts/install_brew.yml"
+
+  #- name: install go
+  #  include_tasks: "./scripts/install_go.yml"
+
+- name: install go apps
+  include_tasks: "./scripts/install_goapps.yml"
+
+- name: configure bat
+  include_tasks: "./scripts/configure_bat.yml"
+
+- name: trust internal certs
+  include_tasks: "./scripts/install_local_ca.yml"

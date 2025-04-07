@@ -2,7 +2,6 @@
   connection: local
   become: true
   vars:
-    DEVPOD: true
-
+    USER: vscode
   roles:
-    - packages
+    - devpod
