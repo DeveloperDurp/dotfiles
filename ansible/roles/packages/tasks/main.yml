@@ -1,5 +1,7 @@
 - name: Load devpod variables if DEVPOD is true
-  include_vars: "vars/devpod.yml"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "vars/devpod.yml"
   when: DEVPOD | bool
 
 - name: Load a variable file
