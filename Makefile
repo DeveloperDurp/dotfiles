@@ -5,4 +5,4 @@ run:
 	ansible-playbook ./ansible/local.yml -K
 
 devpod:
-	ansible-playbook ./ansible/local.yml
+	ansible-playbook ./ansible/devpod.yml

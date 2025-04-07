@@ -1,0 +1,42 @@
+install_homebrew_if_missing: true
+
+required_packages_brew:
+  - lazygit
+  - glab
+  - oh-my-posh
+  - kubernetes-cli
+  - zsh-autosuggestions
+  - bitwarden-cli
+  - vivid
+  - yazi
+  - zsh-history-substring-search
+  - opentofu
+  - helm
+  - bat
+  - neovim
+  - eza
+  - zoxide
+  - ansible
+  - ffmpeg
+  - k9s
+
+required_packages_apt:
+  - stow
+  - zsh
+  - curl
+  - xsel
+  - wget
+  - apt-transport-https
+  - vault
+  - fzf
+  - ripgrep
+  - libsecret-tools
+  - rclone
+
+go_apps:
+  - github.com/charmbracelet/vhs@latest
+  - github.com/charmbracelet/glow@latest
+  - github.com/swaggo/swag/cmd/swag@latest
+  - github.com/air-verse/air@latest
+  - github.com/minio/mc@latest
+
