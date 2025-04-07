@@ -144,5 +144,4 @@ return {
       vim.cmd([[silent! GoInstallDeps]])
     end,
   },
-  { "tpope/vim-surround" },
 }

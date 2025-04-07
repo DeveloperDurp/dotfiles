@@ -48,8 +48,11 @@ delete() {
 }
 
 window() {
+  current_window=$(tmux display-message -p '#I')
+
   window=$(tmux list-windows -F '#{window_index} #{window_name}' |
-    sed '/^$/d' |
+    sed "/^$/d" |
+    grep -v "$current_window" |
     fzf --reverse --header 'Switch Window' --no-preview |
     cut -d ' ' -f 1)
 
