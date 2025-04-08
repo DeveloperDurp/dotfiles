@@ -61,10 +61,27 @@ window() {
   tmux select-window -t $window
 }
 
+notes() {
+  name="notes"
+
+  tmux has-session -t ${name} >/dev/null && {
+    tmux attach-session -t ${name}
+    return
+  }
+  tmux new-session -d -s "$name" -c "$HOME/Documents/notes"
+  tmux new-session -s notes nvim Welcome.md
+
+  sleep 1
+  tmux send-keys -t "$name" 'set -g status off' C-m
+  tmux send-keys -t "$name" 'nvim Welcome.md' C-m
+  tmux attach-session -t "$name"
+}
+
 case "$1" in
 new) new $2 ;;
 switch) switch ;;
 delete) delete ;;
 window) window ;;
+notes) notes ;;
 *) echo "Please enter an action" ;;
 esac
