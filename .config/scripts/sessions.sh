@@ -91,6 +91,21 @@ popup() {
   tmux attach-session -t "$name"
 }
 
+scratch() {
+  name="scratch"
+
+  tmux has-session -t ${name} >/dev/null && {
+    tmux attach-session -t ${name}
+    return
+  }
+  tmux new-session -d -s "$name" -c "$HOME"
+
+  sleep 1
+  tmux send-keys -t "$name" 'tmux set -g status off;clear' C-m
+  tmux send-keys -t "$name" 'nvim scratch' C-m
+  tmux attach-session -t "$name"
+}
+
 case "$1" in
 new) new $2 ;;
 switch) switch ;;
@@ -98,5 +113,6 @@ delete) delete ;;
 window) window ;;
 notes) notes ;;
 popup) popup ;;
+scratch) scratch ;;
 *) echo "Please enter an action" ;;
 esac
