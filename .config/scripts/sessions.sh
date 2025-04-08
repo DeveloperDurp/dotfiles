@@ -72,8 +72,22 @@ notes() {
   tmux new-session -s notes nvim Welcome.md
 
   sleep 1
-  tmux send-keys -t "$name" 'set -g status off' C-m
+  tmux send-keys -t "$name" 'tmux set -g status off;clear' C-m
   tmux send-keys -t "$name" 'nvim Welcome.md' C-m
+  tmux attach-session -t "$name"
+}
+
+popup() {
+  name="popup"
+
+  tmux has-session -t ${name} >/dev/null && {
+    tmux attach-session -t ${name}
+    return
+  }
+  tmux new-session -d -s "$name" -c "$HOME"
+
+  sleep 1
+  tmux send-keys -t "$name" 'tmux set -g status off;clear' C-m
   tmux attach-session -t "$name"
 }
 
@@ -83,5 +97,6 @@ switch) switch ;;
 delete) delete ;;
 window) window ;;
 notes) notes ;;
+popup) popup ;;
 *) echo "Please enter an action" ;;
 esac
