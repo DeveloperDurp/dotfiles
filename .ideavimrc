@@ -198,9 +198,11 @@ map <leader>ns <action>(NewScratchFile)
 
 " Git windows
 let g:WhichKeyDesc_git = "<leader>G Git/Go Operations"
+let g:WhichKeyDesc_git_lazygit = "<leader>Gg Lazygit"
 let g:WhichKeyDesc_git_commit = "<leader>Gc Open Git commit dialog"
 let g:WhichKeyDesc_git_branches = "<leader>Gb Open Git branches list"
 let g:WhichKeyDesc_git_pull = "<leader>Gp Open Git Pull"
+map <leader>Gg <Action>(TUILauncher.lazygit)
 map <leader>Gc <Action>(CheckinProject)
 map <leader>Gb <Action>(Git.Branches)
 map <leader>Gp <Action>(Git.Pull)
