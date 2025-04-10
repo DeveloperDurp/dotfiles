@@ -96,6 +96,8 @@ required_packages_pacman:
   - fuse2
   - libappindicator-gtk3
   - webkit2gtk-4.1 
+  - freerdp
+  - remmina
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }

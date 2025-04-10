@@ -19,7 +19,7 @@ unset conf
 
 if command -v tmux &> /dev/null && [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     cwd=$(pwd)
-    session_name="JediTerm-$(basename "$cwd" | tr -d '.')"
+    session_name="zJediTerm-$(basename "$cwd" | tr -d '.')"
 
     if tmux has-session -t $session_name; then
         tmux attach -t $session_name

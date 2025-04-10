@@ -12,8 +12,8 @@ set smartcase
 set incsearch
 set hlsearch
 set notimeout
-" set clipboard+=unnamedplus
-set clipboard^=ideaput
+set clipboard+=unnamedplus
+" set clipboard^=ideaput
 
 " 3rd party
 set which-key
@@ -58,21 +58,29 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
 " Navigation
+
+let g:WhichKeyDesc_Files = "<leader>f Files"
 let g:WhichKeyDesc_GoToFile = "<leader>ff Go to file"
-let g:WhichKeyDesc_RecentFiles = "<leader><leader> Recent files"
+let g:WhichKeyDesc_RecentFiles = "<leader>fr Recent files"
 let g:WhichKeyDesc_RecentLocations = "<leader>fl Recent locations"
-let g:WhichKeyDesc_NewScratchFile = "<leader>fs New scratch file"
-map <leader>ff <action>(GoToFile)
-map <leader><leader> <action>(RecentFiles)
+map <leader>ff <action>(GotoFile)
+map <leader><leader> <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
 map <leader>fl <action>(RecentLocations)
+
+let g:WhichKeyDesc_UIManagement = "<leader>u UI Management"
+let g:WhichKeyDesc_ToggleZenMode = "<leader>uz Toggle Zen Mode"
+let g:WhichKeyDesc_ToggleDistractionFreeMode = "<leader>ud Toggle Distraction Free Mode"
+map <leader>uz <action>(ToggleZenMode)
+map <leader>ud <action>(ToggleDistractionFreeMode)
 
 
 " Window Management
-let g:WhichKeyDesc_WindowManagement = "<leader>% Window management"
-let g:WhichKeyDesc_SplitVertically = "<leader>% Split vertically"
-let g:WhichKeyDesc_SplitHorizontally = "<leader>\" Split horizontally"
-map <leader>% <action>(SplitVertically)
-map <leader>" <action>(SplitHorizontally)
+let g:WhichKeyDesc_WindowManagement = "<leader>w Window management"
+let g:WhichKeyDesc_SplitVertically = "<leader>wv Split vertically"
+let g:WhichKeyDesc_SplitHorizontally = "<leader>wh Split horizontally"
+map <leader>wv <action>(SplitVertically)
+map <leader>wh <action>(SplitHorizontally)
 
 " Buffers
 let g:WhichKeyDesc_Buffer = "<leader>b Buffers"

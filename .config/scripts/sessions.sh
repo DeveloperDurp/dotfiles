@@ -20,14 +20,14 @@ new() {
   tmux rename-window -t "$name" "nvim"
   tmux new-window -t "$name" -n terminal -c "$dir"
   sleep 1
-  tmux send-keys -t "$name:1" 'set-env; nvim' C-m
+  tmux send-keys -t "$name:1" 'tmux set status on; set-env; nvim' C-m
   tmux select-window -t "$name:1"
   tmux switch-client -t "$name"
 }
 
 switch() {
 
-  tmux list-sessions -F '#{?session_attached,,#{session_name}}' |
+  tmux list-sessions -F '#{session_name}' |
     sed '/^popup/d' |
     sed '/^scratch/d' |
     sed '/^$/d' |
@@ -38,7 +38,7 @@ switch() {
 
 delete() {
 
-  tmux list-sessions -F '#{?session_attached,,#{session_name}}' |
+  tmux list-sessions -F '#{session_name}' |
     sed '/^popup/d' |
     sed '/^scratch/d' |
     sed '/^general/d' |
