@@ -200,11 +200,9 @@ map <leader>ns <action>(NewScratchFile)
 
 " Git windows
 let g:WhichKeyDesc_git = "<leader>G Git/Go Operations"
-let g:WhichKeyDesc_git_lazygit = "<leader>Gg Lazygit"
 let g:WhichKeyDesc_git_commit = "<leader>Gc Open Git commit dialog"
 let g:WhichKeyDesc_git_branches = "<leader>Gb Open Git branches list"
 let g:WhichKeyDesc_git_pull = "<leader>Gp Open Git Pull"
-map <leader>Gg <Action>(TUILauncher.lazygit)
 map <leader>Gc <Action>(CheckinProject)
 map <leader>Gb <Action>(Git.Branches)
 map <leader>Gp <Action>(Git.Pull)
@@ -212,14 +210,15 @@ map <leader>GP <Action>(Vcs.Push)
 
 " Tools
 let g:WhichKeyDesc_Tools = "<leader>t Tools"
-let g:WhichKeyDesc_git_Tools_Copilot = "<leader>tc Continue"
-let g:WhichKeyDesc_git_Tools_Debug = "<leader>td Debug"
-let g:WhichKeyDesc_git_Tools_Terminal = "<leader>tt Terminal"
+let g:WhichKeyDesc_Tools_Copilot = "<leader>tc Continue"
+let g:WhichKeyDesc_Tools_Debug = "<leader>td Debug"
+let g:WhichKeyDesc_Tools_Terminal = "<leader>tt Terminal"
 let g:WhichKeyDesc_tools_mergerequest = "<leader>tm Merge Request"
 let g:WhichKeyDesc_tools_services = "<leader>ts Services"
 let g:WhichKeyDesc_tools_run = "<leader>tr Run"
 let g:WhichKeyDesc_tools_k9s = "<leader>tk k9s"
 let g:WhichKeyDesc_tools_yazi = "<leader>ty yazi"
+let g:WhichKeyDesc_tools_lazygit = "<leader>tg Lazygit"
 map <leader>tc <Action>(continue.focusContinueInputWithoutClear)
 map <leader>td <Action>(ActivateDebugToolWindow)
 map <leader>tt <Action>(ActivateTerminalToolWindow)
@@ -228,6 +227,7 @@ map <leader>tr <Action>(ActivateRunToolWindow)
 map <leader>ts <Action>(ActivateServicesToolWindow)
 map <leader>tk <Action>(TUILauncher.k9s)
 map <leader>ty <Action>(TUILauncher.yazi)
+map <leader>tg <Action>(TUILauncher.lazygit)
 
 " Easy visual indentation
 vnoremap < <gv
