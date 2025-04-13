@@ -2,6 +2,7 @@ required_packages_brew:
   - oh-my-posh
   - zsh-history-substring-search
   - zsh-autosuggestions
+  - istioctl
 
 required_packages_pacman:
   - sway
@@ -113,6 +114,7 @@ required_packages_flatpak:
   - org.chromium.Chromium
   - org.libreoffice.LibreOffice
   - com.brave.Browser
+  - io.podman_desktop.PodmanDesktop
 
 systemd_service:
   - cronie.service
@@ -130,6 +132,7 @@ go_apps:
   - github.com/swaggo/swag/cmd/swag@latest
   - github.com/air-verse/air@latest
   - golang.org/x/tools/gopls@latest
+  - github.com/nats-io/natscli/nats@latest
 
 yay:
   - nwg-look

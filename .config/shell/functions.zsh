@@ -30,6 +30,10 @@ tmux-new () {
   ~/.config/scripts/sessions.sh new $1
 }
 
+goland-new () {
+  ~/.config/scripts/sessions.sh goland-new $1
+}
+
 load-profile () {
   ansible-playbook /home/user/.dotfiles/ansible/.config/ansible/local.yml -K
 }

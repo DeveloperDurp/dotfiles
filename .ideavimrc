@@ -41,7 +41,8 @@ let g:NERDTreeMapJumpParent='h'
 let mapleader=" "
 
 " Manage Projects
-noremap <C-Space>s :action ManageRecentProjects<CR>
+noremap <C-Space>s :action TUILauncher.goland-new<CR>
+" noremap <C-Space>s :action ManageRecentProjects<CR>
 
 " Tab Navigation
 noremap <S-l> :action NextTab<CR>

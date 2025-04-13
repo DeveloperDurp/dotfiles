@@ -25,6 +25,16 @@ new() {
   tmux switch-client -t "$name"
 }
 
+goland-new() {
+
+  dir=${1:-}
+
+  [ -z "${dir}" ] && dir=$(find $HOME/Documents/gitlab -mindepth 2 -maxdepth 2 -type d | awk -F/ '{print $(NF-1)"/"$NF " " $0}' | fzf --reverse --header "New Session" --with-nth=1 | awk '{print $2}')
+  [ -z "$dir" ] && return 1
+
+  sleep 1 && goland $dir &
+}
+
 switch() {
 
   tmux list-sessions -F '#{session_name}' |
@@ -114,5 +124,6 @@ window) window ;;
 notes) notes ;;
 popup) popup ;;
 scratch) scratch ;;
+goland-new) goland-new $2 ;;
 *) echo "Please enter an action" ;;
 esac
