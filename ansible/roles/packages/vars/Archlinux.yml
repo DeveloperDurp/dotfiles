@@ -99,6 +99,7 @@ required_packages_pacman:
   - webkit2gtk-4.1 
   - freerdp
   - remmina
+  - wakeonlan 
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
@@ -115,11 +116,13 @@ required_packages_flatpak:
   - org.libreoffice.LibreOffice
   - com.brave.Browser
   - io.podman_desktop.PodmanDesktop
+  - sh.loft.devpod
+  - com.parsecgaming.parsec
 
 systemd_service:
   - cronie.service
-  - cosmic-greeter.service
-  #- ly.service
+  #- cosmic-greeter.service
+  - ly.service
   - libvirtd.service
   - com.system76.PowerDaemon.service
   - ufw.service
@@ -152,3 +155,4 @@ yay:
   - wdisplays
   - bluetuith
   - powershell
+  - urbackup2-client 

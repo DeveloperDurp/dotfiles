@@ -155,11 +155,11 @@ let g:WhichKeyDesc_GoTag_AddKey = "<leader>gt Add Tag"
 map <leader>gt :action IntentionActionAsAction_com.goide.inspections.tag.GoTagAddKeyIntention<CR>
 
 " Errors
-let g:WhichKeyDesc_Errors = "<leader>e Errors"
-let g:WhichKeyDesc_NextError = "<leader>en Next error in solution"
-let g:WhichKeyDesc_PrevError = "<leader>ep Previous error in solution"
-map <leader>en <action>(ReSharperGotoNextErrorInSolution)
-map <leader>ep <action>(ReSharperGotoPrevErrorInSolution)
+" let g:WhichKeyDesc_Errors = "<leader>e Errors"
+" let g:WhichKeyDesc_NextError = "<leader>en Next error in solution"
+" let g:WhichKeyDesc_PrevError = "<leader>ep Previous error in solution"
+" map <leader>en <action>(ReSharperGotoNextErrorInSolution)
+" map <leader>ep <action>(ReSharperGotoPrevErrorInSolution)
 
 " Menu
 let g:WhichKeyDesc_Menu = "<leader>m Menu"
@@ -199,15 +199,20 @@ map <leader>np <Action>(NewPowerShellFile)
 map <leader>nf <Action>(NewFile)
 map <leader>ns <action>(NewScratchFile)
 
-" Git windows
-let g:WhichKeyDesc_git = "<leader>G Git/Go Operations"
-let g:WhichKeyDesc_git_commit = "<leader>Gc Open Git commit dialog"
-let g:WhichKeyDesc_git_branches = "<leader>Gb Open Git branches list"
-let g:WhichKeyDesc_git_pull = "<leader>Gp Open Git Pull"
-map <leader>Gc <Action>(CheckinProject)
-map <leader>Gb <Action>(Git.Branches)
-map <leader>Gp <Action>(Git.Pull)
-map <leader>GP <Action>(Vcs.Push)
+" Gitlab
+" let g:WhichKeyDesc_git = "<leader>G Git/Go Operations"
+" let g:WhichKeyDesc_git_commit = "<leader>Gc Open Git commit dialog"
+" let g:WhichKeyDesc_git_branches = "<leader>Gb Open Git branches list"
+" let g:WhichKeyDesc_git_pull = "<leader>Gp Open Git Pull"
+" map <leader>Gc <Action>(CheckinProject)
+" map <leader>Gb <Action>(Git.Branches)
+" map <leader>Gp <Action>(Git.Pull)
+" map <leader>GP <Action>(Vcs.Push)
+let g:WhichKeyDesc_gitlab = "<leader>G Gitlab"
+let g:WhichKeyDesc_gitlab_ciview = "<leader>Gp View Pipeline"
+let g:WhichKeyDesc_gitlab_ciview = "<leader>GP View Pipeline Browser"
+map <leader>Gp <Action>(TUILauncher.glab-ci-view)
+map <leader>GP <Action>(TUILauncher.glab-ci-view-web)
 
 " Tools
 let g:WhichKeyDesc_Tools = "<leader>t Tools"
