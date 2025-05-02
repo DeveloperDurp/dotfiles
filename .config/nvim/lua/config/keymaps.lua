@@ -3,6 +3,9 @@ local map = vim.keymap.set
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
 
+-- mist
+map("", "W", ":w<CR>", { desc = "Save File" })
+
 -- Tmux
 map(
   "",

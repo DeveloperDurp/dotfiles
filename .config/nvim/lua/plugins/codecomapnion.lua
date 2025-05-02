@@ -1,5 +1,6 @@
 local OLLAMA_TOKEN = os.getenv("OLLAMA_TOKEN")
 local OPENAI_TOKEN = os.getenv("OPENAI_TOKEN")
+local GEMINI_TOKEN = os.getenv("GEMINI_TOKEN")
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -17,6 +18,19 @@ return {
         opts = {
           show_defaults = false,
         },
+        gemini = function()
+          return require("codecompanion.adapters").extend("gemini", {
+            name = "gemini",
+            schema = {
+              model = {
+                default = "gemini-2.0-flash",
+              },
+            },
+            env = {
+              api_key = GEMINI_TOKEN,
+            },
+          })
+        end,
         openai = function()
           return require("codecompanion.adapters").extend("openai", {
             name = "openai",

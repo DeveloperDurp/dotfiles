@@ -6,6 +6,7 @@ set-cred ()
   printf "$(bw get password cli-ollama-token)" | secret-tool store --label='Ollama Token for CLI' 'token' 'OLLAMA_TOKEN' 
   printf "$(bw get password cli-litellm-token)" | secret-tool store --label='LiteLLM Token for CLI' 'token' 'LITELLM_TOKEN' 
   printf "$(bw get password cli-openai)" | secret-tool store --label='OpenAI Token for CLI' 'token' 'OPENAI_TOKEN' 
+  printf "$(bw get password GEMINI_TOKEN)" | secret-tool store --label='Gemini Token for CLI' 'token' 'GEMINI_TOKEN' 
 
   unset BW_SESSION
 }
@@ -16,6 +17,7 @@ set-env ()
   export OLLAMA_TOKEN="$(secret-tool lookup token OLLAMA_TOKEN)"
   export LITELLM_TOKEN="$(secret-tool lookup token LITELLM_TOKEN)"
   export OPENAI_TOKEN="$(secret-tool lookup token OPENAI_TOKEN)"
+  export GEMINI_TOKEN="$(secret-tool lookup token GEMINI_TOKEN)"
 }
 
 clear-env ()
@@ -24,6 +26,7 @@ clear-env ()
   unset OLLAMA_TOKEN
   unset LITELLM_TOKEN
   unset OPENAI_TOKEN
+  unset GEMINI_TOKEN
 }
 
 tmux-new () {
@@ -52,4 +55,8 @@ decode-jwtpayload(){
 }
 decode-jwtheader(){
    decode_base64_url $(echo -n $1 | cut -d "." -f '1') | jq .
+}
+
+nvim-new () {
+  ~/.config/scripts/nvim.sh $1
 }

@@ -4,6 +4,16 @@ profile {
 }
 
 profile {
+  output DP-6 enable position 0,0
+  output eDP-1 disable
+}
+
+profile {
+  output DP-7 enable position 0,0
+  output eDP-1 disable
+}
+
+profile {
   output DP-7 enable position 0,1440
   output DP-5 enable position 0,0
   output eDP-1 disable

@@ -19,6 +19,10 @@ set $files nautilus
 set $browser flatpak run app.zen_browser.zen
 set $menu wofi
 
+
+set $next_or_new swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (max_by(.num) | .num) as $maxOutput | (.[] | select(.focused == true) | .num) as $current | if $maxOutput > $current then "next_on_output" else $max + 1 end' 
+set $previous_or_first swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (min_by(.num) | .num) as $minOutput | (.[] | select(.focused == true) | .num) as $current | if $minOutput < $current then "prev_on_output" else $current end'
+
 include /etc/sway/config-vars.d/*
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
@@ -147,12 +151,19 @@ bindsym $mod+Shift+i exec /opt/goland/bin/goland.sh
   bindsym $mod+control+9 move container to workspace number 9;workspace number 9
   bindsym $mod+control+0 move container to workspace number 10;workspace number 10
 
-  bindsym $mod+control+l workspace next
-  bindsym $mod+control+h workspace prev
-  
-  # Move window to next or previous workspace
-  bindsym $mod+Shift+control+$left move container to workspace prev; workspace prev
-  bindsym $mod+Shift+control+$right move container to workspace next; workspace next
+
+  bindsym $mod+control+l exec swaymsg "workspace $($next_or_new)"
+  bindsym $mod+control+h exec swaymsg "workspace $($previous_or_first)"
+
+  bindsym $mod+Shift+control+$right exec swaymsg "move container to workspace $($next_or_new), workspace next_on_output"
+  bindsym $mod+Shift+control+$left exec swaymsg "move container to workspace $($previous_or_first), workspace prev_on_output"
+
+ # bindsym $mod+control+l workspace next
+ # bindsym $mod+control+h workspace prev
+ # 
+ # # Move window to next or previous workspace
+ # bindsym $mod+Shift+control+$left move container to workspace prev; workspace prev
+ # bindsym $mod+Shift+control+$right move container to workspace next; workspace next
 
  # bindsym $mod+control+$left move workspace to output left
  # bindsym $mod+control+$down move workspace to output down

@@ -12,6 +12,7 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
+    config = function() end,
   },
   {
     "nvim-neotest/nvim-nio",
