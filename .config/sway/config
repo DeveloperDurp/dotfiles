@@ -19,7 +19,6 @@ set $files nautilus
 set $browser flatpak run app.zen_browser.zen
 set $menu wofi
 
-
 set $next_or_new swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (max_by(.num) | .num) as $maxOutput | (.[] | select(.focused == true) | .num) as $current | if $maxOutput > $current then "next_on_output" else $max + 1 end' 
 set $previous_or_first swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (min_by(.num) | .num) as $minOutput | (.[] | select(.focused == true) | .num) as $current | if $minOutput < $current then "prev_on_output" else $current end'
 
@@ -38,11 +37,10 @@ exec_always "kanshi"
 exec_always swayidle -w \
 timeout 120 'swaylock -f' \
 timeout 240  'swaymsg "output * dpms off"' \
-timeout 300 'systemctl suspend' \
+timeout 600 'systemctl suspend' \
 resume 'swaymsg "output * dpms on"' \
 before-sleep 'swaylock -f'
 
-#timeout 1200  'systemctl suspend' \
 ### Input configuration
 input "type:touchpad" {
     dwt enabled
@@ -56,6 +54,10 @@ input "type:pointer" {
     accel_profile "flat" 
     pointer_accel 0
 }
+
+# Guesture
+bindgesture swipe:right workspace next
+bindgesture swipe:left workspace prev
 
 # Notification Daemon
 exec_always swaync
@@ -95,7 +97,7 @@ bindsym $mod+Shift+i exec /opt/goland/bin/goland.sh
   bindsym $mod+Shift+c reload
 
   # Lock
-  bindsym $mod+Shift+Escape exec swaylock -f -c 000000
+  bindsym $mod+Shift+Escape exec swaylock -f
 
   # Exit sway (logs you out of your Wayland session)
   bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -235,12 +237,17 @@ bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
 bindsym $mod+shift+p exec grim - | wl-copy
 
 # Border
-client.focused "#ff77ff" "#ff77ff" "#ffffff" "#ff77ff"
+include catppuccin-mocha
+#client.focused "#ff78ff" "#ff77ff" "#ffffff" "#ff77ff"
 default_border pixel 2
 gaps inner 2
 
-# Guesture
-bindgesture swipe:right workspace next
-bindgesture swipe:left workspace prev
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
 include /etc/sway/config.d/*

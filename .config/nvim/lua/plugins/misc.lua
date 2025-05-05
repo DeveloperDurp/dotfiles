@@ -154,4 +154,18 @@ return {
     ---@type render.md.UserConfig
     opts = {},
   },
+  {
+    "mistweaverco/kulala.nvim",
+    opts = {
+      global_keymaps = true,
+    },
+  },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
 }
