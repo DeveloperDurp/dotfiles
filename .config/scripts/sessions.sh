@@ -13,10 +13,11 @@ new() {
     name=${name#.}
   fi
 
-  tmux has-session -t ${name} >/dev/null && {
+  tmux has-session -t ${name} 2>/dev/null && {
     tmux switch-client -t ${name}
     return
   }
+
   tmux new-session -d -s "$name" -c "$dir"
   tmux rename-window -t "$name" "nvim"
   tmux new-window -t "$name" -n terminal -c "$dir"

@@ -1,0 +1,24 @@
+- name: Copy rules to udev
+  find:
+    paths: "files/udev/"
+    file_type: file
+    patterns: "*.rules"
+  register: udev_files
+
+- name: Copy each .service file to systemd directory
+  copy:
+    src: "{{ item.path }}"
+    dest: "/etc/udev/rules.d" 
+    owner: root
+    group: root
+    mode: '0644'
+  with_items: "{{ udev_files.files }}"
+  when: udev_files is defined   
+
+- name: restart udev
+  command: udevadm control --reload-rules 
+  when: udev_files is defined   
+
+- name: trigger udev
+  command: udevadm trigger
+  when: udev_files is defined   

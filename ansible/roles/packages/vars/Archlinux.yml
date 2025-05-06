@@ -107,7 +107,6 @@ flatpak_remote:
 
 required_packages_flatpak:
   - com.discordapp.Discord
-  - io.gitlab.librewolf-community
   - org.gtk.Gtk3theme.Pop-dark
   - com.github.tchx84.Flatseal
   - com.vscodium.codium

@@ -30,3 +30,6 @@
 
 - name: trust internal certs
   include_tasks: "./scripts/install_local_ca.yml"
+
+- name: udev rules
+  include_tasks: "./scripts/install-udev-rules.yml"
