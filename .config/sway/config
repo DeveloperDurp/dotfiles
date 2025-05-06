@@ -35,11 +35,13 @@ exec_always "kanshi"
 
 ### Idle configuration
 exec_always swayidle -w \
-timeout 120 'swaylock -f' \
-timeout 240  'swaymsg "output * dpms off"' \
-timeout 600 'systemctl suspend' \
+timeout 300 'swaylock -f' \
+timeout 420  'swaymsg "output * dpms off"' \
 resume 'swaymsg "output * dpms on"' \
 before-sleep 'swaylock -f'
+
+exec_always swayidle -w \
+timeout 600 'systemctl suspend' \
 
 ### Input configuration
 input "type:touchpad" {
