@@ -101,6 +101,8 @@ required_packages_pacman:
   - remmina
   - wakeonlan 
   - less
+  - blueman
+  - qutebrowser
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }

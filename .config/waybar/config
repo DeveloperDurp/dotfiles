@@ -5,7 +5,7 @@
   "spacing": 15,
   "modules-left": ["sway/workspaces","sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": ["tray","idle_inhibitor","network", "battery","pulseaudio"],
+  "modules-right": ["tray","idle_inhibitor","network", "bluetooth", "battery","pulseaudio"],
 
   "sway/mode": {
     "format": "{}"
@@ -17,7 +17,8 @@
     "format-wifi": "{essid} ({signalStrength}%) ",
     "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
     "format-disconnected": "󰖪",
-    "interval": 1
+    "interval": 1,
+    "on-click": "nm-connection-editor"
   },
   "battery": {
     "bat": "BAT0",
@@ -58,5 +59,15 @@
       "activated": "\uf06e", 
       "deactivated": "\uf070" 
     } 
-  }
+  },
+  "bluetooth": {
+    "format": " ",
+    "format-disabled": "󰂳",
+    "format-connected": "󰂱 {num_connections}",
+    "tooltip-format": " {device_alias}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+    "tooltip": true,
+    "on-click": "blueman-manager",
+  },
 }
