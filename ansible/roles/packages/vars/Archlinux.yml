@@ -103,6 +103,7 @@ required_packages_pacman:
   - less
   - blueman
   - qutebrowser
+  - python-tldextrct
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
@@ -120,6 +121,7 @@ required_packages_flatpak:
   - io.podman_desktop.PodmanDesktop
   - sh.loft.devpod
   - com.parsecgaming.parsec
+  - io.gitlab.librewolf-community
 
 systemd_service:
   - cronie.service

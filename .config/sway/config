@@ -16,7 +16,8 @@ set $up k
 set $right l
 set $term kitty
 set $files nautilus
-set $browser flatpak run app.zen_browser.zen
+set $browser flatpak run io.gitlab.librewolf-community
+set $bitwarden flatpak run com.bitwarden.desktop
 set $menu wofi
 
 set $next_or_new swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (max_by(.num) | .num) as $maxOutput | (.[] | select(.focused == true) | .num) as $current | if $maxOutput > $current then "next_on_output" else $max + 1 end' 
@@ -81,6 +82,9 @@ bindsym $mod+Shift+i exec /opt/goland/bin/goland.sh
   
   # Browser
   bindsym $mod+b exec $browser
+
+  # Bitwarden
+  bindsym $mod+Shift+b exec $bitwarden
 
   # Kill focused window
   bindsym $mod+q kill
