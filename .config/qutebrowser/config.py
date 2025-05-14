@@ -35,7 +35,6 @@ config.set("colors.webpage.darkmode.enabled", False, "file://*")
 
 #
 c.tabs.title.format = "{audio}{current_title}"
-c.fonts.web.size.default = 20
 
 c.url.searchengines = {
     # note - if you use duckduckgo, you can make use of its built in bangs, of which there are many! https://duckduckgo.com/bangs
@@ -48,10 +47,7 @@ c.url.searchengines = {
 
 c.completion.open_categories = [
     "searchengines",
-    "quickmarks",
     "bookmarks",
-    "history",
-    "filesystem",
 ]
 
 c.auto_save.session = False  # save tabs on quit/restart
@@ -82,8 +78,10 @@ c.tabs.indicator.width = 0  # no tab indicators
 c.tabs.width = "7%"
 
 # fonts
-c.fonts.default_family = []
+c.fonts.default_family = "JetBrainsMono Nerd Font"
 c.fonts.default_size = "13pt"
+c.fonts.web.size.minimum = 16
+c.fonts.web.size.default = 16
 c.fonts.web.family.fixed = "monospace"
 c.fonts.web.family.sans_serif = "monospace"
 c.fonts.web.family.serif = "monospace"
@@ -93,7 +91,7 @@ c.fonts.web.family.standard = "monospace"
 # config.set("completion.cmd_history_max_items", 0)
 # config.set("content.private_browsing", True)
 config.set("content.webgl", False, "*")
-config.set("content.canvas_reading", False)
+config.set("content.canvas_reading", True)
 config.set("content.geolocation", False)
 config.set("content.webrtc_ip_handling_policy", "default-public-interface-only")
 config.set("content.cookies.accept", "all")

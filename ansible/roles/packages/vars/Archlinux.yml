@@ -104,6 +104,7 @@ required_packages_pacman:
   - blueman
   - qutebrowser
   - python-tldextrct
+  - python-pyperclip
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
