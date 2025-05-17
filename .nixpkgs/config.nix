@@ -18,6 +18,7 @@
         bat
         opentofu
         helm
+        ansible
       ];
     };
   };
