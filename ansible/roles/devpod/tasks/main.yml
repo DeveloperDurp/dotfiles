@@ -15,6 +15,11 @@
   args:
     chdir: ~/dotfiles
 
+- name: git reset
+  shell: "git reset --hard"
+  args:
+    chdir: ~/dotfiles
+
 - name: Install Nix Packages
   shell: "nix-env -iA nixpkgs.myPackages"
   args:
@@ -22,8 +27,3 @@
 
 - name: install go apps
   include_tasks: "./scripts/install_goapps.yml"
-
-- name: git reset
-  shell: "git reset --hard"
-  args:
-    chdir: ~/dotfiles
