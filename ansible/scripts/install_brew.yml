@@ -15,10 +15,7 @@
 - name: Installing Homebrew
   become_user: "{{ USER }}"
   shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  when:
-    - required_packages_brew is defined
-    #- not homebrew_check.stat.exists
-    - install_homebrew_if_missing
+  when: required_taps is defined
 
 - name: Load Brew shellenv
   become_user: "{{ USER }}"
