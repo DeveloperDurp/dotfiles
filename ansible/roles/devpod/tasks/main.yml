@@ -1,14 +1,14 @@
 - name: Load devpod variables if DEVPOD is true
   include_vars: "vars/devpod.yml"
 
-- name: install apt
-  include_tasks: "./scripts/install_apt.yml"
+#- name: install apt
+#  include_tasks: "./scripts/install_apt.yml"
 
 #- name: install brew
 #  include_tasks: "./scripts/install_brew.yml"
 
-  #- name: install go
-  #  include_tasks: "./scripts/install_go.yml"
+#- name: install go
+#  include_tasks: "./scripts/install_go.yml"
 
 - name: install go apps
   include_tasks: "./scripts/install_goapps.yml"
@@ -16,5 +16,11 @@
 - name: run stow
   become_user: user
   shell: "stow --adopt ."
+  args:
+    chdir: ~/dotfiles
+
+- name: git reset
+  become_user: user
+  shell: "git reset --hard"
   args:
     chdir: ~/dotfiles
