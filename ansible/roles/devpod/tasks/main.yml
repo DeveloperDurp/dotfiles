@@ -14,13 +14,11 @@
   include_tasks: "./scripts/install_goapps.yml"
 
 - name: run stow
-  become_user: user
   shell: "stow --adopt ."
   args:
     chdir: ~/dotfiles
 
 - name: git reset
-  become_user: user
   shell: "git reset --hard"
   args:
     chdir: ~/dotfiles
