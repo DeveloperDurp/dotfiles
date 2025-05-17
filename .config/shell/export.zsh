@@ -15,6 +15,7 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=white,bold"
 export GEM_HOME="$HOME/gems"
 export XCURSOR_SIZE=24
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+eval "$(ssh-agent -s)"
 
 export PATH="$HOME/.local/bin:$HOME/gems/bin:/usr/local/go/bin:$HOME/go/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="$HOME/.local/bin/DSC:$PATH"
