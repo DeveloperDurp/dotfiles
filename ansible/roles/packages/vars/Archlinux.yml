@@ -103,8 +103,9 @@ required_packages_pacman:
   - less
   - blueman
   - qutebrowser
-  - python-tldextrct
+  - python-tldextract
   - python-pyperclip
+  - python-adblock
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
@@ -123,6 +124,7 @@ required_packages_flatpak:
   - sh.loft.devpod
   - com.parsecgaming.parsec
   - io.gitlab.librewolf-community
+  - org.videolan.VLC
 
 systemd_service:
   - cronie.service
