@@ -11,19 +11,23 @@
 #  include_tasks: "./scripts/install_go.yml"
 
 - name: run stow
+  become_user: vscode
   shell: "stow --adopt ."
   args:
     chdir: ~/dotfiles
 
 - name: git reset
+  become_user: vscode
   shell: "git reset --hard"
   args:
     chdir: ~/dotfiles
 
 - name: Install Nix Packages
+  become_user: vscode
   shell: "nix-env -iA nixpkgs.myPackages"
   args:
     chdir: ~/dotfiles
 
 - name: install go apps
+  become_user: vscode
   include_tasks: "./scripts/install_goapps.yml"
