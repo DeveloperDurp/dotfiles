@@ -1,24 +1,24 @@
 install_homebrew_if_missing: true
 
 required_packages_brew:
-  - lazygit
-  - glab
+  #- lazygit
+  #- glab
   - oh-my-posh
-  - kubernetes-cli
+  #- kubernetes-cli
   - zsh-autosuggestions
-  - bitwarden-cli
-  - vivid
-  - yazi
+  #- bitwarden-cli
+  #- vivid
+  #- yazi
   - zsh-history-substring-search
-  - opentofu
-  - helm
+  #- opentofu
+  #- helm
   - bat
   - neovim
   - eza
   - zoxide
-  - ansible
-  - ffmpeg
-  - k9s
+  #- ansible
+  #- ffmpeg
+  #- k9s
 
 required_packages_apt:
   - stow

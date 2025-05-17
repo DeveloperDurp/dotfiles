@@ -1,5 +1,6 @@
 #!/bin/bash
-sudo apt update
-sudo apt install ansible -y
-make devpod
+nix-env -iA nixpkgs.myPackages
+#sudo apt update
+#sudo apt install ansible -y
+#make devpod
 #stow --adopt .

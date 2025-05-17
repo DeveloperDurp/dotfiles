@@ -4,8 +4,8 @@
 - name: install apt
   include_tasks: "./scripts/install_apt.yml"
 
-- name: install brew
-  include_tasks: "./scripts/install_brew.yml"
+#- name: install brew
+#  include_tasks: "./scripts/install_brew.yml"
 
   #- name: install go
   #  include_tasks: "./scripts/install_go.yml"
