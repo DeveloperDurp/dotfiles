@@ -23,7 +23,7 @@
 - name: Load Brew shellenv
   become_user: "{{ USER }}"
   shell: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  when: required_taps is defined
+  when: required_packages_brew is defined
 
 - name: Install Brew Taps
   become_user: "{{ USER }}"
