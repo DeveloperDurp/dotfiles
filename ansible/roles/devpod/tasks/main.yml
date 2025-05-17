@@ -29,5 +29,4 @@
     chdir: ~/dotfiles
 
 - name: install go apps
-  become_user: vscode
   include_tasks: "./scripts/install_goapps.yml"
