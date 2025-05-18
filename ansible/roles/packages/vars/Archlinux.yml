@@ -6,6 +6,7 @@ required_packages_brew:
 
 required_packages_pacman:
   - sway
+  - keychain
   - waybar
   - stow
   - lazygit
@@ -96,16 +97,17 @@ required_packages_pacman:
   - cronie
   - fuse2
   - libappindicator-gtk3
-  - webkit2gtk-4.1 
+  - webkit2gtk-4.1
   - freerdp
   - remmina
-  - wakeonlan 
+  - wakeonlan
   - less
   - blueman
   - qutebrowser
   - python-tldextract
   - python-pyperclip
   - python-adblock
+  - linux-headers
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
@@ -162,4 +164,4 @@ yay:
   - wdisplays
   - bluetuith
   - powershell
-  - urbackup2-client 
+  - urbackup2-client
