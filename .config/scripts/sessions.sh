@@ -5,8 +5,24 @@ new() {
 
   dir=${1:-}
 
-  [ -z "${dir}" ] && dir=$(find $HOME/Documents/gitlab -mindepth 2 -maxdepth 2 -type d | awk -F/ '{print $(NF-1)"/"$NF " " $0}' | fzf --reverse --header "New Session" --with-nth=1 | awk '{print $2}')
-  [ -z "$dir" ] && return 1
+  if [ -z "${dir}" ]; then
+
+   name=$(find "$HOME/Documents/gitlab" -mindepth 2 -maxdepth 2 -type d \
+        | awk -F/ '{print $(NF-1)"/"$NF}' \
+        | sort \
+        | wofi -dmenu -i -p "New Session" --columns 1)
+
+    if [ -z "$name" ]; then
+        return
+    fi
+
+   dir=$(find "$HOME/Documents/gitlab" -mindepth 2 -maxdepth 2 -type d | grep "$name$" | head -n 1)
+
+  fi
+
+  if [ -z "$dir" ]; then
+      return
+  fi
 
   name=$(basename "$dir")
   if [[ $name == .* ]]; then
@@ -31,8 +47,29 @@ goland-new() {
 
   dir=${1:-}
 
-  [ -z "${dir}" ] && dir=$(find $HOME/Documents/gitlab -mindepth 2 -maxdepth 2 -type d | awk -F/ '{print $(NF-1)"/"$NF " " $0}' | fzf --reverse --header "New Session" --with-nth=1 | awk '{print $2}')
-  [ -z "$dir" ] && return 1
+  if [ -z "${dir}" ]; then
+
+   name=$(find "$HOME/Documents/gitlab" -mindepth 2 -maxdepth 2 -type d \
+        | awk -F/ '{print $(NF-1)"/"$NF}' \
+        | sort \
+        | wofi -dmenu -i -p "New JetBrains Session" --columns 1)
+
+  if [ -z "$name" ]; then
+      return
+  fi
+
+  dir=$(find "$HOME/Documents/gitlab" -mindepth 2 -maxdepth 2 -type d | grep "$name$" | head -n 1)
+
+  fi
+
+  if [ -z "$dir" ]; then
+      return
+  fi
+
+  name=$(basename "$dir")
+  if [[ $name == .* ]]; then
+    name=${name#.}
+  fi
 
   if [[ $dir == *'dotnet'* ]]; then
     /home/user/.local/share/JetBrains/Toolbox/apps/rider/bin/rider $dir &
@@ -50,20 +87,21 @@ switch() {
     sed '/^popup/d' |
     sed '/^scratch/d' |
     sed '/^$/d' |
-    fzf --reverse --header 'Switch Session' --preview 'tmux capture-pane -pt {}' \
-      --bind 'enter:execute(tmux switch-client -t {})+accept'
+    wofi -dmenu -i -p "Switch Sessions" --columns 1 | 
+    xargs -r tmux switch-client -t
 
 }
 
 delete() {
+
 
   tmux list-sessions -F '#{session_name}' |
     sed '/^popup/d' |
     sed '/^scratch/d' |
     sed '/^general/d' |
     sed '/^$/d' |
-    fzf --reverse --header 'Delete Session' --preview 'tmux capture-pane -pt {}' \
-      --bind 'enter:execute(tmux kill-session -t {})+accept'
+    wofi -dmenu -i -p "Delete Session" --columns 1 | 
+    xargs -r tmux kill-session -t
 }
 
 window() {

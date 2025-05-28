@@ -5,7 +5,7 @@
   "spacing": 15,
   "modules-left": ["sway/workspaces","sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": ["tray","idle_inhibitor","network", "bluetooth", "battery","pulseaudio"],
+  "modules-right": ["tray","idle_inhibitor","bluetooth","network","battery","pulseaudio"],
 
   "sway/mode": {
     "format": "{}"

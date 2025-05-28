@@ -42,7 +42,7 @@ required_packages_pacman:
   - curl
   - nmap
   - kubectl
-  - terraform
+  #- terraform
   - podman
   - grim
   - slurp
@@ -119,6 +119,7 @@ required_packages_flatpak:
   - com.vscodium.codium
   - com.protonvpn.www
   - me.proton.Mail
+  - me.proton.Pass
   - org.chromium.Chromium
   - org.libreoffice.LibreOffice
   - com.brave.Browser

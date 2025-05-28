@@ -1,4 +1,4 @@
-export ZSH="$HOME/.oh-my-zsh"
+#export ZSH="$HOME/.oh-my-zsh"
 export DEVPOD_DISABLE_TELEMETRY=true
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export POWERSHELL_TELEMETRY_OPTOUT=1 
@@ -15,7 +15,7 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=white,bold"
 export GEM_HOME="$HOME/gems"
 export XCURSOR_SIZE=24
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)" >> /dev/null
 
 export PATH="$HOME/.local/bin:$HOME/gems/bin:/usr/local/go/bin:$HOME/go/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="$HOME/.local/bin/DSC:$PATH"

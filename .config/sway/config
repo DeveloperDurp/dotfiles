@@ -19,6 +19,7 @@ set $files nautilus
 set $browser flatpak run io.gitlab.librewolf-community
 set $bitwarden flatpak run com.bitwarden.desktop
 set $menu wofi
+set $newScript "$HOME/.config/scripts/sessions.sh"
 
 set $next_or_new swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (max_by(.num) | .num) as $maxOutput | (.[] | select(.focused == true) | .num) as $current | if $maxOutput > $current then "next_on_output" else $max + 1 end' 
 set $previous_or_first swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (min_by(.num) | .num) as $minOutput | (.[] | select(.focused == true) | .num) as $current | if $minOutput < $current then "prev_on_output" else $current end'
@@ -66,10 +67,7 @@ bindgesture swipe:left workspace prev
 exec_always swaync
 
 # Toggle control center
-bindsym $mod+Shift+n exec swaync-client -t -sw
-
-# Start IDE
-bindsym $mod+Shift+i exec /opt/goland/bin/goland.sh
+bindsym $mod+control+n exec swaync-client -t -sw
 
 ### Key bindings
 
@@ -91,6 +89,10 @@ bindsym $mod+Shift+i exec /opt/goland/bin/goland.sh
 
   # Start your launcher
   bindsym $mod+space exec $menu
+
+  # Start your goland
+  bindsym $mod+n exec 'zsh -c ". $newScript new"'
+  bindsym $mod+Shift+n exec 'zsh -c ". $newScript goland-new"'
 
   # Drag floating windows by holding down $mod and left mouse button.
   # Resize them with right mouse button + $mod.
