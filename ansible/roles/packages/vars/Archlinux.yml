@@ -127,6 +127,7 @@ required_packages_flatpak:
   - com.parsecgaming.parsec
   - io.gitlab.librewolf-community
   - org.videolan.VLC
+  - fr.handbrake.ghb
 
 systemd_service:
   - cronie.service
