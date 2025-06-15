@@ -3,6 +3,8 @@ required_packages_brew:
   - zsh-history-substring-search
   - zsh-autosuggestions
   - istioctl
+  - oven-sh/bun/bun
+  - pkl
 
 required_packages_pacman:
   - sway
@@ -109,6 +111,7 @@ required_packages_pacman:
   - python-adblock
   - linux-headers
   - traceroute
+  - task
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
@@ -147,6 +150,8 @@ go_apps:
   - github.com/air-verse/air@latest
   - golang.org/x/tools/gopls@latest
   - github.com/nats-io/natscli/nats@latest
+  - github.com/go-task/task/v3/cmd/task@latest
+  - github.com/a-h/templ/cmd/templ@latest
 
 yay:
   - nwg-look

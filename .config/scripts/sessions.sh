@@ -16,8 +16,17 @@ new() {
         return
     fi
 
-   dir=$(find "$HOME/Documents/gitlab" -mindepth 2 -maxdepth 2 -type d | grep "$name$" | head -n 1)
+  if [ -d "$name" ]; then
+      dir="$name"
+    else
+        # If 'name' isn't a directory, assume it's a subfolder name and search within "Documents/gitlab"
+        dir=$(find "$HOME/Documents/gitlab" -mindepth 2 -maxdepth 2 -type d | grep "$name$" | head -n 1)
 
+        if [ -z "$dir" ]; then
+            echo "Error: Directory not found for '$name' in Documents/gitlab." >&2
+            return 1  # Or exit, depending on your script's error handling
+        fi
+    fi
   fi
 
   if [ -z "$dir" ]; then
