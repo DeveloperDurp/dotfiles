@@ -1,3 +1,6 @@
+isSet() { [ ! -z "${1}" ]; }
+isNotSet() { [ -z "${1}" ]; }
+
 set-cred ()
 {
   export BW_SESSION="$(bw unlock $(secret-tool lookup drive bitwarden) --raw)"

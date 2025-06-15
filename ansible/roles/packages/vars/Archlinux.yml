@@ -108,6 +108,7 @@ required_packages_pacman:
   - python-pyperclip
   - python-adblock
   - linux-headers
+  - traceroute
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }

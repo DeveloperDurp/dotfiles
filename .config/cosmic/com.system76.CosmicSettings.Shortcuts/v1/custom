@@ -3,7 +3,17 @@
         modifiers: [
             Super,
         ],
-    ): System(Launcher),
+        key: "n",
+        description: Some("New Session"),
+    ): Spawn(" zsh -c \"$HOME/.config/scripts/sessions.sh new\""),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "n",
+        description: Some("New Goland Session"),
+    ): Spawn(" zsh -c \"$HOME/.config/scripts/sessions.sh goland-new\""),
     (
         modifiers: [],
         key: "Print",
@@ -14,4 +24,9 @@
         ],
         key: "p",
     ): System(Screenshot),
+    (
+        modifiers: [
+            Super,
+        ],
+    ): System(Launcher),
 }
