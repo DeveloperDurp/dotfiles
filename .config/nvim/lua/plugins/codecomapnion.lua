@@ -11,8 +11,7 @@ return {
     config = true,
     opts = {
       strategies = {
-        chat = { adapter = "ollama" },
-        inline = { adapter = "ollama" },
+        chat = { adapter = "ollama", model = "mistral:latest" },
       },
       adapters = {
         opts = {

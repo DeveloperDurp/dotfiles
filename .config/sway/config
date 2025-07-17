@@ -4,6 +4,7 @@ exec_always {
     pkill kanshi
     pkill swayidle
     pkill swaync
+    pkill waybar
 }
 
 exec_always "sleep 1"

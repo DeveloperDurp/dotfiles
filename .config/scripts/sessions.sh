@@ -92,25 +92,29 @@ goland-new() {
 
 switch() {
 
-  tmux list-sessions -F '#{session_name}' |
+  session=$(tmux list-sessions -F '#{session_name}' |
     sed '/^popup/d' |
     sed '/^scratch/d' |
     sed '/^$/d' |
-    wofi -dmenu -i -p "Switch Sessions" --columns 1 | 
-    xargs -r tmux switch-client -t
+    fzf --reverse --header 'Switch Session' --no-preview)
 
+  [ -z "$session" ] && return 1
+
+  tmux switch-client -t $session
 }
 
 delete() {
 
-
-  tmux list-sessions -F '#{session_name}' |
+  session=$(tmux list-sessions -F '#{session_name}' |
     sed '/^popup/d' |
     sed '/^scratch/d' |
     sed '/^general/d' |
     sed '/^$/d' |
-    wofi -dmenu -i -p "Delete Session" --columns 1 | 
-    xargs -r tmux kill-session -t
+    fzf --reverse --header 'Switch Session' --no-preview)
+
+  [ -z "$session" ] && return 1
+
+  tmux kill-session -t $session
 }
 
 window() {

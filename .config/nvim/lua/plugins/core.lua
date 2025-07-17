@@ -99,6 +99,7 @@ return {
         "terraform",
         "c_sharp",
         "bash",
+        "templ",
       },
     },
   },

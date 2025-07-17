@@ -92,10 +92,11 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
-bindkey  "^[n" beginning-of-line
-bindkey  "^[." end-of-line
+bindkey  "^[[1~" beginning-of-line
+bindkey  "^[[4~" end-of-line
 bindkey "^[l" forward-word
 bindkey "^[h" backward-word
+bindkey "^[[3~" delete-char
 
 # History
 HISTSIZE=5000

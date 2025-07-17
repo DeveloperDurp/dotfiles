@@ -63,3 +63,8 @@ decode-jwtheader(){
 nvim-new () {
   ~/.config/scripts/nvim.sh $1
 }
+
+ai () {
+  set-env
+  nvim +CodeCompanionChat -c only
+}

@@ -111,13 +111,13 @@ required_packages_pacman:
   - python-adblock
   - linux-headers
   - traceroute
+  - networkmanager-openvpn
   - task
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
 
 required_packages_flatpak:
-  - com.discordapp.Discord
   - org.gtk.Gtk3theme.Pop-dark
   - com.github.tchx84.Flatseal
   - com.vscodium.codium
@@ -135,8 +135,8 @@ required_packages_flatpak:
 
 systemd_service:
   - cronie.service
-  #- cosmic-greeter.service
-  - ly.service
+  - cosmic-greeter.service
+  #- ly.service
   - libvirtd.service
   - com.system76.PowerDaemon.service
   - ufw.service
