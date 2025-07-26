@@ -113,6 +113,9 @@ required_packages_pacman:
   - traceroute
   - networkmanager-openvpn
   - task
+  - ttf-go-nerd
+  - ttf-hack-nerd
+  - ttf-jetbrains-mono-nerd
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
@@ -135,8 +138,8 @@ required_packages_flatpak:
 
 systemd_service:
   - cronie.service
-  - cosmic-greeter.service
-  #- ly.service
+  #- cosmic-greeter.service
+  - ly.service
   - libvirtd.service
   - com.system76.PowerDaemon.service
   - ufw.service
@@ -156,9 +159,6 @@ go_apps:
 yay:
   - nwg-look
   - catppuccin-gtk-theme-mocha
-  - ttf-go-nerd
-  - ttf-hack-nerd
-  - ttf-jetbrains-mono-nerd
   - system76-firmware-daemon
   - system76-firmware
   - firmware-manager
