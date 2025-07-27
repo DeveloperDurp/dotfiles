@@ -2,21 +2,48 @@
     (
         modifiers: [
             Super,
+            Shift,
         ],
-        key: "n",
-        description: Some("New Session"),
-    ): Spawn(" zsh -c \"$HOME/.config/scripts/sessions.sh new\""),
+        key: "7",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "0",
+    ): MoveToLastWorkspace,
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "2",
+    ): MoveToWorkspace(2),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "8",
+    ): MoveToWorkspace(8),
+    (
+        modifiers: [],
+        key: "Print",
+    ): Disable,
     (
         modifiers: [
             Super,
             Shift,
         ],
-        key: "n",
-        description: Some("New Goland Session"),
-    ): Spawn(" zsh -c \"$HOME/.config/scripts/sessions.sh goland-new\""),
+        key: "1",
+    ): Disable,
     (
-        modifiers: [],
-        key: "Print",
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "5",
     ): Disable,
     (
         modifiers: [
@@ -27,6 +54,119 @@
     (
         modifiers: [
             Super,
+            Shift,
+        ],
+        key: "4",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "3",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
         ],
     ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "5",
+    ): MoveToWorkspace(5),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "7",
+    ): MoveToWorkspace(7),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "6",
+    ): MoveToWorkspace(6),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "1",
+    ): MoveToWorkspace(1),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "2",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "6",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "8",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "0",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "9",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "3",
+    ): MoveToWorkspace(3),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "n",
+        description: Some("New Goland Session"),
+    ): Spawn(" zsh -c \"$HOME/.config/scripts/sessions.sh goland-new\""),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "n",
+        description: Some("New Session"),
+    ): Spawn(" zsh -c \"$HOME/.config/scripts/sessions.sh new\""),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "4",
+    ): MoveToWorkspace(4),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "9",
+    ): MoveToWorkspace(9),
 }
