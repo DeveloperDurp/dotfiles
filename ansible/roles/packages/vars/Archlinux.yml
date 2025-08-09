@@ -119,6 +119,7 @@ required_packages_pacman:
   - pcsclite
   - ccid
   - libfido2
+  - yubikey-manager
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
