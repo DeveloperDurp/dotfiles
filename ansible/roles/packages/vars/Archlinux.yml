@@ -116,6 +116,9 @@ required_packages_pacman:
   - ttf-go-nerd
   - ttf-hack-nerd
   - ttf-jetbrains-mono-nerd
+  - pcsclite
+  - ccid
+  - libfido2
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
@@ -125,6 +128,7 @@ required_packages_flatpak:
   - com.github.tchx84.Flatseal
   - com.vscodium.codium
   - com.protonvpn.www
+  - me.proton.Pass
   - me.proton.Mail
   - org.chromium.Chromium
   - org.libreoffice.LibreOffice
@@ -144,6 +148,7 @@ systemd_service:
   - com.system76.PowerDaemon.service
   - ufw.service
   - podman.socket
+  - pcscd.service
 
 go_apps:
   - github.com/jorgerojas26/lazysql@latest
