@@ -16,4 +16,4 @@ else
 fi
 
 # Now run the Git command passed to the script
-git "$@"
+"$@"
