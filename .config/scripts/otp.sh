@@ -23,7 +23,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-accounts=$(ykman -d $YUBIKEY_SERIAL oath accounts list -p $password)
+accounts=$(ykman -d $YUBIKEY_SERIAL oath accounts list -p $password | sort -f)
 
 # Create an array to hold the keys
 declare -a keys
@@ -37,4 +37,11 @@ done <<<"$accounts"
 
 selection=$(printf "%s\n" "${keys[@]}" | wofi -dmenu -i -p "New Session" --columns 1)
 
+if [[ $selection == "" ]]; then
+  echo "Selection dialog was cancelled."
+  exit 1
+fi
+
 ykman -d $YUBIKEY_SERIAL oath accounts code $selection -p $password | cut -d' ' -f3 | wl-copy
+
+notify-send "copied $selection to Clipboard"

@@ -21,6 +21,7 @@ set $browser flatpak run io.gitlab.librewolf-community
 set $bitwarden flatpak run com.bitwarden.desktop
 set $menu wofi
 set $scripts "$HOME/.config/scripts"
+set $otpScript "$HOME/.config/scripts/otp.sh"
 set $newScript "$HOME/.config/scripts/sessions.sh"
 
 set $next_or_new swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (max_by(.num) | .num) as $maxOutput | (.[] | select(.focused == true) | .num) as $current | if $maxOutput > $current then "next_on_output" else $max + 1 end' 
@@ -95,6 +96,10 @@ bindsym $mod+control+n exec swaync-client -t -sw
   # Start your goland
   bindsym $mod+n exec 'zsh -c ". $newScript new"'
   bindsym $mod+Shift+n exec 'zsh -c ". $newScript goland-new"'
+  
+  # Start otp script
+  bindsym $mod+Shift+o exec 'zsh -c ". $otpScript"'
+
   
   # Audio Switch
   bindsym $mod+Shift+s exec 'bash -c ". $scripts/audioswitch.sh"'
