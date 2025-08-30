@@ -22,6 +22,7 @@ set $bitwarden flatpak run com.bitwarden.desktop
 set $menu wofi
 set $scripts "$HOME/.config/scripts"
 set $otpScript "$HOME/.config/scripts/otp.sh"
+set $sshScript "$scripts/ssh.sh"
 set $newScript "$HOME/.config/scripts/sessions.sh"
 
 set $next_or_new swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (max_by(.num) | .num) as $maxOutput | (.[] | select(.focused == true) | .num) as $current | if $maxOutput > $current then "next_on_output" else $max + 1 end' 
@@ -100,7 +101,9 @@ bindsym $mod+control+n exec swaync-client -t -sw
   # Start otp script
   bindsym $mod+Shift+o exec 'zsh -c ". $otpScript"'
 
-  
+  # Start ssh script
+  bindsym $mod+Shift+y exec 'zsh -c ". $sshScript"'
+ 
   # Audio Switch
   bindsym $mod+Shift+s exec 'bash -c ". $scripts/audioswitch.sh"'
 
