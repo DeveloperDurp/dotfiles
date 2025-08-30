@@ -35,7 +35,7 @@ return {
             name = "openai",
             schema = {
               model = {
-                default = "gpt-5-nano",
+                default = "gpt-4o-mini",
               },
             },
             env = {
