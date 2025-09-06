@@ -110,7 +110,7 @@ delete() {
     sed '/^scratch/d' |
     sed '/^general/d' |
     sed '/^$/d' |
-    fzf --reverse --header 'Switch Session' --no-preview)
+    fzf --reverse --header 'Delete Session' --no-preview)
 
   [ -z "$session" ] && return 1
 

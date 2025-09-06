@@ -148,6 +148,14 @@
             Super,
             Shift,
         ],
+        key: "y",
+        description: Some("Get OTP"),
+    ): Spawn("zsh -c \"$HOME/.config/scripts/ssh.sh\""),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
         key: "5",
     ): Disable,
     (
