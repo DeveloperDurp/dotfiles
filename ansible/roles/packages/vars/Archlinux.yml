@@ -121,6 +121,7 @@ required_packages_pacman:
   - libfido2
   - yubikey-manager
   - zenity
+  - proton-vpn-gtk-app
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }

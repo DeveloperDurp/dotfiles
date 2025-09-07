@@ -176,6 +176,24 @@ scratch() {
   tmux attach-session -t "$name"
 }
 
+test() {
+
+menu_items=$(
+  i=1
+  local items=()
+  tmux list-windows -F '#{window_name}' |
+    while read -r window_name; do
+      items+=("$(printf '%s %d "select-window -t %s"' "$window_name" "$i" "$window_name")")
+      i=$((i + 1))
+    done
+  printf '%s\n' "${items[@]}"
+)
+
+  # Execute the command using tmux command-prompt
+  printf "tmux display-menu -x 20 -y 8 $(printf $menu_items)"
+  eval $(printf "tmux display-menu -x 20 -y 8 $(printf $menu_items)")
+}
+
 case "$1" in
 new) new $2 ;;
 switch) switch ;;
@@ -185,5 +203,6 @@ notes) notes ;;
 popup) popup ;;
 scratch) scratch ;;
 goland-new) goland-new $2 ;;
+test) test ;;
 *) echo "Please enter an action" ;;
 esac
