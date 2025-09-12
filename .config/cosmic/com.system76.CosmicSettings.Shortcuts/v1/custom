@@ -2,31 +2,24 @@
     (
         modifiers: [
             Super,
-            Ctrl,
+            Shift,
         ],
-        key: "1",
-    ): MoveToWorkspace(1),
+        key: "n",
+        description: Some("New Goland Session"),
+    ): Spawn("zsh -c \"$HOME/.config/scripts/sessions.sh goland-new\""),
     (
         modifiers: [
             Super,
             Shift,
         ],
-        key: "y",
-        description: Some("Get OTP"),
-    ): Spawn("zsh -c \"$HOME/.config/scripts/ssh.sh\""),
+        key: "p",
+    ): System(Screenshot),
     (
         modifiers: [
             Super,
-            Ctrl,
+            Shift,
         ],
         key: "2",
-    ): MoveToWorkspace(2),
-    (
-        modifiers: [
-            Super,
-            Shift,
-        ],
-        key: "1",
     ): Disable,
     (
         modifiers: [
@@ -34,13 +27,6 @@
             Shift,
         ],
         key: "6",
-    ): Disable,
-    (
-        modifiers: [
-            Super,
-            Shift,
-        ],
-        key: "5",
     ): Disable,
     (
         modifiers: [
@@ -52,18 +38,6 @@
     (
         modifiers: [
             Super,
-        ],
-    ): System(Launcher),
-    (
-        modifiers: [
-            Super,
-            Ctrl,
-        ],
-        key: "3",
-    ): MoveToWorkspace(3),
-    (
-        modifiers: [
-            Super,
             Shift,
         ],
         key: "8",
@@ -71,52 +45,10 @@
     (
         modifiers: [
             Super,
-            Ctrl,
-        ],
-        key: "6",
-    ): MoveToWorkspace(6),
-    (
-        modifiers: [
-            Super,
             Shift,
         ],
-        key: "4",
+        key: "1",
     ): Disable,
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "n",
-        description: Some("New Session"),
-    ): Spawn(" zsh -c \"$HOME/.config/scripts/sessions.sh new\""),
-    (
-        modifiers: [
-            Super,
-            Shift,
-        ],
-        key: "9",
-    ): Disable,
-    (
-        modifiers: [
-            Super,
-            Ctrl,
-        ],
-        key: "4",
-    ): MoveToWorkspace(4),
-    (
-        modifiers: [
-            Super,
-            Shift,
-        ],
-        key: "3",
-    ): Disable,
-    (
-        modifiers: [
-            Super,
-            Ctrl,
-        ],
-        key: "5",
-    ): MoveToWorkspace(5),
     (
         modifiers: [
             Super,
@@ -129,6 +61,27 @@
             Super,
             Ctrl,
         ],
+        key: "1",
+    ): MoveToWorkspace(1),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "7",
+    ): MoveToWorkspace(7),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "9",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
         key: "8",
     ): MoveToWorkspace(8),
     (
@@ -136,31 +89,7 @@
             Super,
             Shift,
         ],
-        key: "p",
-        description: Some("Grim Screenshot"),
-    ): Spawn("zsh -c \"grim -g '$(slurp)' - | wl-copy\""),
-    (
-        modifiers: [
-            Super,
-            Shift,
-        ],
-        key: "n",
-        description: Some("New Goland Session"),
-    ): Spawn("zsh -c \"$HOME/.config/scripts/sessions.sh goland-new\""),
-    (
-        modifiers: [
-            Super,
-            Shift,
-        ],
-        key: "o",
-        description: Some("Get OTP"),
-    ): Spawn("zsh -c \"$HOME/.config/scripts/otp.sh\""),
-    (
-        modifiers: [
-            Super,
-            Shift,
-        ],
-        key: "0",
+        key: "3",
     ): Disable,
     (
         modifiers: [
@@ -174,13 +103,83 @@
             Super,
             Ctrl,
         ],
-        key: "7",
-    ): MoveToWorkspace(7),
+        key: "6",
+    ): MoveToWorkspace(6),
     (
         modifiers: [
             Super,
             Shift,
         ],
-        key: "2",
+        key: "y",
+        description: Some("Get OTP"),
+    ): Spawn("zsh -c \"$HOME/.config/scripts/ssh.sh\""),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "5",
+    ): MoveToWorkspace(5),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "4",
     ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "5",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "0",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "o",
+        description: Some("Get OTP"),
+    ): Spawn("zsh -c \"$HOME/.config/scripts/otp.sh\""),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "3",
+    ): MoveToWorkspace(3),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "4",
+    ): MoveToWorkspace(4),
+    (
+        modifiers: [
+            Super,
+        ],
+    ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+            Ctrl,
+        ],
+        key: "2",
+    ): MoveToWorkspace(2),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "n",
+        description: Some("New Session"),
+    ): Spawn(" zsh -c \"$HOME/.config/scripts/sessions.sh new\""),
 }
