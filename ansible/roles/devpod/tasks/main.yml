@@ -4,23 +4,19 @@
 - name: install apt
   include_tasks: "./scripts/install_apt.yml"
 
-#- name: install brew
-#  include_tasks: "./scripts/install_brew.yml"
+- name: install brew
+  include_tasks: "./scripts/install_brew.yml"
 
-#- name: install go
-#  include_tasks: "./scripts/install_go.yml"
+- name: install go
+  include_tasks: "./scripts/install_go.yml"
 
 - name: run stow
   become_user: vscode
-  shell: "stow --adopt ."
-  args:
-    chdir: ~/dotfiles
+  shell: "sudo mkdir -m 0755 /nix && sudo chown vscode /nix"
 
 - name: git reset
   become_user: vscode
-  shell: "git reset --hard"
-  args:
-    chdir: ~/dotfiles
+  shell: "sh <(curl -L https://nixos.org/nix/install) --no-daemon"
 
 - name: Install Nix Packages
   become_user: vscode
@@ -30,3 +26,20 @@
 
 - name: install go apps
   include_tasks: "./scripts/install_goapps.yml"
+
+- name: git reset
+  become_user: vscode
+  shell: "git reset --hard"
+  args:
+    chdir: ~/dotfiles
+
+- name: git reset
+  become_user: vscode
+  shell: "git reset --hard"
+  args:
+    chdir: ~/dotfiles
+
+- name: Change default shell for user
+  user:
+    name: vscode
+    shell: zsh

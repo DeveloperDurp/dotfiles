@@ -11,4 +11,4 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 cd "/home/vscode/dotfiles"
 
 stow --adopt .
-kit reset --hard
+git reset --hard
