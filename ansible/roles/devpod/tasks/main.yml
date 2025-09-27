@@ -7,8 +7,8 @@
 - name: install brew
   include_tasks: "./scripts/install_brew.yml"
 
-- name: install go
-  include_tasks: "./scripts/install_go.yml"
+#- name: install go
+#  include_tasks: "./scripts/install_go.yml"
 
 - name: run stow
   become_user: vscode
