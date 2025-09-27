@@ -18,7 +18,6 @@
         bat
         opentofu
         helm
-        stow
       ];
     };
   };
