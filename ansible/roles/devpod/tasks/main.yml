@@ -20,7 +20,7 @@
 
 - name: Install Nix Packages
   become_user: vscode
-  shell: "nix-env -iA nixpkgs.myPackages"
+  shell: "/home/vscode/.nix-profile/bin/nix-env -iA nixpkgs.myPackages"
   args:
     chdir: ~/dotfiles
 
