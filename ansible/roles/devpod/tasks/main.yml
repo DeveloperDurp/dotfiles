@@ -10,13 +10,13 @@
 #- name: install go
 #  include_tasks: "./scripts/install_go.yml"
 
-- name: run stow
+- name: install nix
   become_user: vscode
   shell: "sudo mkdir -m 0755 /nix && sudo chown vscode /nix"
 
-- name: git reset
+- name: install packages via nix
   become_user: vscode
-  shell: "sh <(curl -L https://nixos.org/nix/install) --no-daemon"
+  shell: "curl -L https://nixos.org/nix/install | sh -s -- --no-daemon"
 
 - name: Install Nix Packages
   become_user: vscode
