@@ -10,11 +10,11 @@
 #- name: install go
 #  include_tasks: "./scripts/install_go.yml"
 
-- name: install nix
+- name: prereq for nix
   become_user: vscode
   shell: "sudo mkdir -m 0755 /nix && sudo chown vscode /nix"
 
-- name: install packages via nix
+- name: install nix
   become_user: vscode
   shell: "curl -L https://nixos.org/nix/install | sh -s -- --no-daemon"
 
@@ -27,9 +27,9 @@
 - name: install go apps
   include_tasks: "./scripts/install_goapps.yml"
 
-- name: git reset
+- name: run stow
   become_user: vscode
-  shell: "git reset --hard"
+  shell: "stow --adopt ."
   args:
     chdir: ~/dotfiles
 
@@ -42,4 +42,4 @@
 - name: Change default shell for user
   user:
     name: vscode
-    shell: zsh
+    shell: /home/vscode/.nix-profile/bin/zsh
