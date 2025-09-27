@@ -19,6 +19,7 @@
         opentofu
         helm
         vivid
+        stow
       ];
     };
   };

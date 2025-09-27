@@ -1,6 +1,6 @@
 #!/bin/bash
 rm .bashrc .zshrc .ideavirmrc .gitmodules
-sudo apt update && sudo apt install stow ansible -y
+sudo apt update && sudo apt install ansible -y
 
 make devpod
 
