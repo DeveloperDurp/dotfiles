@@ -10,6 +10,7 @@ set-cred ()
   printf "$(bw get password cli-litellm-token)" | secret-tool store --label='LiteLLM Token for CLI' 'token' 'LITELLM_TOKEN' 
   printf "$(bw get password cli-openai)" | secret-tool store --label='OpenAI Token for CLI' 'token' 'OPENAI_TOKEN' 
   printf "$(bw get password GEMINI_TOKEN)" | secret-tool store --label='Gemini Token for CLI' 'token' 'GEMINI_TOKEN' 
+  printf "$(bw get password cli-anthropic)" | secret-tool store --label='Anthropic Token for CLI' 'token' 'ANTHROPIC_TOKEN' 
 
   unset BW_SESSION
 }
@@ -21,6 +22,7 @@ set-env ()
   export LITELLM_TOKEN="$(secret-tool lookup token LITELLM_TOKEN)"
   export OPENAI_TOKEN="$(secret-tool lookup token OPENAI_TOKEN)"
   export GEMINI_TOKEN="$(secret-tool lookup token GEMINI_TOKEN)"
+  export ANTHROPIC_TOKEN="$(secret-tool lookup token ANTHROPIC_TOKEN)"
 }
 
 clear-env ()

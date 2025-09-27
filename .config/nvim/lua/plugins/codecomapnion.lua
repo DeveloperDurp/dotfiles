@@ -1,6 +1,7 @@
 local OLLAMA_TOKEN = os.getenv("OLLAMA_TOKEN")
 local OPENAI_TOKEN = os.getenv("OPENAI_TOKEN")
 local GEMINI_TOKEN = os.getenv("GEMINI_TOKEN")
+local ANTHROPIC_TOKEN = os.getenv("ANTHROPIC_TOKEN")
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -29,6 +30,22 @@ return {
               api_key = GEMINI_TOKEN,
             },
           })
+        end,
+        anthropic = function()
+          return require("codecompanion.adapters").extend(
+            "anthropic",
+            {
+              name = "anthropic",
+              schema = {
+                model = {
+                  default = "claude-3-haiku-20240307",
+                },
+              },
+              env = {
+                api_key = ANTHROPIC_TOKEN,
+              },
+            }
+          )
         end,
         openai = function()
           return require("codecompanion.adapters").extend("openai", {

@@ -44,4 +44,4 @@ fi
 
 ykman -d $YUBIKEY_SERIAL oath accounts code $selection -p $password | cut -d' ' -f3 | wl-copy
 
-notify-send "copied $selection to Clipboard"
+notify-send "copied $selection to Clipboard" -t 5000

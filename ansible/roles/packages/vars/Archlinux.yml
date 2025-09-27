@@ -3,8 +3,8 @@ required_packages_brew:
   - zsh-history-substring-search
   - zsh-autosuggestions
   - istioctl
-  - oven-sh/bun/bun
   - pkl
+  - tailwindcss
 
 required_packages_pacman:
   - sway
@@ -142,11 +142,12 @@ required_packages_flatpak:
   - io.gitlab.librewolf-community
   - org.videolan.VLC
   - fr.handbrake.ghb
+  - app.zen_browser.zen
 
 systemd_service:
   - cronie.service
-  #- cosmic-greeter.service
-  - ly.service
+  - cosmic-greeter.service
+  #- ly.service
   - libvirtd.service
   - com.system76.PowerDaemon.service
   - ufw.service
@@ -163,6 +164,8 @@ go_apps:
   - github.com/nats-io/natscli/nats@latest
   - github.com/go-task/task/v3/cmd/task@latest
   - github.com/a-h/templ/cmd/templ@latest
+  - github.com/segmentio/golines@latest
+  - github.com/templui/templui/cmd/templui@latest
 
 yay:
   - nwg-look
@@ -179,4 +182,3 @@ yay:
   - wdisplays
   - bluetuith
   - powershell
-  - urbackup2-client

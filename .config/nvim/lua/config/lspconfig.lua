@@ -46,16 +46,23 @@ lspconfig.pyright.setup({
 })
 
 lspconfig.powershell_es.setup({
-  bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
+  bundle_path = vim.fn.stdpath("data")
+    .. "/mason/packages/powershell-editor-services",
 })
 
 lspconfig.bashls.setup({})
 
-omnisharp_bin = vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp"
+omnisharp_bin = vim.fn.stdpath("data")
+  .. "/mason/packages/omnisharp/omnisharp"
 
 lspconfig.omnisharp.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "cs" },
-  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+  cmd = {
+    omnisharp_bin,
+    "--languageserver",
+    "--hostPID",
+    tostring(pid),
+  },
 })
