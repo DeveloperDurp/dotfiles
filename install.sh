@@ -4,5 +4,5 @@ sudo apt update && sudo apt install stow
 stow --adopt .
 git reset --hard
 
-curl -L https://nixos.org/nix/install | sh -s -- --daemon
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
 nix-env -iA nixpkgs.myPackages
