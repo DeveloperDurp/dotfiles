@@ -2,8 +2,7 @@
   become_user: "{{ USER }}"
   shell: "go install {{ item }}"
   with_items: "{{ go_apps }}"
-  when: go_apps is defined   
-
-- name: Build Bat Cache
-  become_user: "{{ USER }}"
-  shell: "bat cache --build"
+  when: go_apps is defined
+#- name: Build Bat Cache
+#  become_user: "{{ USER }}"
+#  shell: "bat cache --build"
