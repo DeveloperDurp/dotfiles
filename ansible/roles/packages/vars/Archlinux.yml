@@ -44,7 +44,6 @@ required_packages_pacman:
   - curl
   - nmap
   - kubectl
-  #- terraform
   - podman
   - grim
   - slurp
@@ -142,7 +141,6 @@ required_packages_flatpak:
   - io.gitlab.librewolf-community
   - org.videolan.VLC
   - fr.handbrake.ghb
-  - app.zen_browser.zen
 
 systemd_service:
   - cronie.service
@@ -166,6 +164,7 @@ go_apps:
   - github.com/a-h/templ/cmd/templ@latest
   - github.com/segmentio/golines@latest
   - github.com/templui/templui/cmd/templui@latest
+  - github.com/go-delve/delve/cmd/dlv@latest
 
 yay:
   - nwg-look
