@@ -25,5 +25,6 @@
 #*) echo "Please enter an action" ;;
 #esac
 
-echo '128' >/sys/class/leds/system76_acpi::kbd_backlight/brightness
+echo '144' >/sys/class/leds/system76_acpi::kbd_backlight/brightness
 /usr/bin/system76-power profile $1
+echo '144' >/sys/class/leds/system76_acpi::kbd_backlight/brightness

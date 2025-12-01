@@ -121,6 +121,8 @@ required_packages_pacman:
   - yubikey-manager
   - zenity
   - proton-vpn-gtk-app
+  - xdg-desktop-portal
+  - xdg-desktop-portal-gtk
 
 flatpak_remote:
   - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
@@ -141,6 +143,8 @@ required_packages_flatpak:
   - io.gitlab.librewolf-community
   - org.videolan.VLC
   - fr.handbrake.ghb
+  - com.spotify.Client
+  - org.signal.Signal
 
 systemd_service:
   - cronie.service
@@ -180,4 +184,5 @@ yay:
   - system76-io-dkms
   - wdisplays
   - bluetuith
-  - powershell
+  - steamlink
+  #- powershell
