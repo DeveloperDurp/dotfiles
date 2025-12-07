@@ -1,7 +1,15 @@
+- name: Ensure ca-certificates directory exists
+  file:
+    path: /etc/ca-certificates/trust-source/anchors
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
 - name: Copy Public certs
   copy:
     src: durp.crt
     dest: /etc/ca-certificates/trust-source/anchors/durp.crt
 
 - name: Trust certs
-  command: trust extract-compat
+  command: update-ca-certificates

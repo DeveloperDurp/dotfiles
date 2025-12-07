@@ -1,64 +1,65 @@
 install_homebrew_if_missing: true
 
 required_packages_brew:
-  - lazygit
-  - glab
-  - oh-my-posh
-  - tpm
-  - kubernetes-cli
+  #- lazygit
+  #- glab
+  #- oh-my-posh
+  #- tpm
+  #- kubernetes-cli
   - zsh-autosuggestions
-  - bitwarden-cli
-  - ttyd
-  - fastfetch
-  - vivid
-  - yazi
+  #- bitwarden-cli
+  #- ttyd
+  #- fastfetch
+  #- vivid
+  #- yazi
   - zsh-history-substring-search
-  - opentofu
-  - helm
-  - bat
-  - neovim
-  - eza
-  - zoxide
-  - ansible
-  - ffmpeg
-  - k9s
+  #- opentofu
+  #- helm
+  #- bat
+  #- neovim
+  #- eza
+  #- zoxide
+  #- ansible
+  #- ffmpeg
+  #- k9s
 
 required_packages_apt:
-  - htop
   - stow
   - zsh
-  - curl
-  - xsel
-  - wl-clipboard  
-  - podman
-  - wget
-  - apt-transport-https
-  - software-properties-common
+  - kitty
   - qemu-kvm
   - qemu-system 
   - qemu-utils 
-  - python3 
-  - python3-pip 
-  - libvirt-clients 
-  - libvirt-daemon-system 
-  - bridge-utils 
-  - virtinst 
   - libvirt-daemon 
   - virt-manager
-  - vlc
-  - vault
-  - fzf
-  - ripgrep
-  - libsecret-tools
-  - rclone
+  #- htop
+  #- curl
+  #- xsel
+  #- wl-clipboard  
+  #- podman
+  #- wget
+  #- apt-transport-https
+  #- software-properties-common
+  #- python3 
+  #- python3-pip 
+  #- libvirt-clients 
+  #- libvirt-daemon-system 
+  #- bridge-utils 
+  #- virtinst 
+  #- vlc
+  #- vault
+  #- fzf
+  #- ripgrep
+  #- libsecret-tools
+  #- rclone
 
-apt_keys:
-  - https://packages.microsoft.com/keys/microsoft.asc
-apt_repo:
-  - deb [arch=amd64] https://packages.microsoft.com/ubuntu/22.04/prod jammy main
-  - deb [arch=amd64 signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com noble main
-apt_repo_gpg:
-  - {name: "hashicorp-archive-keyring", url: "https://apt.releases.hashicorp.com/gpg"}
+#apt_keys:
+#  - https://packages.microsoft.com/keys/microsoft.asc
+#apt_repo:
+#  - deb [arch=amd64] https://packages.microsoft.com/ubuntu/22.04/prod jammy main
+#  - deb [arch=amd64 signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com noble main
+#apt_repo_gpg:
+#  - {name: "hashicorp-archive-keyring", url: "https://apt.releases.hashicorp.com/gpg"}
 
 flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
@@ -69,10 +70,19 @@ required_packages_flatpak:
   - me.proton.Mail
   - com.protonvpn.www
   - org.remmina.Remmina
+  - com.github.tchx84.Flatseal
+  - com.vscodium.codium
+  - org.chromium.Chromium
+  - org.libreoffice.LibreOffice
+  - com.parsecgaming.parsec
+  - org.videolan.VLC
+  - fr.handbrake.ghb
+  - com.spotify.Client
+  - org.signal.Signal
 
-go_version_target: "go version go1.23.4 linux/amd64"
-go_tarball: "go1.23.5.linux-amd64.tar.gz"
-go_checksum: "sha256:cbcad4a6482107c7c7926df1608106c189417163428200ce357695cc7e01d091"
+#go_version_target: "go version go1.23.4 linux/amd64"
+#go_tarball: "go1.23.5.linux-amd64.tar.gz"
+#go_checksum: "sha256:cbcad4a6482107c7c7926df1608106c189417163428200ce357695cc7e01d091"
 
 go_apps:
   - github.com/charmbracelet/vhs@latest

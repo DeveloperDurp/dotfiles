@@ -8,7 +8,6 @@
         lazygit
         glab
         oh-my-posh
-        zsh
         fzf
         ripgrep
         rclone
@@ -20,6 +19,23 @@
         helm
         vivid
         stow
+        bitwarden-cli
+        wofi
+        nmap
+        kubectl
+        podman
+        podman-compose
+        podman-desktop
+        helm
+        htop
+        yubikey-manager
+        gimp
+        yazi
+        powershell
+        devpod
+        devpod-desktop
+        nerd-fonts.go-mono
+        libsecret
       ];
     };
   };

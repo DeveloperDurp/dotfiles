@@ -16,10 +16,16 @@
   with_items: "{{ service_files.files }}"
   when: service_files is defined   
 
+
 - name: Combine predefined list and filesystem paths
   set_fact:
-    systemd_service: "{{ systemd_service | union(service_files.files | map(attribute='path') | map('basename')) | unique }}"
-  when: service_files is defined   
+    systemd_service: "{{ systemd_service | default([]) | union(service_files.files | map(attribute='path') | map('basename')) | unique }}"
+  when: service_files is defined
+
+#- name: Combine predefined list and filesystem paths
+#  set_fact:
+#    systemd_service: "{{ systemd_service | union(service_files.files | map(attribute='path') | map('basename')) | unique }}"
+#  when: service_files is defined   
 
 - name: Enable Systemd Services
   ansible.builtin.systemd_service:

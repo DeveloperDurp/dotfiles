@@ -3,7 +3,7 @@ isNotSet() { [ -z "${1}" ]; }
 
 set-cred ()
 {
-  export BW_SESSION="$(bw unlock $(secret-tool lookup drive bitwarden) --raw)"
+  export BW_SESSION="$(bw unlock $(secret-tool lookup token bitwarden) --raw)"
   bw sync
   printf "$(bw get password cli-gitlab)" | secret-tool store --label='Gitlab Token for CLI' 'token' 'GITLAB_TOKEN' 
   printf "$(bw get password cli-ollama-token)" | secret-tool store --label='Ollama Token for CLI' 'token' 'OLLAMA_TOKEN' 

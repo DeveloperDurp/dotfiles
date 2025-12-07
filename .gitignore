@@ -1,3 +1,4 @@
 .config/tmux/plugins
 .idea
 .sentry-native
+.ssh
