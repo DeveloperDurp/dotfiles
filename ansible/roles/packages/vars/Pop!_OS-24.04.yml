@@ -32,6 +32,16 @@ required_packages_apt:
   - qemu-utils 
   - libvirt-daemon 
   - virt-manager
+  - pcscd
+  - libpcsclite-dev
+  - libfido2-1 
+  - libfido2-dev 
+  - libfido2-doc 
+  - fido2-tools
+  - pcsc-tools
+  - libpam-yubico 
+  - yubikey-personalization 
+  - yubikey-manager
   #- htop
   #- curl
   #- xsel
@@ -65,8 +75,6 @@ flatpak_remote:
   - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
 
 required_packages_flatpak:
-  - io.gitlab.librewolf-community
-  - me.proton.Pass
   - me.proton.Mail
   - com.protonvpn.www
   - org.remmina.Remmina
@@ -79,6 +87,7 @@ required_packages_flatpak:
   - fr.handbrake.ghb
   - com.spotify.Client
   - org.signal.Signal
+  - com.yubico.yubioath
 
 #go_version_target: "go version go1.23.4 linux/amd64"
 #go_tarball: "go1.23.5.linux-amd64.tar.gz"
@@ -93,7 +102,9 @@ go_apps:
 
 systemd_service:
   - libvirtd.service
+  - pcscd.service
    
 user_groups:
   - video
   - sudo
+  - ykusers

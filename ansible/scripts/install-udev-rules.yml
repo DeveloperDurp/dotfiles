@@ -8,7 +8,7 @@
 - name: Copy each .service file to systemd directory
   copy:
     src: "{{ item.path }}"
-    dest: "/etc/udev/rules.d" 
+    dest: "/usr/lib/udev/rules.d/" 
     owner: root
     group: root
     mode: '0644'

@@ -6,3 +6,4 @@ window-theme = ghostty
 window-decoration = true
 gtk-tabs-location = hidden
 font-family = "GoMono Nerd Font"
+adw-toast = "false"

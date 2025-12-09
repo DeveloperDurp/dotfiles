@@ -3,7 +3,7 @@
     name: "{{ item.name }}"
     state: present
     flatpakrepo_url: "{{ item.url }}"
-    method: system
+    method: user
   with_items:  "{{ flatpak_remote }}"      
   when: flatpak_remote is defined   
 

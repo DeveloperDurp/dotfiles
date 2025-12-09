@@ -28,7 +28,6 @@
         podman-desktop
         helm
         htop
-        yubikey-manager
         gimp
         yazi
         powershell
@@ -36,6 +35,10 @@
         devpod-desktop
         nerd-fonts.go-mono
         libsecret
+        zenity
+        librewolf
+        libnotify
+        wl-clipboard
       ];
     };
   };

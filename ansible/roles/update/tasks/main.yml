@@ -1,7 +1,18 @@
-- name: Update Pacman
-  community.general.pacman:
-    update_cache: true
-    upgrade: true
+#- name: Update Pacman
+#  community.general.pacman:
+#    update_cache: true
+#    upgrade: true
+
+- name: Upgrade Packages
+  package:
+    update_cache: yes
+    upgrade: safe 
+  become: yes
+
+- name: Update Nix Packages
+  become_user: user
+  shell:
+    cmd: nix-env -iA nixpkgs.myPackages
 
 - name: Update Homebrew and Apps
   become_user: user
@@ -9,16 +20,8 @@
     update_homebrew: true
     upgrade_all: true
 
-- name: Get list of installed Flatpak packages
-  ansible.builtin.command: flatpak list --app --columns=application
-  register: flatpak_list
-  changed_when: false
-
-- name: Remove header line from flatpak_list
-  set_fact:
-    flatpak_list: "{{ flatpak_list.stdout_lines[1:] }}"
-
-- name: Update Flatpak packages
-  community.general.flatpak:
-    name: "{{ flatpak_list }}"
-    state: latest
+- name: Update all Flatpak packages
+  become_user: user
+  ansible.builtin.command: flatpak update -y
+  register: flatpak_update
+  changed_when: "'Nothing to do' not in flatpak_update.stdout"

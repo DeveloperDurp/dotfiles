@@ -1,4 +1,11 @@
-- name: adding existing user '{{ user }}' to group sudo
+- name: Ensure groups exists
+  group:
+    name: '{{ item }}'
+    state: present
+  with_items: "{{ user_groups }}"
+  when: user_groups is defined   
+
+- name: adding existing user '{{ user }}' to groups
   user:
     groups: '{{ item }}'
     name: user

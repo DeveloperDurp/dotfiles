@@ -1,0 +1,4 @@
+- name: Install Nix Packages
+  become_user: user
+  shell:
+    cmd: nix-env -iA nixpkgs.myPackages

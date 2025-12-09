@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-source ~/.config/shell/functions.zsh
+source $HOME/.config/shell/functions.zsh
 
 new() {
 

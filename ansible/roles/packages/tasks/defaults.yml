@@ -1,14 +1,14 @@
 - name: install apt
   include_tasks: "./scripts/install_apt.yml"
 
+- name: install nix
+  include_tasks: "./scripts/install_nix.yml"
+
 - name: install brew
   include_tasks: "./scripts/install_brew.yml"
 
 - name: install pacman
   include_tasks: "./scripts/install_pacman.yml"
-
-  #- name: install go
-  #  include_tasks: "./scripts/install_go.yml"
 
 - name: install go apps
   include_tasks: "./scripts/install_goapps.yml"
