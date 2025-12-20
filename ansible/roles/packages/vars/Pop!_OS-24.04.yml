@@ -22,6 +22,7 @@ required_packages_brew:
   #- ansible
   #- ffmpeg
   #- k9s
+  - helm
 
 required_packages_apt:
   - stow
@@ -42,6 +43,7 @@ required_packages_apt:
   - libpam-yubico 
   - yubikey-personalization 
   - yubikey-manager
+  - distrobox
   #- htop
   #- curl
   #- xsel
@@ -88,6 +90,8 @@ required_packages_flatpak:
   - com.spotify.Client
   - org.signal.Signal
   - com.yubico.yubioath
+  - org.gnome.Calculator
+  - io.gitlab.librewolf-community
 
 #go_version_target: "go version go1.23.4 linux/amd64"
 #go_tarball: "go1.23.5.linux-amd64.tar.gz"

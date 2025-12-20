@@ -70,3 +70,7 @@ ai () {
   set-env
   nvim +CodeCompanionChat -c only
 }
+
+clone () {
+  ~/.config/scripts/clone.sh clone $1 $2
+}

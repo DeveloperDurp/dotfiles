@@ -16,7 +16,6 @@
         zoxide
         bat
         opentofu
-        helm
         vivid
         stow
         bitwarden-cli
@@ -26,19 +25,17 @@
         podman
         podman-compose
         podman-desktop
-        helm
         htop
         gimp
         yazi
         powershell
         devpod
-        devpod-desktop
         nerd-fonts.go-mono
         libsecret
         zenity
-        librewolf
         libnotify
         wl-clipboard
+        dnsutils
       ];
     };
   };
