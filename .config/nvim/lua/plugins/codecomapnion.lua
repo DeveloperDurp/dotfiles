@@ -65,7 +65,7 @@ return {
             name = "ollama",
             schema = {
               model = {
-                default = "mistral:latest",
+                default = "mistral:v0.3",
               },
             },
             env = {

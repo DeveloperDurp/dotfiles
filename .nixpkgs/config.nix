@@ -36,6 +36,7 @@
         libnotify
         wl-clipboard
         dnsutils
+        golangci-lint
       ];
     };
   };

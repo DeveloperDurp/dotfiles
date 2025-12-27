@@ -10,7 +10,7 @@ new() {
    name=$(find "$HOME/Documents/gitlab" -mindepth 2 -maxdepth 2 -type d \
         | awk -F/ '{print $(NF-1)"/"$NF}' \
         | sort \
-        | wofi -dmenu -i -p "New Session" --columns 1)
+        | wofi --dmenu -i -p "New Session" --columns 1)
 
     if [ -z "$name" ]; then
         return
@@ -61,7 +61,7 @@ goland-new() {
    name=$(find "$HOME/Documents/gitlab" -mindepth 2 -maxdepth 2 -type d \
         | awk -F/ '{print $(NF-1)"/"$NF}' \
         | sort \
-        | wofi -dmenu -i -p "New JetBrains Session" --columns 1)
+        | wofi --dmenu -i -p "New JetBrains Session" --columns 1)
 
   if [ -z "$name" ]; then
       return

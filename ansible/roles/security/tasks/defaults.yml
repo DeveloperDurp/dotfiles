@@ -1,0 +1,20 @@
+- name: Configure Security Auto Updates
+  shell:
+    cmd: dpkg-reconfigure -p medium unattended-upgrades
+  become: yes
+  when: ansible_facts["os_family"] == 'Debian'
+
+- name: Check if UFW is installed
+  command: ufw version
+  register: ufw_version
+  ignore_errors: true
+  changed_when: false
+
+- name: Configure UFW
+  shell:
+    cmd: |
+      ufw enable
+      ufw default deny incoming
+      ufw default allow outgoing
+  become: yes
+  when: ufw_version.rc == 0

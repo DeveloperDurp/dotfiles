@@ -1,13 +1,15 @@
-#- name: Update Pacman
-#  community.general.pacman:
-#    update_cache: true
-#    upgrade: true
+- name: Update Pacman
+  community.general.pacman:
+    update_cache: true
+    upgrade: true
+  when: ansible_facts["os_family"] == 'Archlinux'
 
 - name: Upgrade Packages
   package:
     update_cache: yes
     upgrade: safe 
   become: yes
+  when: ansible_facts["os_family"] == 'Debian'
 
 - name: Update Nix Packages
   become_user: user

@@ -4,6 +4,9 @@ export
 run:
 	ansible-playbook ./ansible/local.yml -K
 
+security:
+	ansible-playbook ./ansible/security.yml -K
+
 update:
 	ansible-playbook ./ansible/update.yml -K
 
