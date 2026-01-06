@@ -37,6 +37,7 @@
         wl-clipboard
         dnsutils
         golangci-lint
+        caffeine-ng
       ];
     };
   };

@@ -218,6 +218,7 @@ map <leader>GP <Action>(TUILauncher.glab-ci-view-web)
 let g:WhichKeyDesc_Tools = "<leader>t Tools"
 let g:WhichKeyDesc_Tools_Copilot = "<leader>tc Continue"
 let g:WhichKeyDesc_Tools_Debug = "<leader>td Debug"
+let g:WhichKeyDesc_Tools_Database = "<leader>td Database"
 let g:WhichKeyDesc_Tools_Terminal = "<leader>tt Terminal"
 let g:WhichKeyDesc_tools_mergerequest = "<leader>tm Merge Request"
 let g:WhichKeyDesc_tools_services = "<leader>ts Services"
@@ -234,6 +235,7 @@ map <leader>ts <Action>(ActivateServicesToolWindow)
 map <leader>tk <Action>(TUILauncher.k9s)
 map <leader>ty <Action>(TUILauncher.yazi)
 map <leader>tg <Action>(TUILauncher.lazygit)
+map <leader>tD <Action)(ActivateDatabaseToolWindow)
 
 " Easy visual indentation
 vnoremap < <gv

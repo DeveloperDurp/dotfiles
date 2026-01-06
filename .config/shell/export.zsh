@@ -14,6 +14,8 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=white,bold"
 #eval $(thefuck --alias)
 export GEM_HOME="$HOME/gems"
 export XCURSOR_SIZE=24
+export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/podman/podman.sock
+export TESTCONTAINERS_RYUK_DISABLED=true
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 eval "$(ssh-agent -s)" >> /dev/null
 
@@ -21,3 +23,4 @@ export PATH="$HOME/.local/bin:$HOME/gems/bin:/usr/local/go/bin:$HOME/go/bin:/hom
 export PATH="$HOME/.local/bin/DSC:$PATH"
 
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
