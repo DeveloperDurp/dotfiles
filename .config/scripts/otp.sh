@@ -35,7 +35,7 @@ while IFS= read -r line; do
   keys+=("$key")
 done <<<"$accounts"
 
-selection=$(printf "%s\n" "${keys[@]}" | wofi -dmenu -i -p "New Session" --columns 1)
+selection=$(printf "%s\n" "${keys[@]}" | wofi --dmenu -i -p "New Session" --columns 1)
 
 if [[ $selection == "" ]]; then
   echo "Selection dialog was cancelled."
