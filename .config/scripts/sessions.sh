@@ -82,12 +82,23 @@ goland-new() {
 
   if [[ $dir == *'dotnet'* ]]; then
     /home/user/.local/share/JetBrains/Toolbox/apps/rider/bin/rider $dir &
-  elif [[ $dir == *'go'* ]]; then
-    /home/user/.local/share/JetBrains/Toolbox/scripts/goland $dir &
-  elif [[ $dir == *'devops'* ]]; then
-    /home/user/.local/share/JetBrains/Toolbox/scripts/goland $dir &
+    return
   fi
+
+  /home/user/.local/share/JetBrains/Toolbox/scripts/goland $dir &
   #sleep 1 && /home/user/.local/share/JetBrains/Toolbox/apps/goland/bin/goland $dir &
+  #
+  name=$(basename "$dir")
+  if [[ $name == .* ]]; then
+    name=${name#.}
+  fi
+
+  tmux has-session -t ${name} 2>/dev/null && {
+    tmux switch-client -t ${name}
+    return
+  }
+
+  tmux new-session -d -s "$name" -c "$dir"
 }
 
 switch() {

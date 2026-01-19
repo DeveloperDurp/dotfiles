@@ -27,6 +27,9 @@ required_packages_apt:
   - distrobox
   - unattended-upgrades
   - timeshift
+  - sqlite3
+  - btop
+  - libc++-dev
 
 #apt_keys:
 #  - https://packages.microsoft.com/keys/microsoft.asc

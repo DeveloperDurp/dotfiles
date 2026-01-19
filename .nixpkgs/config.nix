@@ -38,6 +38,7 @@
         dnsutils
         golangci-lint
         caffeine-ng
+        fastfetch
       ];
     };
   };
