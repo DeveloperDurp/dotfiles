@@ -39,6 +39,10 @@
         golangci-lint
         caffeine-ng
         fastfetch
+        timeshift
+        sqlite
+        btop
+        argocd
       ];
     };
   };

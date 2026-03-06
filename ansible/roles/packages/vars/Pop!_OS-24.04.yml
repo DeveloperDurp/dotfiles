@@ -24,12 +24,10 @@ required_packages_apt:
   - libpam-yubico 
   - yubikey-personalization 
   - yubikey-manager
-  - distrobox
   - unattended-upgrades
-  - timeshift
-  - sqlite3
-  - btop
   - libc++-dev
+  - btrfs-progs
+  - steam
 
 #apt_keys:
 #  - https://packages.microsoft.com/keys/microsoft.asc
@@ -57,6 +55,7 @@ required_packages_flatpak:
   - com.yubico.yubioath
   - io.gitlab.librewolf-community
   - com.brave.Browser
+  - com.moonlight_stream.Moonlight
 
 go_apps:
   - github.com/charmbracelet/vhs@latest

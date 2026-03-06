@@ -14,7 +14,7 @@
 - name: Update Nix Packages
   become_user: user
   shell:
-    cmd: nix-env -iA nixpkgs.myPackages
+    cmd: nix-env --upgrade
 
 - name: Update Homebrew and Apps
   become_user: user

@@ -11,76 +11,180 @@ return {
     },
     config = true,
     opts = {
-      strategies = {
-        chat = { adapter = "ollama", model = "mistral:latest" },
+      interactions = {
+        chat = {
+          adapter = {
+            name = "ollama",
+            model = "llama3.1:8b",
+          },
+        },
+        inline = {
+          adapter = {
+            name = "ollama",
+            model = "llama3.1:8b",
+          },
+        },
+        cmd = {
+          adapter = {
+            name = "ollama",
+            model = "llama3.1:8b",
+          },
+        },
       },
       adapters = {
-        opts = {
-          show_defaults = false,
-        },
-        gemini = function()
-          return require("codecompanion.adapters").extend("gemini", {
-            name = "gemini",
-            schema = {
-              model = {
-                default = "gemini-2.0-flash",
-              },
-            },
-            env = {
-              api_key = GEMINI_TOKEN,
-            },
-          })
-        end,
-        anthropic = function()
-          return require("codecompanion.adapters").extend(
-            "anthropic",
-            {
-              name = "anthropic",
-              schema = {
-                model = {
-                  default = "claude-3-haiku-20240307",
+        http = {
+          ollama = function()
+            return require("codecompanion.adapters").extend(
+              "ollama",
+              {
+                env = {
+                  url = "https://ollama.durp.info",
                 },
-              },
-              env = {
-                api_key = ANTHROPIC_TOKEN,
-              },
-            }
-          )
-        end,
-        openai = function()
-          return require("codecompanion.adapters").extend("openai", {
-            name = "openai",
-            schema = {
-              model = {
-                default = "gpt-4o-mini",
-              },
-            },
-            env = {
-              api_key = OPENAI_TOKEN,
-            },
-          })
-        end,
-        ollama = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            name = "ollama",
-            schema = {
-              model = {
-                default = "llama3.1:8b",
-              },
-            },
-            env = {
-              url = "https://ollama.durp.info",
-            },
-            headers = {
-              ["Content-Type"] = "application/json",
-              ["Authorization"] = OLLAMA_TOKEN,
-            },
-            parameters = {
-              sync = true,
-            },
-          })
-        end,
+                headers = {
+                  ["Content-Type"] = "application/json",
+                  ["Authorization"] = OLLAMA_TOKEN,
+                },
+                parameters = {
+                  sync = true,
+                },
+              }
+            )
+          end,
+          anthropic = function()
+            return require("codecompanion.adapters").extend(
+              "anthropic",
+              {
+                --schema = {
+                --  model = {
+                --    default = "claude-3-5-haiku",
+                --  },
+                --},
+                env = {
+                  api_key = "ANTHROPIC_TOKEN",
+                },
+              }
+            )
+          end,
+          gemini = function()
+            return require("codecompanion.adapters").extend(
+              "gemini",
+              {
+                --schema = {
+                --  model = {
+                --    default = "claude-3-5-haiku",
+                --  },
+                --},
+                env = {
+                  api_key = "GEMINI_TOKEN",
+                },
+              }
+            )
+          end,
+          openai = function()
+            return require("codecompanion.adapters").extend(
+              "openai",
+              {
+                --schema = {
+                --  model = {
+                --    default = "claude-3-5-haiku",
+                --  },
+                --},
+                env = {
+                  api_key = "OPENAI_TOKEN",
+                },
+              }
+            )
+          end,
+        },
       },
     },
   },
 }
+
+--adapters = {
+--    http = {
+--      ollama = function()
+--        return require("codecompanion.adapters").extend("ollama", {
+--          env = {
+--            url = "https://ollama.durp.info",
+--            api_key = "OLLAMA_TOKEN",
+--          },
+--          headers = {
+--            ["Content-Type"] = "application/json",
+--            ["Authorization"] = "Bearer ${api_key}",
+--          },
+--          parameters = {
+--            sync = true,
+--          },
+--        })
+--      end,
+--    },
+--  },
+--opts = {
+--  show_defaults = false,
+--},
+--strategies = {
+--  chat = { adapter = "ollama", model = "mistral:latest" },
+--},
+--gemini = function()
+--  return require("codecompanion.adapters").extend("gemini", {
+--    name = "gemini",
+--    schema = {
+--      model = {
+--        default = "gemini-2.0-flash",
+--      },
+--    },
+--    env = {
+--      api_key = GEMINI_TOKEN,
+--    },
+--  })
+--end,
+--anthropic = function()
+--  return require("codecompanion.adapters").extend(
+--    "anthropic",
+--    {
+--      name = "anthropic",
+--      schema = {
+--        model = {
+--          default = "claude-3-haiku-20240307",
+--        },
+--      },
+--      env = {
+--        api_key = ANTHROPIC_TOKEN,
+--      },
+--    }
+--  )
+--end,
+--openai = function()
+--  return require("codecompanion.adapters").extend("openai", {
+--    name = "openai",
+--    schema = {
+--      model = {
+--        default = "gpt-4o-mini",
+--      },
+--    },
+--    env = {
+--      api_key = OPENAI_TOKEN,
+--    },
+--  })
+--end,
+--ollama = function()
+--  return require("codecompanion.adapters").extend("ollama", {
+--    name = "ollama",
+--    schema = {
+--      model = {
+--        default = "llama3.1:8b",
+--      },
+--    },
+--    env = {
+--      url = "https://ollama.durp.info",
+--    },
+--    headers = {
+--      ["Content-Type"] = "application/json",
+--      ["Authorization"] = OLLAMA_TOKEN,
+--    },
+--    parameters = {
+--      sync = true,
+--    },
+--  })
+--end,

@@ -98,7 +98,7 @@ goland-new() {
     return
   }
 
-  tmux new-session -d -s "$name" -c "$dir"
+  tmux new-session -s "$name" -c "$dir"
 }
 
 switch() {
