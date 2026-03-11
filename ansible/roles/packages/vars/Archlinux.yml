@@ -22,7 +22,7 @@ required_packages_pacman:
   - ffmpeg
   - ttyd
   - wl-clipboard
-  - xsel
+  #- xsel
   - pavucontrol
   - wofi
   - swaybg
@@ -79,12 +79,13 @@ required_packages_pacman:
   - smbclient
   - gvfs-smb
   - gvfs
-  - cosmic
+  #- cosmic
   - htop
   - npm
   - ripgrep
   - podman-compose
   - bluez
+  - bluez-utils
   - xsettingsd
   - dnsutils
   - yq
@@ -104,7 +105,7 @@ required_packages_pacman:
   - wakeonlan
   - less
   - blueman
-  - qutebrowser
+  #- qutebrowser
   - python-tldextract
   - python-pyperclip
   - python-adblock
@@ -148,8 +149,8 @@ required_packages_flatpak:
 
 systemd_service:
   - cronie.service
-  - cosmic-greeter.service
-  #- ly.service
+  #- cosmic-greeter.service
+  - ly.service
   - libvirtd.service
   - com.system76.PowerDaemon.service
   - ufw.service
@@ -177,12 +178,12 @@ yay:
   - system76-firmware
   - firmware-manager
   - system76-power
-  - gnome-shell-extension-system76-power-git
+  #- gnome-shell-extension-system76-power-git
   - system76-driver
   - system76-dkms
   - system76-acpi-dkms
   - system76-io-dkms
   - wdisplays
   - bluetuith
-  - steamlink
+  #- steamlink
   #- powershell

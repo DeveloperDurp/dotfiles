@@ -8,6 +8,7 @@ export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 export EDITOR='nvim'
 export GEM_HOME="$HOME/gems"
 export GOBIN=~/go/bin
+export GOPROXY=https://nexus.durp.info/repository/go
 export BAT_THEME="Catppuccin Mocha"
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=white,bold"
