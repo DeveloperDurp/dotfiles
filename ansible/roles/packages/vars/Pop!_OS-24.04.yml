@@ -4,41 +4,66 @@ required_packages_brew:
   - zsh-autosuggestions
   - zsh-history-substring-search
   - helm
+  - anomalyco/tap/opencode
 
 required_packages_apt:
   - stow
   - zsh
   - kitty
   - qemu-kvm
-  - qemu-system 
-  - qemu-utils 
-  - libvirt-daemon 
+  - qemu-system
+  - qemu-utils
+  - libvirt-daemon
   - virt-manager
   - pcscd
   - libpcsclite-dev
-  - libfido2-1 
-  - libfido2-dev 
-  - libfido2-doc 
+  - libfido2-1
+  - libfido2-dev
+  - libfido2-doc
   - fido2-tools
   - pcsc-tools
-  - libpam-yubico 
-  - yubikey-personalization 
+  - libpam-yubico
+  - yubikey-personalization
   - yubikey-manager
   - unattended-upgrades
   - libc++-dev
   - btrfs-progs
   - steam
+  - x11-apps
+  - uidmap
+  - build-essential
+  - zlib1g-dev
+  - graphviz
 
-#apt_keys:
-#  - https://packages.microsoft.com/keys/microsoft.asc
-#apt_repo:
-#  - deb [arch=amd64] https://packages.microsoft.com/ubuntu/22.04/prod jammy main
-#  - deb [arch=amd64 signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com noble main
-#apt_repo_gpg:
-#  - {name: "hashicorp-archive-keyring", url: "https://apt.releases.hashicorp.com/gpg"}
+  # xfce apps
+  - ristretto
+  - thunar
+  # sway
+  #- sway
+  #- wofi
+  #- swaybg
+  #- swayidle
+  #- swaylock
+  #- swayimg
+  #- wdisplays
+  #- blueman
+  #- kanshi
+  #- wlogout
+
+  #apt_keys:
+  #  - https://packages.microsoft.com/keys/microsoft.asc
+  #apt_repo:
+  #  - deb [arch=amd64] https://packages.microsoft.com/ubuntu/22.04/prod jammy main
+  #  - deb [arch=amd64 signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com noble main
+  #apt_repo_gpg:
+  #  - {name: "hashicorp-archive-keyring", url: "https://apt.releases.hashicorp.com/gpg"}
 
 flatpak_remote:
-  - {name: 'flathub', url: "https://dl.flathub.org/repo/flathub.flatpakrepo", method: "user"}
+  - {
+      name: "flathub",
+      url: "https://dl.flathub.org/repo/flathub.flatpakrepo",
+      method: "user",
+    }
 
 required_packages_flatpak:
   - me.proton.Mail
@@ -56,13 +81,16 @@ required_packages_flatpak:
   - io.gitlab.librewolf-community
   - com.brave.Browser
   - com.moonlight_stream.Moonlight
+  - com.discordapp.Discord
+  - com.super_productivity.SuperProductivity
+  - md.obsidian.Obsidian
+  - org.inkscape.Inkscape
 
 go_apps:
   - github.com/charmbracelet/vhs@latest
   - github.com/charmbracelet/glow@latest
   - github.com/swaggo/swag/cmd/swag@latest
   - github.com/air-verse/air@latest
-  - github.com/minio/mc@latest
   - github.com/sqlc-dev/sqlc/cmd/sqlc@latest
   - github.com/pressly/goose/v3/cmd/goose@latest
   - github.com/testcontainers/testcontainers-go
@@ -70,7 +98,7 @@ go_apps:
 systemd_service:
   - libvirtd.service
   - pcscd.service
-   
+
 user_groups:
   - video
   - sudo

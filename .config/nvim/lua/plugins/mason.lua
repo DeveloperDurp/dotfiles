@@ -1,7 +1,7 @@
 return {
   {
     "mason-org/mason.nvim",
-    version = "^1.0.0",
+    --    version = "^1.0.0",
     opts = {
       ensure_installed = {
         --"gopls",
@@ -24,5 +24,5 @@ return {
       },
     },
   },
-  { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
+  --{ "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
 }

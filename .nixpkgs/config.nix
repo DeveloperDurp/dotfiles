@@ -1,4 +1,5 @@
 {
+  allowUnfree = true;
   packageOverrides = pkgs: with pkgs; {
     myPackages = pkgs.buildEnv {
       name = "tools";
@@ -43,6 +44,19 @@
         sqlite
         btop
         argocd
+        nodejs_24
+        minio
+        hugo
+        minikube
+        yq-go
+        jq
+        #swaynotificationcenter
+        #grim
+        #slurp
+        #waybar
+        talosctl
+        awscli
+        vault
       ];
     };
   };

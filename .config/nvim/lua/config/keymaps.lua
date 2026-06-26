@@ -159,3 +159,25 @@ map(
   ":VtrAttachToPane<CR>",
   { noremap = true, silent = true, desc = "Attach to tmux pane" }
 )
+
+-- Markdown Preview
+map(
+  "",
+  "<leader>Ms",
+  ":MarkdownPreview<CR>",
+  { noremap = true, silent = true, desc = "MarkDown Preview Start" }
+)
+
+map(
+  "",
+  "<leader>MS",
+  ":MarkdownPreviewStop<CR>",
+  { noremap = true, silent = true, desc = "MarkDown Preview Stop" }
+)
+
+map(
+  "",
+  "<leader>Mm",
+  ":MarkdownPreviewToggle<CR>",
+  { noremap = true, silent = true, desc = "MarkDown Preview Toggle" }
+)

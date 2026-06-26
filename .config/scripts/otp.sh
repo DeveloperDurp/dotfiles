@@ -42,6 +42,6 @@ if [[ $selection == "" ]]; then
   exit 1
 fi
 
-ykman -d $YUBIKEY_SERIAL oath accounts code $selection -p $password | cut -d' ' -f3 | wl-copy
+ykman -d $YUBIKEY_SERIAL oath accounts code "$selection" -p $password | awk '{print $NF}' | wl-copy
 
 notify-send "copied $selection to Clipboard" -t 5000

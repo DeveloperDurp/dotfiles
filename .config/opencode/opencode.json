@@ -1,0 +1,20 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ollama/gemma4:12b",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/ollama",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://192.168.12.50:11434/v1"
+      },
+      "models": {
+        "gemma4:12b": {
+          "name": "gemma4:12b",
+          "reasoning": true,
+          "tools": true
+        }
+      }
+    }
+  }
+}

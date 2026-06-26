@@ -31,6 +31,7 @@ let g:WhichKey_SortOrder = "by_key_prefix_first"
 
 " NerdTree
 nnoremap <C-n> :NERDTree<CR>
+nnoremap <leader>e :NERDTree<CR>
 
 let g:NERDTreeWinSize=30
 let g:NERDTreeMapPreview=0
