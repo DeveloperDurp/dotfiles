@@ -45,11 +45,17 @@ new() {
 
   tmux new-session -d -s "$name" -c "$dir"
   tmux rename-window -t "$name" "nvim"
+  tmux select-window -t "$name:1"
+  tmux split-window -h -l 33% -c "$dir"
   tmux new-window -t "$name" -n terminal -c "$dir"
-  sleep 1
-  tmux send-keys -t "$name:1" 'tmux set status on; set-env; nvim' C-m
   tmux select-window -t "$name:1"
   tmux switch-client -t "$name"
+  sleep 1
+  tmux send-keys -t "$name:1.2" 'opencode .' C-m
+  tmux select-pane -t "$name:1.2"
+  sleep 2
+  tmux send-keys -t "$name:1.1" 'clear && tmux set status on; set-env; nvim' C-m
+  tmux select-pane -t "$name:1.1"
 }
 
 goland-new() {

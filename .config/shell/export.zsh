@@ -1,7 +1,8 @@
 #export ZSH="$HOME/.oh-my-zsh"
 export DEVPOD_DISABLE_TELEMETRY=true
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export POWERSHELL_TELEMETRY_OPTOUT=1 
+export POWERSHELL_TELEMETRY_OPTOUT=1
+export OMO_DISABLE_POSTHOG=1
 export DOTNET_ROOT="/usr/share/dotnet"
 export PROMPT_EOL_MARK=''
 export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"

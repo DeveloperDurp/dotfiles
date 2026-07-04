@@ -1,37 +1,8 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-
-augroup("go_fmt", { clear = true })
-
-autocmd("FileType", {
-  group = "go_fmt",
-  pattern = "go",
-  callback = function()
-    vim.api.nvim_buf_set_keymap(
-      0,
-      "n",
-      "<leader>F",
-      ":lua FormatGoCurrentLine()<CR>",
-      { noremap = true, silent = true }
-    )
-  end,
-})
-
-function FormatGoCurrentLine()
-  local line = vim.api.nvim_get_current_line()
-  local formatted_line =
-    line:gsub("%(", "(\n"):gsub(",%s*", ",\n"):gsub("%)", ",\n)")
-  formatted_line = formatted_line:gsub(",\n%)", "\n)")
-  local lines = vim.split(formatted_line, "\n")
-  -- Ensure the last parameter has a comma
-  if #lines > 2 and not lines[#lines - 1]:match(",$") then
-    lines[#lines - 1] = lines[#lines - 1] .. ","
-  end
-  vim.api.nvim_buf_set_lines(
-    0,
-    vim.fn.line(".") - 1,
-    vim.fn.line("."),
-    false,
-    lines
-  )
-end
+-- Autocmds are automatically loaded on the VeryLazy event
+-- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+--
+-- Add any additional autocmds here
+-- with `vim.api.nvim_create_autocmd`
+--
+-- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
+-- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
