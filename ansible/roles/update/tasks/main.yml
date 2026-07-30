@@ -27,3 +27,9 @@
   ansible.builtin.command: flatpak update -y
   register: flatpak_update
   changed_when: "'Nothing to do' not in flatpak_update.stdout"
+
+- name: Update all Flatpak packages user
+  become_user: user
+  ansible.builtin.command: flatpak update --user -y
+  register: flatpak_update_user
+  changed_when: "'Nothing to do' not in flatpak_update.stdout"

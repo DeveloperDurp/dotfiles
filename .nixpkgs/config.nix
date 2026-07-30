@@ -24,7 +24,7 @@
         nmap
         kubectl
         podman
-        podman-compose
+        #podman-compose
         podman-desktop
         htop
         gimp

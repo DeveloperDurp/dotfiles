@@ -4,15 +4,34 @@
   "model": "deepseek-v4-flash",
   "provider": {
     "ollama": {
-      "npm": "@ai-sdk/ollama",
-      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "api": "https://ollama.durp.info/v1",
       "options": {
-        "baseURL": "http://192.168.12.50:11434/v1"
+        "baseURL": "https://ollama.durp.info/v1",
+        "timeout": 240000,
+        "headers": {
+          "Authorization": "Basic bHVrcml0ejpZeWNEdXhRUUptTjd1V1BMaERjeWplSkFVTlljenM="
+        }
       },
       "models": {
+        "qwen2.5-coder:7b": {
+          "name": "qwen2.5-coder:7b-128k",
+          "reasoning": false,
+          "tools": true
+        },
+        "gemma4:e4b": {
+          "name": "gemma4:e4b",
+          "reasoning": false,
+          "tools": true
+        },
+        "gemma4-64k:latest": {
+          "name": "gemma4-64k:latest",
+          "reasoning": false,
+          "tools": true
+        },
         "gemma4:12b": {
           "name": "gemma4:12b",
-          "reasoning": true,
+          "reasoning": false,
           "tools": true
         }
       }
