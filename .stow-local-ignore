@@ -10,3 +10,4 @@ install.sh
 .omo
 .codegraph
 AGENTS.md
+.opencode/node_modules
