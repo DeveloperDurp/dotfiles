@@ -2,4 +2,8 @@
 .idea
 .sentry-native
 .ssh
-.omo/
+.omo/codegraph
+.omo/lsp-daemon
+.omo/migration-backup-2026-08-08T17-24-36-698Z-opencode-config/.dotfiles/.config/opencode
+.omo/run-continuation
+.omo/runtime/ast-grep/linux-x64
