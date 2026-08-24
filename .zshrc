@@ -43,7 +43,7 @@ if command -v tmux &> /dev/null && [[ "$TERM_PROGRAM" == "Jetbrains.Fleet" ]]  &
     #fi
 fi
 
-if command -v tmux &> /dev/null && [[ ! "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+if command -v tmux &> /dev/null && [[ "$HERDR_ENV" != "1" ]] && [[ ! "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     session_name="general"
 
     if tmux has-session -t $session_name; then
