@@ -8,9 +8,9 @@
     },
     "agents": {
       "sisyphus": {
-        "model": "openai/gpt-5.6-terra",
+        "model": "openai/gpt-5.6-sol",
         "compaction": {
-          "model": "openai/gpt-5.6-luna"
+          "model": "openai/gpt-5.6-terra"
         },
         "permission": {
           "doom_loop": "deny"
@@ -31,18 +31,13 @@
         "maxTokens": 4000,
         "fallback_models": [
           {
-            "model": "openai/gpt-5.6-terra"
+            "model": "openai/gpt-5.4-mini"
           }
         ]
       },
       "explore": {
-        "model": "openai/gpt-5.3-codex-spark",
-        "maxTokens": 4000,
-        "fallback_models": [
-          {
-            "model": "openai/gpt-5.6-luna"
-          }
-        ]
+        "model": "openai/gpt-5.6-luna",
+        "maxTokens": 4000
       },
       "multimodal-looker": {
         "model": "openai/gpt-5.6-terra",
@@ -65,7 +60,7 @@
         "maxTokens": 4000,
         "fallback_models": [
           {
-            "model": "openai/gpt-5.6-terra"
+            "model": "openai/gpt-5.4-mini"
           }
         ]
       },
@@ -80,7 +75,7 @@
         "maxTokens": 4000
       },
       "sisyphus-junior": {
-        "model": "openai/gpt-5.3-codex-spark",
+        "model": "openai/gpt-5.6-luna",
         "compaction": {
           "model": "openai/gpt-5.6-luna"
         },
@@ -90,27 +85,27 @@
         "maxTokens": 4000,
         "fallback_models": [
           {
-            "model": "openai/gpt-5.6-luna"
+            "model": "openai/gpt-5.4-mini"
           }
         ]
       }
     },
     "categories": {
       "visual-engineering": {
-        "model": "openai/gpt-5.6-terra"
+        "model": "openai/gpt-5.6-sol"
       },
       "ultrabrain": {
-        "model": "openai/gpt-5.6-terra"
+        "model": "openai/gpt-5.6-sol"
       },
       "deep": {
-        "model": "openai/gpt-5.6-terra"
+        "model": "openai/gpt-5.6-sol"
       },
       "artistry": {
         "model": "openai/gpt-5.6-terra"
       },
       "quick": {
         "models": [
-          "openai/gpt-5.3-codex-spark",
+          "openai/gpt-4o-mini",
           {
             "model": "openai/gpt-5.6-luna"
           }

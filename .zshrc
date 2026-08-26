@@ -17,33 +17,7 @@ for conf in "$HOME/.config/shell/"*.zsh; do
 done
 unset conf
 
-if command -v tmux &> /dev/null && [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    #cwd=$(pwd)
-    #session_name="zJediTerm-$(basename "$cwd" | tr -d '.')"
-
-    #if tmux has-session -t $session_name; then
-    #    tmux attach -t $session_name
-    #else
-    #    tmux new-session -s $session_name -c $cwd -d
-    #    tmux send-keys -t $session_name "tmux set-option status off;clear" Enter
-    #    tmux attach -t $session_name
-    #fi
-fi
-
-if command -v tmux &> /dev/null && [[ "$TERM_PROGRAM" == "Jetbrains.Fleet" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    #cwd=$(pwd)
-    #session_name="zJediTerm-$(basename "$cwd" | tr -d '.')"
-
-    #if tmux has-session -t $session_name; then
-    #    tmux attach -t $session_name
-    #else
-    #    tmux new-session -s $session_name -c $cwd -d
-    #    tmux send-keys -t $session_name "tmux set-option status off;clear" Enter
-    #    tmux attach -t $session_name
-    #fi
-fi
-
-if command -v tmux &> /dev/null && [[ "$HERDR_ENV" != "1" ]] && [[ ! "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+if command -v tmux &> /dev/null && [[ "$OPENCODE_TERMINAL" != 1 ]] && [[ "$HERDR_ENV" != "1" ]] && [[ ! "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     session_name="general"
 
     if tmux has-session -t $session_name; then

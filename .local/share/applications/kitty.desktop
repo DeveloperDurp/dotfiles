@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Kitty
+Comment=Fast, feature-rich, GPU based terminal
+Exec=/home/linuxbrew/.linuxbrew/bin/kitty
+Icon=kitty
+Terminal=false
+Categories=System;TerminalEmulator;
+StartupWMClass=kitty
