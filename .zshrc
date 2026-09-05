@@ -17,7 +17,7 @@ for conf in "$HOME/.config/shell/"*.zsh; do
 done
 unset conf
 
-if command -v tmux &> /dev/null && [[ "$OPENCODE_TERMINAL" != 1 ]] && [[ "$HERDR_ENV" != "1" ]] && [[ ! "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+if command -v tmux &> /dev/null && [[ "$CODEX_SHELL" != 1 ]] && [[ "$OPENCODE_TERMINAL" != 1 ]] && [[ "$HERDR_ENV" != "1" ]] && [[ ! "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]  && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     session_name="general"
 
     if tmux has-session -t $session_name; then
@@ -114,3 +114,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by sonarqube-cli installer
+export PATH="$HOME/.local/share/sonarqube-cli/bin:$PATH"

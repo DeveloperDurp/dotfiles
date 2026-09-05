@@ -9,5 +9,5 @@ DesktopAnsible
 install.sh
 .omo
 .codegraph
-AGENTS.md
+^/AGENTS\.md$
 .opencode/node_modules
