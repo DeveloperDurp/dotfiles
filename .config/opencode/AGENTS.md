@@ -58,6 +58,8 @@ every sibling caller still broken. Fix it once, where all callers route through.
 - Ask before installing anything or taking irreversible actions, publishing,
   deploying, deleting data, or changing shared infrastructure.
 - Do not modify unrelated code. Report unrelated issues separately.
+- Do not commit code unless explicitly asked
+- All tests should either be inside the code or through bash/powershell scripts. Using Javascript for tests is a sin
 
 ## Verification
 

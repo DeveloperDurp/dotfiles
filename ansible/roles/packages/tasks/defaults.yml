@@ -10,6 +10,9 @@
 - name: install pacman
   include_tasks: "./scripts/install_pacman.yml"
 
+- name: install dnf
+  include_tasks: "./scripts/install_dnf.yml"
+
 - name: install go apps
   include_tasks: "./scripts/install_goapps.yml"
 

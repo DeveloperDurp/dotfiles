@@ -1,0 +1,119 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/refs/heads/dev/assets/omo.schema.json",
+  "[opencode]": {
+    "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/refs/heads/dev/assets/oh-my-opencode.schema.json",
+    "telemetry": false,
+    "team_mode": {
+      "enabled": true,
+      "max_parallel_members": 4,
+      "max_members": 8,
+      "tmux_visualization": false
+    },
+    "agents": {
+      "sisyphus": {
+        "model": "opencode-go/mimo-v2.5",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        },
+        "permission": {
+          "doom_loop": "deny"
+        }
+      },
+      "oracle": {
+        "model": "opencode-go/glm-5.2",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        }
+      },
+      "librarian": {
+        "model": "opencode-go/mimo-v2.5",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        }
+      },
+      "explore": {
+        "model": "opencode-go/mimo-v2.5",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        }
+      },
+      "multimodal-looker": {
+        "model": "opencode-go/mimo-v2.5",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        }
+      },
+      "prometheus": {
+        "model": "opencode-go/glm-5.2",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        }
+      },
+      "metis": {
+        "model": "opencode-go/glm-5.2",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        }
+      },
+      "momus": {
+        "model": "opencode-go/glm-5.2",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        }
+      },
+      "atlas": {
+        "model": "opencode-go/mimo-v2.5",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        }
+      },
+      "hephaestus": {
+        "model": "opencode-go/minimax-m3",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        }
+        "permission": {
+          "doom_loop": "deny"
+        },
+      },
+      "sisyphus-junior": {
+        "model": "opencode-go/minimax-m3",
+        "compaction": {
+          "model": "opencode-go/mimo-v2.5"
+        },
+        "permission": {
+          "doom_loop": "deny"
+        }
+      }
+    },
+    "categories": {
+      "visual-engineering": {
+        "model": "opencode-go/minimax-m3"
+      },
+      "ultrabrain": {
+        "model": "opencode-go/minimax-m3"
+      },
+      "deep": {
+        "model": "opencode-go/minimax-m3"
+      },
+      "artistry": {
+        "model": "opencode-go/minimax-m3"
+      },
+      "quick": {
+        "model": "opencode-go/mimo-v2.5"
+      },
+      "unspecified-low": {
+        "model": "opencode-go/minimax-m3"
+      },
+      "unspecified-high": {
+        "model": "opencode-go/glm-5.2"
+      },
+      "writing": {
+        "model": "opencode-go/mimo-v2.5"
+      }
+    }
+  },
+  "_migrations": [
+    "2026-08-reasoning-unification"
+  ]
+}

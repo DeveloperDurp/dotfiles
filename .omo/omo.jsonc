@@ -11,116 +11,100 @@
     },
     "agents": {
       "sisyphus": {
-        "model": "opencode-go/minimax-m3",
+        "model": "openai/gpt-5.6-luna",
+        "variant": "xhigh",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "openai/gpt-5.6-luna"
         },
         "permission": {
           "doom_loop": "deny"
-        },
-        "maxTokens": 4000
+        }
       },
       "oracle": {
-        "model": "opencode-go/glm-5.2",
-        "compaction": {
-          "model": "opencode-go/mimo-v2.5"
-        },
-        "maxTokens": 4000
+        "model": "openai/gpt-5.6-sol",
+        "variant": "high"
       },
       "librarian": {
-        "model": "opencode-go/mimo-v2.5",
-        "compaction": {
-          "model": "opencode-go/mimo-v2.5"
-        },
-        "maxTokens": 4000
+        "model": "openai/gpt-5.6-luna",
+        "variant": "low"
       },
       "explore": {
-        "model": "opencode-go/mimo-v2.5",
-        "compaction": {
-          "model": "opencode-go/mimo-v2.5"
-        },
-        "maxTokens": 4000
+        "model": "openai/gpt-5.6-luna",
+        "variant": "low"
       },
       "multimodal-looker": {
-        "model": "opencode-go/kimi-k2.7-code",
-        "compaction": {
-          "model": "opencode-go/mimo-v2.5"
-        },
-        "maxTokens": 2000
+        "model": "openai/gpt-5.6-luna",
+        "variant": "medium"
       },
       "prometheus": {
-        "model": "opencode-go/glm-5.2",
-        "compaction": {
-          "model": "opencode-go/mimo-v2.5"
-        },
-        "maxTokens": 4000
+        "model": "openai/gpt-5.6-sol",
+        "variant": "high"
       },
       "metis": {
-        "model": "opencode-go/glm-5.2",
-        "compaction": {
-          "model": "opencode-go/mimo-v2.5"
-        },
-        "maxTokens": 4000
+        "model": "openai/gpt-5.6-sol",
+        "variant": "high"
       },
       "momus": {
-        "model": "opencode-go/glm-5.2",
-        "compaction": {
-          "model": "opencode-go/mimo-v2.5"
-        },
-        "maxTokens": 4000
+        "model": "openai/gpt-5.6-sol",
+        "variant": "high"
       },
       "atlas": {
-        "model": "opencode-go/mimo-v2.5",
-        "compaction": {
-          "model": "opencode-go/mimo-v2.5"
-        },
-        "maxTokens": 4000
+        "model": "openai/gpt-5.6-luna",
+        "variant": "low"
       },
       "hephaestus": {
-        "model": "opencode-go/kimi-k2.7-code",
+        "model": "openai/gpt-5.6-luna",
+        "variant": "max",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "openai/gpt-5.6-luna"
         },
         "permission": {
           "doom_loop": "deny"
-        },
-        "maxTokens": 4000
+        }
       },
       "sisyphus-junior": {
-        "model": "opencode-go/kimi-k2.7-code",
+        "model": "openai/gpt-5.6-luna",
+        "variant": "low",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "openai/gpt-5.6-luna"
         },
         "permission": {
           "doom_loop": "deny"
-        },
-        "maxTokens": 4000
+        }
       }
     },
     "categories": {
       "visual-engineering": {
-        "model": "opencode-go/glm-5.2"
+        "model": "openai/gpt-5.6-sol",
+        "variant": "high"
       },
       "ultrabrain": {
-        "model": "opencode-go/kimi-k2.7-code"
+        "model": "openai/gpt-5.6-sol",
+        "variant": "high"
       },
       "deep": {
-        "model": "opencode-go/kimi-k2.7-code"
+        "model": "openai/gpt-5.6-sol",
+        "variant": "high"
       },
       "artistry": {
-        "model": "opencode-go/kimi-k2.7-code"
+        "model": "openai/gpt-5.6-sol",
+        "variant": "high"
       },
       "quick": {
-        "model": "opencode-go/mimo-v2.5"
+        "model": "openai/gpt-5.6-luna",
+        "variant": "low"
       },
       "unspecified-low": {
-        "model": "opencode-go/mimo-v2.5"
+        "model": "openai/gpt-5.6-luna",
+        "variant": "low"
       },
       "unspecified-high": {
-        "model": "opencode-go/kimi-k2.7-code"
+        "model": "openai/gpt-5.6-luna",
+        "variant": "max"
       },
       "writing": {
-        "model": "opencode-go/qwen3.7-plus"
+        "model": "openai/gpt-5.6-luna",
+        "variant": "medium"
       }
     }
   },

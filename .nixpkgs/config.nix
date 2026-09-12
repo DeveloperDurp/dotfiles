@@ -23,9 +23,9 @@
         wofi
         nmap
         kubectl
-        podman
+        #podman
         #podman-compose
-        podman-desktop
+        #podman-desktop
         htop
         gimp
         yazi
