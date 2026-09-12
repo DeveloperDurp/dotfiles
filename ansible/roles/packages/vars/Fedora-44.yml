@@ -1,9 +1,9 @@
-install_homebrew_if_missing: true
+install_homebrew_if_missing: false
 
-required_packages_brew:
-  - zsh-autosuggestions
-  - zsh-history-substring-search
-  - oh-my-posh
+#required_packages_brew:
+#  - zsh-autosuggestions
+#  - zsh-history-substring-search
+#  - oh-my-posh
 
 required_packages_dnf:
   - stow
