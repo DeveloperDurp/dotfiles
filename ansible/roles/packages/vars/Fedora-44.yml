@@ -20,35 +20,6 @@ required_packages_dnf:
   - libfido2-devel
   - yubikey-manager
   - yubikey-personalization
-  - unattended-upgrades
-  - btrfs-progs
-  - steam
-  - x11-apps
-  - uidmap
-  - make
-  - gcc
-  - zlib-devel
-  - graphviz
-
-  # sway
-  - sway
-  - waybar
-  - wofi
-  - swaybg
-  - swayidle
-  - swaylock
-  - swayimg
-  - wl-clipboard
-  - grim
-  - slurp
-  - xdg-desktop-portal-wlr
-  - xdg-desktop-portal-gtk
-  - pavucontrol
-  - blueman
-  - kanshi
-  - wlogout
-  - swaync
-  - brightnessctl
 
   # core tools
   - neovim
@@ -72,26 +43,8 @@ required_packages_dnf:
   - htop
   - yazi
   - gimp
-  - file-roller
-  - nautilus
-  - remmina
-  - freerdp
-  - traceroute
   - dnsutils
-  - smbclient
-  - gvfs-smb
-  - gvfs
-  - bluez
-  - bluez-utils
-  - network-manager-applet
   - openssh
-  - tlp
-  - powertop
-
-  # fonts
-  - google-noto-sans-fonts
-  - google-noto-serif-fonts
-  - google-noto-mono-fonts
 
   # development
   - golang
@@ -102,13 +55,6 @@ required_packages_dnf:
   - git
 
   # system
-  - ufw
-  - cronie
-  - polkit
-  - xsettingsd
-  - flatpak
-  - gnome-calculator
-  - gnome-disk-utility
 
 flatpak_remote:
   - {
@@ -120,23 +66,14 @@ flatpak_remote:
 required_packages_flatpak:
   - me.proton.Mail
   - com.protonvpn.www
-  - org.remmina.Remmina
   - com.github.tchx84.Flatseal
   - com.vscodium.codium
   - org.chromium.Chromium
-  - com.parsecgaming.parsec
   - org.videolan.VLC
   - fr.handbrake.ghb
-  - com.spotify.Client
   - org.signal.Signal
   - com.yubico.yubioath
-  - io.gitlab.librewolf-community
-  - com.brave.Browser
-  - com.moonlight_stream.Moonlight
   - com.discordapp.Discord
-  - com.super_productivity.SuperProductivity
-  - md.obsidian.Obsidian
-  - org.inkscape.Inkscape
 
 go_apps:
   - github.com/charmbracelet/vhs@latest
@@ -147,15 +84,15 @@ go_apps:
   - github.com/pressly/goose/v3/cmd/goose@latest
   - github.com/testcontainers/testcontainers-go
 
-systemd_service:
-  - libvirtd.service
-  - pcscd.service
-  - ufw.service
-  - podman.socket
-  - cronie.service
+#systemd_service:
+#  - libvirtd.service
+#  - pcscd.service
+#  - ufw.service
+#  - podman.socket
+#  - cronie.service
 
-user_groups:
-  - video
-  - sudo
-  - libvirt
-  - ykusers
+#user_groups:
+#  - video
+#  - sudo
+#  - libvirt
+#  - ykusers
