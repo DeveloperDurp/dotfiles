@@ -61,14 +61,14 @@ required_packages_flatpak:
   - com.yubico.yubioath
   - com.discordapp.Discord
 
-go_apps:
-  - github.com/charmbracelet/vhs@latest
-  - github.com/charmbracelet/glow@latest
-  - github.com/swaggo/swag/cmd/swag@latest
-  - github.com/air-verse/air@latest
-  - github.com/sqlc-dev/sqlc/cmd/sqlc@latest
-  - github.com/pressly/goose/v3/cmd/goose@latest
-  - github.com/testcontainers/testcontainers-go@latest
+#go_apps:
+#  - github.com/charmbracelet/vhs@latest
+#  - github.com/charmbracelet/glow@latest
+#  - github.com/swaggo/swag/cmd/swag@latest
+#  - github.com/air-verse/air@latest
+#  - github.com/sqlc-dev/sqlc/cmd/sqlc@latest
+#  - github.com/pressly/goose/v3/cmd/goose@latest
+#  - github.com/testcontainers/testcontainers-go@latest
 
 #systemd_service:
 #  - libvirtd.service
