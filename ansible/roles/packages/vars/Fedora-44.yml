@@ -9,30 +9,17 @@ required_packages_dnf:
   - stow
   - zsh
   - kitty
-  - qemu-kvm
-  - qemu-system-x86
-  - qemu-utils
-  - libvirt-daemon
-  - virt-manager
-  - pcscd
-  - pcsclite-devel
-  - libfido2
-  - libfido2-devel
-  - yubikey-manager
-  - yubikey-personalization
 
   # core tools
   - neovim
   - tmux
   - fzf
   - zoxide
-  - lazygit
   - eza
   - bat
   - wget
   - curl
   - nmap
-  - kubectl
   - podman
   - podman-compose
   - helm
@@ -41,7 +28,6 @@ required_packages_dnf:
   - jq
   - k9s
   - htop
-  - yazi
   - gimp
   - dnsutils
   - openssh
