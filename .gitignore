@@ -27,3 +27,5 @@
 /.codex/thread*
 /.config/nvim/lazy-lock.json
 /.config/nvim/lazyvim.json
+/.omo/lsp-daemon/v0.1.0
+/.omo/codegraph

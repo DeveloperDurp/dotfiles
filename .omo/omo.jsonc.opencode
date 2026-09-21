@@ -11,9 +11,9 @@
     },
     "agents": {
       "sisyphus": {
-        "model": "opencode-go/mimo-v2.5",
+        "model": "opencode-go/glm-5.3-flash",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         },
         "permission": {
           "doom_loop": "deny"
@@ -22,55 +22,55 @@
       "oracle": {
         "model": "opencode-go/glm-5.2",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         }
       },
       "librarian": {
-        "model": "opencode-go/mimo-v2.5",
+        "model": "opencode-go/glm-5.3-flash",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         }
       },
       "explore": {
-        "model": "opencode-go/mimo-v2.5",
+        "model": "opencode-go/glm-5.3-flash",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         }
       },
       "multimodal-looker": {
-        "model": "opencode-go/mimo-v2.5",
+        "model": "opencode-go/glm-5.3-flash",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         }
       },
       "prometheus": {
         "model": "opencode-go/glm-5.2",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         }
       },
       "metis": {
         "model": "opencode-go/glm-5.2",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         }
       },
       "momus": {
         "model": "opencode-go/glm-5.2",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         }
       },
       "atlas": {
-        "model": "opencode-go/mimo-v2.5",
+        "model": "opencode-go/glm-5.3-flash",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         }
       },
       "hephaestus": {
         "model": "opencode-go/minimax-m3",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         }
         "permission": {
           "doom_loop": "deny"
@@ -79,7 +79,7 @@
       "sisyphus-junior": {
         "model": "opencode-go/minimax-m3",
         "compaction": {
-          "model": "opencode-go/mimo-v2.5"
+          "model": "opencode-go/glm-5.3-flash"
         },
         "permission": {
           "doom_loop": "deny"
@@ -100,7 +100,7 @@
         "model": "opencode-go/minimax-m3"
       },
       "quick": {
-        "model": "opencode-go/mimo-v2.5"
+        "model": "opencode-go/glm-5.3-flash"
       },
       "unspecified-low": {
         "model": "opencode-go/minimax-m3"
@@ -109,7 +109,7 @@
         "model": "opencode-go/glm-5.2"
       },
       "writing": {
-        "model": "opencode-go/mimo-v2.5"
+        "model": "opencode-go/glm-5.3-flash"
       }
     }
   },
