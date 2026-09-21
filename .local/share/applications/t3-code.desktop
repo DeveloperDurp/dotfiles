@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=T3 Code (Alpha)
+Comment=T3 Code desktop build
+Exec=/home/user/.local/opt/t3-code/t3-code.AppImage --no-sandbox %U
+Icon=t3code
+Terminal=false
+Type=Application
+StartupWMClass=t3code
+Categories=Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;

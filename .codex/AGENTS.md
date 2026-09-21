@@ -58,7 +58,6 @@ every sibling caller still broken. Fix it once, where all callers route through.
 - Ask before installing anything or taking irreversible actions, publishing,
   deploying, deleting data, or changing shared infrastructure.
 - Do not modify unrelated code. Report unrelated issues separately.
-- Do not commit code unless explicitly asked
 
 ## Verification
 
@@ -78,11 +77,14 @@ better. Climb only as far as the risk requires:
    justifies its runtime. Do not default to checks that take hours when a
    focused test can provide the same confidence.
 
-Stop when the evidence is strong enough for the change. Every test has a
-maintenance and execution cost; do not add redundant cases for coverage
-numbers. Reserve slow suites for changes whose risk cannot be covered narrowly,
-or when the user explicitly requests them. Never delete or weaken a failing
-test to make a change pass. If verification cannot run, state exactly why.
+Tests are code and carry maintenance and execution costs. Prefer the smallest
+set of high-signal tests that protects distinct behavior or a plausible
+regression. Do not add tests merely to increase coverage, enumerate equivalent
+inputs, mirror implementation details, or duplicate behavior already protected
+at the same boundary. Stop when the meaningful risks are covered.
+
+Never delete or weaken a failing test merely to make a change pass. If
+verification cannot run, state exactly why.
 
 ## Output
 

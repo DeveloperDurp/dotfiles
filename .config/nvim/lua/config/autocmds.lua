@@ -18,5 +18,5 @@ vim.api.nvim_create_augroup("DisableMarkdownDiagnostics", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   group = "DisableMarkdownDiagnostics",
   pattern = "markdown",
-  callback = function() vim.diagnostic.disable(0) end,
+  callback = function() vim.diagnostic.enable(false, { bufnr = 0 }) end,
 })

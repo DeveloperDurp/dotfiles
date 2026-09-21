@@ -7,17 +7,6 @@ inventory
 .gitignore
 DesktopAnsible
 install.sh
-.omo/runtime
-.omo/codegraph
-.omo/lsp-daemon
-.omo/teams
-.omo/worktrees
-.omo/run-continuation
-.omo/migration-backup-.*
-.omo/omo\.jsonc\.bak\..*
-.omo/omo\.jsonc\.openai
-.omo/ulw-research
-.omo/config\.jsonc
 .codegraph
 ^/AGENTS\.md$
 .opencode/node_modules

@@ -1,12 +1,16 @@
 - name: set default network
   shell: "{{ item }}"
-  with_items: 
+  with_items:
     - "virsh net-start default"
     - "virsh net-autostart default"
   ignore_errors: yes
 
+- name: Get all groups
+  getent:
+    database: group
+
 - name: add user to libvirt
-  user: 
+  user:
     name: user
-    groups: libvirt,libvirt-qemu,kvm,input,disk
+    groups: "{{ ['libvirt', 'libvirt-qemu', 'kvm', 'input', 'disk'] | intersect(ansible_facts.getent_group.keys() | list) | join(',') }}"
     append: yes

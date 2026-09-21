@@ -1,0 +1,21 @@
+- name: Check if MakeMKV flatpak is installed
+  become_user: "{{ USER }}"
+  command: flatpak info com.makemkv.MakeMKV
+  register: makemkv_info
+  failed_when: false
+  changed_when: false
+
+- name: Check current MakeMKV flatpak device overrides
+  become_user: "{{ USER }}"
+  command: flatpak override --user --show com.makemkv.MakeMKV
+  register: makemkv_overrides
+  failed_when: false
+  changed_when: false
+  when: makemkv_info.rc == 0
+
+- name: Grant MakeMKV flatpak access to host devices (optical/SCSI)
+  become_user: "{{ USER }}"
+  command: flatpak override --user --device=all com.makemkv.MakeMKV
+  when:
+    - makemkv_info.rc == 0
+    - "'devices=all' not in makemkv_overrides.stdout"

@@ -1,6 +1,53 @@
 {
-  "plugin": [
-    "oh-my-openagent@latest"
-  ],
-  "$schema": "https://opencode.ai/config.json"
+  "plugin": ["oh-my-openagent@latest"],
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "durpot",
+  "model": "opencode-go/minimax-m3",
+  "small_model": "opencode-go/mimo-v2.5",
+
+  // Categories used by task() delegation. Same shape oh-my-openagent used.
+  "categories": {
+    "quick":              { "model": "opencode-go/mimo-v2.5" },
+    "unspecified-low":    { "model": "opencode-go/mimo-v2.5" },
+    "unspecified-high":   { "model": "opencode-go/kimi-k2.7-code" },
+    "deep":               { "model": "opencode-go/kimi-k2.7-code" },
+    "artistry":           { "model": "opencode-go/kimi-k2.7-code" },
+    "ultrabrain":         { "model": "opencode-go/kimi-k2.7-code" },
+    "visual-engineering": { "model": "opencode-go/glm-5.2" },
+    "writing":            { "model": "opencode-go/qwen3.7-plus" }
+  },
+
+  // Permissions: only allow read-only inspection; everything else asks the user.
+  // Per-agent overrides live in agent/<name>.md.
+  // opencode evaluates LAST matching rule, so broad rules first, narrow last.
+  "permission": {
+    "doom_loop": "deny",
+    "bash": {
+      "*": "ask",
+      "ls": "allow", "ls *": "allow",
+      "cat": "allow", "cat *": "allow",
+      "rg": "allow", "rg *": "allow",
+      "stat": "allow", "stat *": "allow",
+      "file": "allow", "file *": "allow",
+      "git status": "allow", "git status*": "allow",
+      "git log": "allow", "git log*": "allow",
+      "git diff": "allow", "git diff*": "allow",
+      "git show": "allow", "git show*": "allow",
+      "git stash list": "allow"
+    },
+    "edit": "ask",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "external_directory": {
+      "**": "ask",
+      "~/.dotfiles/**": "allow",
+      "~/.config/**": "allow",
+      "~/.local/share/applications/**": "allow"
+    }
+  },
+
+  "compaction": {
+    "auto": true,
+    "tail_turns": 15
+  }
 }

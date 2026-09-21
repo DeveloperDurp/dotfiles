@@ -1,9 +1,24 @@
-install_homebrew_if_missing: false
+install_homebrew_if_missing: true
 
-#required_packages_brew:
-#  - zsh-autosuggestions
-#  - zsh-history-substring-search
-#  - oh-my-posh
+required_packages_brew:
+  - zsh-autosuggestions
+  - zsh-history-substring-search
+  - oh-my-posh
+  - vivid
+  - lazygit
+  - glab
+  - kubectl
+  - yazi
+  - powershell
+  - minio
+  - minikube
+  - vault-cli
+  - bitwarden-cli
+  - argocd
+  - talosctl
+  - codex
+  - gh
+  - bun
 
 required_packages_dnf:
   - stow
@@ -31,6 +46,20 @@ required_packages_dnf:
   - gimp
   - dnsutils
   - openssh
+  - rclone
+  - opentofu
+  - wofi
+  - libsecret
+  - zenity
+  - libnotify
+  - wl-clipboard
+  - golangci-lint
+  - fastfetch
+  - timeshift
+  - sqlite
+  - btop
+  - ykman
+  - hugo
 
   # development
   - golang
@@ -39,14 +68,19 @@ required_packages_dnf:
   - python3
   - python3-pip
   - git
+  - podman
 
   # system
+  - '@virtualization'
+  
+  # Gaming
+  - steam
 
 flatpak_remote:
   - {
       name: "flathub",
       url: "https://dl.flathub.org/repo/flathub.flatpakrepo",
-      method: "user",
+      method: "system",
     }
 
 required_packages_flatpak:
@@ -60,6 +94,7 @@ required_packages_flatpak:
   - org.signal.Signal
   - com.yubico.yubioath
   - com.discordapp.Discord
+  - com.makemkv.MakeMKV
 
 #go_apps:
 #  - github.com/charmbracelet/vhs@latest
@@ -69,12 +104,13 @@ required_packages_flatpak:
 #  - github.com/sqlc-dev/sqlc/cmd/sqlc@latest
 #  - github.com/pressly/goose/v3/cmd/goose@latest
 #  - github.com/testcontainers/testcontainers-go@latest
+#  - github.com/golangci/golines@latest
 
-#systemd_service:
-#  - libvirtd.service
+systemd_service:
+  - libvirtd.service
 #  - pcscd.service
 #  - ufw.service
-#  - podman.socket
+  - podman.socket
 #  - cronie.service
 
 #user_groups:

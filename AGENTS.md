@@ -8,11 +8,15 @@ Personal config repo. Source of truth for `~/` via GNU Stow + Ansible provisioni
 2. Re-stow: `stow --adopt .` (existing files get adopted into the repo, **then `git reset --hard` to drop unintended adoptions**)
 3. Source the relevant file (`.bashrc`, `.zshrc`, restart app, etc.)
 
-`.stow-local-ignore` lists what stow skips: `ansible/`, `Makefile`, `.env`, `.git`, `.gitmodules`, `.gitignore`, `install.sh`, `DesktopAnsible` (stale submodule), `.omo`, `.codegraph`.
+`.stow-local-ignore` lists what stow skips: `ansible/`, `Makefile`, `.env`, `.git`, `.gitmodules`, `.gitignore`, `install.sh`, `DesktopAnsible` (stale submodule), `.codegraph`.
 
 `install.sh` is devpod bootstrap only — `make devpod` is the canonical dev-container entry. `make run` is the local entry.
 
+The ansible playbooks live in a **separate repo** (`https://gitlab.durp.info/durp/home-ansible.git`), not in this dotfiles tree. `make {run,security,update,devpod}` clones it to `~/home-ansible` on first run, pulls on every subsequent run, then invokes the playbook from there. Override with `ANSIBLE_REPO=...` or `ANSIBLE_DIR=...` on the make command line.
+
 ## Provisioning
+
+**Ansible is the source of truth for everything on the desktop** — both application installs and configuration. Never `apt install`, `brew install`, `pacman -S`, or hand-edit app config outside the ansible roles. New packages go into `ansible/roles/packages/vars/<distro>.yml` (`required_packages_dnf`, `required_packages_apt`, `required_packages_pacman`, or `required_packages_brew`). New config goes into a stow-managed file under `.config/` (or a new file added to `.stow-local-ignore`'s keep-list if it lives outside `.config/`). After editing either, `make run` (or `make devpod`) is the only thing that should reproduce the box.
 
 | Command | Playbook | Target |
 |---|---|---|

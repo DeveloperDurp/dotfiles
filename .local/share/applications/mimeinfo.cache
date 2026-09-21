@@ -1,0 +1,8 @@
+[MIME Cache]
+application/x-code-workspace=t3-code.desktop;
+inode/directory=t3-code.desktop;
+text/plain=t3-code.desktop;
+x-scheme-handler/gh=github-handler.desktop;
+x-scheme-handler/ghapp=github-handler.desktop;
+x-scheme-handler/github-app=github-handler.desktop;
+x-scheme-handler/t3code=t3code-url-handler.desktop;

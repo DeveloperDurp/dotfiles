@@ -12,6 +12,19 @@
     - not homebrew_check.stat.exists
     - not install_homebrew_if_missing
 
+- name: Ensure /home/linuxbrew exists and is owned by the user
+  file:
+    path: /home/linuxbrew
+    state: directory
+    owner: "{{ USER }}"
+    group: "{{ USER }}"
+    mode: '0755'
+  become: true
+  when:
+    - required_packages_brew is defined
+    - not homebrew_check.stat.exists
+    - install_homebrew_if_missing
+
 - name: Installing Homebrew
   become_user: "{{ USER }}"
   shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
