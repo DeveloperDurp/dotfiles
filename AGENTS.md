@@ -18,6 +18,8 @@ The ansible playbooks live in a **separate repo** (`https://gitlab.durp.info/dur
 
 **Ansible is the source of truth for everything on the desktop** — both application installs and configuration. Never `apt install`, `brew install`, `pacman -S`, or hand-edit app config outside the ansible roles. New packages go into `ansible/roles/packages/vars/<distro>.yml` (`required_packages_dnf`, `required_packages_apt`, `required_packages_pacman`, or `required_packages_brew`). New config goes into a stow-managed file under `.config/` (or a new file added to `.stow-local-ignore`'s keep-list if it lives outside `.config/`). After editing either, `make run` (or `make devpod`) is the only thing that should reproduce the box.
 
+**Roles contain no logic.** All task logic lives in dedicated script files under `ansible/scripts/*.yml` — one file per concern (`install_fonts.yml`, `configure_ssh.yml`, ...). A role may only load its vars and `include_tasks` scripts from there. Never add tasks inline to `roles/*/tasks/` or `roles/*/handlers/`; new logic = new file in `scripts/`, referenced from the role.
+
 | Command | Playbook | Target |
 |---|---|---|
 | `make run` | `ansible/local.yml` | Local dev (user `user`) |
@@ -54,7 +56,7 @@ Multiple config files coexist:
 
 - `.config/` — all stow-managed app config. Heavy: `nvim/`, `opencode/`, `tmux/`, `sway/`, `kitty/`, `ghostty/`, `terminator/`, `qutebrowser/`, `cosmic/`, `nvim/`, `yazi/`, `lazygit/`, `k9s/`, `bat/`, `ohmyposh/`, `yubikey/`.
 - `ansible/roles/{packages,customize,devpod,security,update}/` — provisioners.
-- `ansible/scripts/`, `ansible/files/` — role helpers; check before adding new roles.
+- `ansible/scripts/`, `ansible/files/` — all ansible task logic (`scripts/*.yml`, one file per concern); roles only load vars and `include_tasks` them.
 - `.themes/` — Catppuccin Mocha assets; used by bat, ghostty, kitty.
 - `.ideavimrc` — JetBrains IDEAVim parity; mirrors the nvim keymap conventions.
 

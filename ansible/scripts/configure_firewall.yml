@@ -1,0 +1,16 @@
+- name: Allow firewall ports (firewalld)
+  ansible.posix.firewalld:
+    port: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  become: yes
+  loop: "{{ firewall_ports }}"
+  when: ssh_firewall == "firewalld" and firewall_ports | length > 0
+
+- name: Allow firewall ports (ufw)
+  ansible.builtin.command:
+    cmd: "ufw allow {{ item }}"
+  become: yes
+  loop: "{{ firewall_ports }}"
+  when: ssh_firewall == "ufw" and ufw_version.rc == 0 and firewall_ports | length > 0
