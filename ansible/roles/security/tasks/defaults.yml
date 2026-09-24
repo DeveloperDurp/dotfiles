@@ -4,10 +4,15 @@
   become: yes
   when: ansible_facts["os_family"] == 'Debian'
 
+- name: Configure dnf5 automatic
+  include_tasks: "./scripts/configure_dnf5_automatic.yml"
+  when: ansible_facts["os_family"] == 'RedHat'
+
 - name: Check if UFW is installed
-  command: ufw version
+  ansible.builtin.command:
+    cmd: ufw version
   register: ufw_version
-  ignore_errors: true
+  failed_when: false
   changed_when: false
 
 - name: Configure UFW
@@ -18,3 +23,28 @@
       ufw default allow outgoing
   become: yes
   when: ufw_version.rc == 0
+
+- name: Install and enable SSH server
+  include_tasks: "./scripts/install_ssh.yml"
+  when: ssh_server | bool
+
+- name: Configure SSH
+  include_tasks: "./scripts/configure_ssh.yml"
+  when: ssh_server | bool
+
+- name: Allow firewall ports (firewalld)
+  ansible.posix.firewalld:
+    port: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  become: yes
+  loop: "{{ firewall_ports }}"
+  when: ssh_firewall == "firewalld" and firewall_ports | length > 0
+
+- name: Allow firewall ports (ufw)
+  ansible.builtin.command:
+    cmd: "ufw allow {{ item }}"
+  become: yes
+  loop: "{{ firewall_ports }}"
+  when: ssh_firewall == "ufw" and ufw_version.rc == 0 and firewall_ports | length > 0

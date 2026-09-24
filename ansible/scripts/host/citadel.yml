@@ -1,0 +1,3 @@
+# citadel (desktop)-only tasks, e.g. qemu/libvirt setup. Include as relative
+# files like the other scripts/*.yml.
+---

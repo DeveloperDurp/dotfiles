@@ -29,3 +29,5 @@
 /.config/nvim/lazyvim.json
 /.omo/lsp-daemon/v0.1.0
 /.omo/codegraph
+/.omo/run-continuation
+/.omo/lsp-daemon

@@ -1,0 +1,3 @@
+# Fedora customize vars. Machine-specific config (fonts, dconf) now lives in
+# per-host vars: vars/citadel.yml.
+---

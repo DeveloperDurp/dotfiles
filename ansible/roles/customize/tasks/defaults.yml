@@ -2,7 +2,7 @@
   include_tasks: "./scripts/install_fonts.yml"
 
 - name: generate ssh keys
-  include_tasks: "./scripts/configure_ssh.yml"
+  include_tasks: "./scripts/configure_ssh_keys.yml"
 
   #- name: Configure Gitlab SSH
   #  become_user: user
@@ -26,11 +26,10 @@
   shell: "stow --adopt ."
   args:
     chdir: ~/.dotfiles
-
 - name: set gnome config
   become_user: user
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:  "{{ dconf }}"      
+  with_items:  "{{ (dconf | default([]) + dconf_extra | default([])) | union([]) }}"      
   when: dconf is defined   

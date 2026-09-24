@@ -20,7 +20,7 @@
         }
       },
       "oracle": {
-        "model": "openai/gpt-6-astra",
+        "model": "opencode-go/glm-5.3-flash",
         "compaction": {
           "model": "opencode-go/mimo-v2.5"
         }
@@ -44,19 +44,19 @@
         }
       },
       "prometheus": {
-        "model": "openai/gpt-6-sol",
+        "model": "opencode-go/glm-5.2",
         "compaction": {
           "model": "opencode-go/mimo-v2.5"
         }
       },
       "metis": {
-        "model": "openai/gpt-6-astra",
+        "model": "opencode-go/glm-5.2",
         "compaction": {
           "model": "opencode-go/mimo-v2.5"
         }
       },
       "momus": {
-        "model": "openai/gpt-6-astra",
+        "model": "opencode-go/glm-5.2",
         "compaction": {
           "model": "opencode-go/mimo-v2.5"
         }
@@ -91,19 +91,19 @@
         "model": "opencode-go/minimax-m3",
       },
       "ultrabrain": {
-        "model": "openai/gpt-6-astra",
+        "model": "opencode-go/minimax-m3",
       },
       "deep": {
-        "model": "opencode-go/glm-5.3-flash",
+        "model": "opencode-go/minimax-m3",
       },
       "artistry": {
         "model": "opencode-go/glm-5.3-flash",
       },
       "quick": {
-        "model": "opencode-go/glm-5.3-flash",
+        "model": "opencode-go/minimax-m3",
       },
       "unspecified-low": {
-        "model": "opencode-go/glm-5.3-flash",
+        "model": "opencode-go/glm-5.2",
       },
       "unspecified-high": {
         "model": "opencode-go/glm-5.3-flash",
@@ -111,20 +111,9 @@
       "writing": {
         "model": "opencode-go/glm-5.3-flash"
       }
-    },
-    "codegraph": {},
-    "git_master": {
-      "commit_footer": false,
-      "include_co_authored_by": false,
-      "git_env_prefix": "GIT_MASTER=1"
     }
   },
   "_migrations": [
-    "2026-08-reasoning-unification",
-    "2026-07-codex-config-jsonc"
-  ],
-  "codegraph": {},
-  "[codex]": {
-    "codegraph": {}
-  }
+    "2026-08-reasoning-unification"
+  ]
 }

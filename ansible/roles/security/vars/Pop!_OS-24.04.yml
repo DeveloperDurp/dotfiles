@@ -1,0 +1,6 @@
+---
+# Pop!_OS security vars.
+ssh_user: user
+ssh_service: ssh
+ssh_firewall: ufw
+ssh_authorized_keys: []

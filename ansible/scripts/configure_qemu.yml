@@ -1,9 +1,20 @@
-- name: set default network
-  shell: "{{ item }}"
-  with_items:
-    - "virsh net-start default"
-    - "virsh net-autostart default"
-  ignore_errors: yes
+- name: check for virsh
+  command: which virsh
+  register: virsh_check
+  changed_when: false
+  failed_when: false
+
+- name: start default network
+  shell: "virsh net-start default"
+  when: virsh_check.rc == 0
+  register: net_start
+  failed_when: net_start.rc != 0 and 'already active' not in net_start.stderr
+  changed_when: net_start.rc == 0
+
+- name: autostart default network
+  shell: "virsh net-autostart default"
+  when: virsh_check.rc == 0
+
 
 - name: Get all groups
   getent:

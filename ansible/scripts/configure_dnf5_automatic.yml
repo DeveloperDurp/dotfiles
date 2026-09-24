@@ -1,0 +1,29 @@
+- name: Configure dnf5 automatic daily apply without reboot
+  ansible.builtin.copy:
+    dest: /etc/dnf/dnf5-plugins/automatic.conf
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      [commands]
+      download_updates = yes
+      apply_updates = yes
+      upgrade_type = default
+      reboot = never
+      network_online_timeout = 60
+      random_sleep = 0
+
+      [emitters]
+      emit_via = stdio
+      emit_no_updates = no
+  become: yes
+  when: ansible_facts["os_family"] == "RedHat"
+
+- name: Enable dnf5 automatic timer
+  ansible.builtin.systemd:
+    name: dnf5-automatic.timer
+    enabled: yes
+    state: started
+  become: yes
+  when: ansible_facts["os_family"] == "RedHat"
+  changed_when: false

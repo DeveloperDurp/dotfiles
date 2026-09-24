@@ -1,0 +1,8 @@
+---
+# Security role defaults. Per-distro files override (vars/<distro>.yml).
+ssh_user: user
+ssh_service: ssh
+ssh_firewall: ufw
+ssh_authorized_keys: []
+ssh_server: false
+firewall_ports: []

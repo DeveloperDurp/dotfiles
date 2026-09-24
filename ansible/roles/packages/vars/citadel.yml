@@ -1,7 +1,9 @@
-# Fedora base vars. Host-specific additions go in vars/citadel.yml and vars/scout.yml.
+# citadel (desktop) vars. Loaded after the distro vars, so any same-named key
+# here overrides it. `*_extra` lists are appended by the install scripts.
+---
 install_homebrew_if_missing: true
 
-required_packages_brew:
+required_packages_brew_extra:
   - zsh-autosuggestions
   - zsh-history-substring-search
   - oh-my-posh
@@ -21,7 +23,7 @@ required_packages_brew:
   - gh
   - bun
 
-required_packages_dnf:
+required_packages_dnf_extra:
   - stow
   - zsh
   - kitty
@@ -73,18 +75,20 @@ required_packages_dnf:
 
   # system
   - '@virtualization'
+  - cockpit
+  - dnf5-plugin-automatic
 
   # Gaming
   - steam
 
-flatpak_remote:
+flatpak_remote_extra:
   - {
       name: "flathub",
       url: "https://dl.flathub.org/repo/flathub.flatpakrepo",
       method: "system",
     }
 
-required_packages_flatpak:
+required_packages_flatpak_extra:
   - me.proton.Mail
   - com.protonvpn.www
   - com.github.tchx84.Flatseal
@@ -112,6 +116,7 @@ systemd_service:
 #  - pcscd.service
 #  - ufw.service
   - podman.socket
+  - cockpit.socket
 #  - cronie.service
 
 #user_groups:

@@ -55,5 +55,5 @@
 - name: Install Brew Packages
   become_user: "{{ USER }}"
   community.general.homebrew: 
-    name: "{{ required_packages_brew }}"
+    name: "{{ (required_packages_brew | default([]) + required_packages_brew_extra | default([])) | union([]) }}"
   when: required_packages_brew is defined

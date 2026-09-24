@@ -1,0 +1,14 @@
+---
+# citadel (Fedora desktop) security vars.
+ssh_server: true
+firewall_ports:
+  - 3773/tcp
+  - 8443/tcp
+  - 9090/tcp
+ssh_user: user
+ssh_service: sshd
+ssh_firewall: firewalld
+ssh_authorized_keys:
+  - /home/user/.ssh/opencode_vm.pub
+  - /home/user/.ssh/id_28854922.pub
+  - /home/user/.ssh/id_33923085.pub

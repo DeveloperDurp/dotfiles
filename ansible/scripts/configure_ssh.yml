@@ -1,14 +1,35 @@
-- name: Create ssh folder
-  become_user: user
-  ansible.builtin.file:
-    path: ~/.ssh
-    owner: "user"
-    group: "user"
-    mode: '0700'     
-    state: directory 
+- name: Configure SSH hardening
+  ansible.builtin.copy:
+    dest: /etc/ssh/sshd_config.d/40-durp.conf
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+      PermitRootLogin no
+  become: yes
+  notify: Restart SSH server
 
-- name: Generate an OpenSSH keypair 
-  become_user: user
-  community.crypto.openssh_keypair:
-    path: ~/.ssh/id_ed25519
-    type: ed25519
+- name: Authorize SSH keys
+  ansible.posix.authorized_key:
+    user: "{{ ssh_user }}"
+    key: "{{ lookup('ansible.builtin.file', item) }}"
+    state: present
+  loop: "{{ ssh_authorized_keys }}"
+  become: yes
+
+- name: Allow SSH through firewalld
+  ansible.posix.firewalld:
+    service: ssh
+    permanent: true
+    immediate: true
+    state: enabled
+  become: yes
+  when: ssh_firewall == "firewalld"
+
+- name: Allow SSH through ufw
+  ansible.builtin.command:
+    cmd: ufw allow ssh
+  become: yes
+  when: ssh_firewall == "ufw" and ufw_version.rc == 0

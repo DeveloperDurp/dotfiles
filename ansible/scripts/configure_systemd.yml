@@ -32,5 +32,5 @@
     name: "{{ item }}"
     state: started
     enabled: true
-  with_items: "{{ systemd_service }}"
+  with_items: "{{ (systemd_service | default([]) + systemd_service_extra | default([])) | union([]) }}"
   when: systemd_service is defined   

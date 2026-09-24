@@ -3,7 +3,7 @@
 
 - name: install nix
   include_tasks: "./scripts/install_nix.yml"
-  when: ansible_distribution != 'Fedora'
+  when: ansible_facts['distribution'] != 'Fedora'
 
 - name: install brew
   include_tasks: "./scripts/install_brew.yml"
@@ -40,3 +40,10 @@
 
 - name: udev rules
   include_tasks: "./scripts/install-udev-rules.yml"
+
+- name: host-specific tasks
+  include_tasks: "{{ item }}"
+  with_first_found:
+  - files:
+    - "{{ role_path }}/../scripts/host/{{ ansible_facts['hostname'] }}.yml"
+    skip: true

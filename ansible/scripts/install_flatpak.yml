@@ -4,7 +4,7 @@
     state: present
     flatpakrepo_url: "{{ item.url }}"
     method: "{{ item.method }}"
-  with_items:  "{{ flatpak_remote }}"      
+  with_items:  "{{ (flatpak_remote | default([]) + flatpak_remote_extra | default([])) | union([]) }}"      
   when: flatpak_remote is defined   
 
 - name: update flatpaks

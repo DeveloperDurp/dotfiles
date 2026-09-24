@@ -10,6 +10,6 @@
   ansible.builtin.dnf:
     state: present
     update_cache: yes
-    name: "{{ required_packages_dnf }}"
+    name: "{{ (required_packages_dnf | default([]) + required_packages_dnf_extra | default([])) | union([]) }}"
   become: yes
   when: required_packages_dnf is defined

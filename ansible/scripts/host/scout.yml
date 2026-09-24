@@ -1,0 +1,3 @@
+# scout (laptop)-only tasks, e.g. battery charge thresholds. Include as relative
+# files like the other scripts/*.yml.
+---
