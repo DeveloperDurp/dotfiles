@@ -23,14 +23,14 @@
 - name: Upgrade Packages
   package:
     update_cache: yes
-    upgrade: safe 
+    upgrade: safe
   become: yes
-  when: required_packages_apt is defined   
+  when: (required_packages_apt | default([]) + required_packages_apt_extra | default([])) | length > 0
 
 - name: Install Packages
   apt:
     state: latest
     update_cache: yes
-    pkg: "{{ required_packages_apt }}"
+    pkg: "{{ (required_packages_apt | default([]) + required_packages_apt_extra | default([])) | union([]) }}"
   become: yes
-  when: required_packages_apt is defined   
+  when: (required_packages_apt | default([]) + required_packages_apt_extra | default([])) | length > 0

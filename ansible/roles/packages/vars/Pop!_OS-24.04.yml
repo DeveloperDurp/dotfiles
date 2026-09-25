@@ -93,7 +93,7 @@ go_apps:
   - github.com/air-verse/air@latest
   - github.com/sqlc-dev/sqlc/cmd/sqlc@latest
   - github.com/pressly/goose/v3/cmd/goose@latest
-  - github.com/testcontainers/testcontainers-go
+#  - github.com/testcontainers/testcontainers-go@latest
 
 systemd_service:
   - libvirtd.service

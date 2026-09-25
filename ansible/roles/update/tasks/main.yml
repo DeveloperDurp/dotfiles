@@ -15,6 +15,7 @@
   become_user: user
   shell:
     cmd: nix-env --upgrade
+  when: (skip_nix | default(false)) == false
 
 - name: Update Homebrew and Apps
   become_user: user

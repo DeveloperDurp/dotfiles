@@ -3,6 +3,8 @@
 ---
 install_homebrew_if_missing: true
 
+skip_nix: true
+
 required_packages_brew_extra:
   - zsh-autosuggestions
   - zsh-history-substring-search

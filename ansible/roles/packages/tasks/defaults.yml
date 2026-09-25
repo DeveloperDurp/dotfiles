@@ -3,7 +3,7 @@
 
 - name: install nix
   include_tasks: "./scripts/install_nix.yml"
-  when: ansible_facts['distribution'] != 'Fedora'
+  when: (skip_nix | default(false)) == false
 
 - name: install brew
   include_tasks: "./scripts/install_brew.yml"

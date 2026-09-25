@@ -3,7 +3,20 @@
 ---
 install_homebrew_if_missing: true
 
+# scout currently runs nix; the migration is to brew, so skip nix installs.
+skip_nix: true
 required_packages_brew_extra:
+  # moved off nix -> brew (not in the Pop!_OS 24.04 apt archive)
+  - golangci-lint
+  - opentofu
+  - k9s
+  - fastfetch
+  - yq              # Go version (apt's yq is the Python clone)
+  - awscli          # was nix `aws`
+  - ast-grep
+  - ripgrep
+  - devpod
+  # platform tools
   - zsh-autosuggestions
   - zsh-history-substring-search
   - oh-my-posh
@@ -22,47 +35,41 @@ required_packages_brew_extra:
   - codex
   - gh
   - bun
-
-required_packages_dnf_extra:
-  - stow
-  - zsh
-  - kitty
-
-  # core tools
+  - bat
   - neovim
-  - tmux
+  - kitty
   - fzf
   - zoxide
   - eza
-  - bat
+
+required_packages_apt_extra:
+  - stow
+  - zsh
+
+  # core tools
+  - tmux
   - wget
   - curl
   - nmap
   - podman
   - podman-compose
-  - helm
-  - ripgrep
-  - yq
   - jq
-  - k9s
   - htop
   - gimp
   - dnsutils
-  - openssh
+  - openssh-client
   - rclone
-  - opentofu
   - wofi
-  - libsecret
+  - libsecret-1-0
+  - libsecret-tools
   - zenity
-  - libnotify
+  - libnotify-bin
   - wl-clipboard
-  - golangci-lint
-  - fastfetch
-  - timeshift
-  - sqlite
   - btop
   - yubikey-manager
   - hugo
+  - timeshift
+  - sqlite3
 
   # development
   - golang
@@ -71,10 +78,9 @@ required_packages_dnf_extra:
   - python3
   - python3-pip
   - git
-  - podman
 
-  # system
-  - '@virtualization'
+  # system: the Pop!_OS-24.04 base vars already install qemu-kvm,
+  # libvirt-daemon, virt-manager etc., so no @virtualization group here.
 
   # Gaming
   - steam
@@ -87,17 +93,12 @@ flatpak_remote_extra:
     }
 
 required_packages_flatpak_extra:
-  - me.proton.Mail
-  - com.protonvpn.www
-  - com.github.tchx84.Flatseal
-  - com.vscodium.codium
-  - org.chromium.Chromium
-  - org.videolan.VLC
-  - fr.handbrake.ghb
-  - org.signal.Signal
-  - com.yubico.yubioath
-  - com.discordapp.Discord
   - com.makemkv.MakeMKV
+  # on scout but was missing from the declared config
+  - app.zen_browser.zen
+  - com.nextcloud.desktopclient.nextcloud
+  - dev.zed.Zed
+  - rocks.shy.VacuumTube
 
 #go_apps:
 #  - github.com/charmbracelet/vhs@latest

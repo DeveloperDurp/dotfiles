@@ -27,9 +27,8 @@ if command -v tmux &> /dev/null && [[ "$T3CODE_PROJECT_ROOT" == "" ]] && [[ "$CO
     fi
 fi
 
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.toml)"

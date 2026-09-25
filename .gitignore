@@ -31,3 +31,5 @@
 /.omo/codegraph
 /.omo/run-continuation
 /.omo/lsp-daemon
+.omo/ulw-research/20260824-herdr-tmux
+.omo/runtime/ast-grep/linux-x64
