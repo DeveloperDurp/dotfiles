@@ -1,0 +1,36 @@
+# Quadlet template for hermes agent containers.
+# One instance per agent: systemctl --user start hermes@<name>
+# Data dir and keys live in ~/.hermes-<name> on the host, mounted read-only-ish
+# at /opt/data. No ports published: messaging platforms are outbound-only;
+# add PublishPort entries only when the API server / dashboard is enabled.
+
+[Unit]
+Description=Hermes agent (%i)
+Wants=network-online.target
+
+[Container]
+Image=docker.io/nousresearch/hermes-agent:v2026.9.24
+ContainerName=hermes-%i
+# Map host user -> container hermes user (uid 10000) so ~/.hermes-%i stays owned by you
+UserNS=keep-id:uid=10000,gid=10000
+Volume=%h/.hermes-%i:/opt/data:Z
+# No ports published by default.
+# Add lines like below ONLY if the agent's .env enables API server or dashboard,
+# and keep them loopback-bound:
+# PublishPort=127.0.0.1:8642:8642
+# PublishPort=127.0.0.1:9119:9119
+Environment=HERMES_DASHBOARD=0
+# Run as messaging gateway: the s6 supervisor inside the container keeps it
+# alive/restarts-on-crash; "sleep infinity" CMD default would exit (no TTY).
+Exec=gateway run
+Memory=2G
+PodmanArgs=--cpus=1
+PidsLimit=256
+NoNewPrivileges=true
+
+[Service]
+Restart=always
+ExecStartPre=%h/.dotfiles/.config/containers/systemd/hermes-ensure-data-dir %i
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+#!/bin/bash
+# ExecStartPre helper for hermes@.container quadlet.
+# Creates ~/.hermes-<name> on first boot with 0700 so the agent's private
+# state can't be read by other users on the box.
+set -euo pipefail
+dir="$HOME/.hermes-$1"
+if [[ ! -d "$dir" ]]; then
+    echo "hermes@%i: creating data dir $dir"
+    mkdir -p "$dir"
+    chmod 0700 "$dir"
+fi
