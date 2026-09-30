@@ -1,14 +1,15 @@
 ---
 name: pr-plan
-description: PR pull-and-plan review. Use when the user names a PR, PR number, review URL, or asks to work on/review a PR ("pr #123", "review the PR", "implement the PR feedback"). Pulls full PR context via GitHub CLI, maps it to the codebase, and produces a proposed work plan for approval BEFORE writing any code. Use ONLY for PR-based work; not for local-only tasks.
+description: PR pull-and-plan review. Use when the user names a PR, PR number, review URL, or asks to work on/review a PR ("pr #123", "review the PR", "implement the PR feedback"). Pulls full PR context via GitHub CLI, maps it to the codebase, and produces a proposed work plan for approval BEFORE writing any code. After approval, implements, pushes, and drives a CI + codex-review loop until CI is green and codex has no findings. Use ONLY for PR-based work; not for local-only tasks.
 ---
 
 # PR Plan
 
-You are taking over a GitHub Pull Request. Your job has two hard phases:
+You are taking over a GitHub Pull Request. Your job has three hard phases:
 
 1. **Gather** — pull all PR context with the GitHub CLI.
 2. **Plan** — produce a proposed implementation plan and STOP for user approval.
+3. **Push & converge** — implement, push, and loop CI monitoring + codex review until CI is green and codex reports no findings.
 
 Do not write, edit, or commit any code until the user explicitly approves the plan.
 
@@ -66,8 +67,25 @@ Respond with exactly this structure:
 Then stop and wait. The user must approve before implementation starts.
 Use the todowrite tool only after approval, and only for work it covers.
 
+## Step 5 — Implement, push, and converge (after approval)
+
+After the user approves the plan, implement it, commit, and push to the PR branch. Then run this loop until both exit conditions are met:
+
+1. **Monitor CI** — poll `gh pr checks <number>` until every check completes. Use `gh run watch` on the failing/pending run for progress. A timeout of ~30 minutes total is reasonable; on timeout, report the state and stop.
+2. **Request codex review** — if the remote is GitHub (it is; this skill requires `gh`), post `@codex please review latest changes` as a PR comment:
+
+   ```bash
+   gh pr comment <number> --body "@codex please review latest changes"
+   ```
+
+   Then poll for the codex review feedback (`gh pr view <number> --comments`) and treat codex's findings as new work items.
+3. **Act on findings** — fix every real finding, commit, push. Pushing resets both gates: repeat from step 1.
+4. **Exit** — the loop is done only when CI is fully green AND codex posted no new findings on the latest push. Report the final state to the user.
+
+Order the two checks sensibly (CI first is typical) but do not stall: if CI is green while you wait for codex, keep polling both.
+
 ## Constraints
 
-- Read-only until approved: no edits, no commits, no pushes, no `gh pr` mutations (no merge, no comment posting).
+- Read-only until approved: no edits, no commits, no pushes, no `gh pr` mutations (no merge, no comment posting). After approval, pushing to the PR branch and posting the `@codex` review-request comment are allowed; merges still require an explicit user request.
 - Do not invent requirements the PR text doesn't support; list ambiguities instead.
 - If `gh` is unavailable or unauthenticated, report exactly what failed and ask, rather than degrading to a partial analysis silently.

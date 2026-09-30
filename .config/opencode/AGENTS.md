@@ -56,9 +56,18 @@ every sibling caller still broken. Fix it once, where all callers route through.
 - Trust internal contracts; validate at user, network, filesystem, and other
   untrusted boundaries.
 - Ask before installing anything or taking irreversible actions, publishing,
-  deploying, deleting data, or changing shared infrastructure.
+  deploying, deleting data, or changing shared infrastructure. This includes
+  git commit, push, and force operations — only do them when this task
+  explicitly asks for them.
 - Do not modify unrelated code. Report unrelated issues separately.
-- Do not commit code unless explicitly asked
+- Secrets come from Bitwarden CLI (`bw get <item>`). Never echo, write, or
+  commit secrets to files, logs, or diffs.
+- Assume aliases and interactive-shell config only exist in interactive
+  shells. Scripts must use plain commands with full paths where they matter.
+- This machine uses Podman. Run containers locally with `podman`
+  (`docker` is an alias, do not rely on it in scripts). Docker syntax is
+  fine inside Dockerfiles, compose files, CI configs, and shared-repo
+  files other machines consume.
 - All tests should either be inside the code or through bash/powershell scripts. Using Javascript for tests is a sin
 
 ## Verification
@@ -84,8 +93,21 @@ maintenance and execution cost; do not add redundant cases for coverage
 numbers. Reserve slow suites for changes whose risk cannot be covered narrowly,
 or when the user explicitly requests them. Never delete or weaken a failing
 test to make a change pass. If verification cannot run, state exactly why.
+If the repository has CI, wire tests into it — a test that only runs on the
+author's machine does not prevent regressions for anyone else.
+
+## Scope
+
+- If a request has two reasonable readings that lead to different deliverables,
+  ask one precise question before starting. Do not ask about minor choices —
+  pick sensible defaults and state them.
 
 ## Output
 
 Use the standard ASD-STE100. Be concise. Lead with the result, then name verification and any real blocker
-or deliberate omission. Give fuller explanation when the user asks for it.
+or deliberate omission. Start with a simple explanation first, give fuller explanation when the user asks for it.
+
+For long-running tasks, keep the user current with one-line updates at
+meaningful transitions only — no explanations, no tool-call narration.
+Format: `waiting on X` / `starting Y` / `Z done`. Silence during work is fine;
+never go silent for the whole task.
