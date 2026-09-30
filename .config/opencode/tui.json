@@ -1,8 +1,5 @@
 {
   "attention": {
     "notifications": false
-  },
-  "plugin": [
-    "oh-my-openagent@latest"
-  ]
+  }
 }

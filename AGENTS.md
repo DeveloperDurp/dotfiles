@@ -48,8 +48,8 @@ To add a new plugin spec: create `~/.dotfiles/.config/nvim/lua/plugins/<name>.lu
 ## OpenCode
 
 Multiple config files coexist:
-- `~/.dotfiles/.config/opencode/opencode.json` — primary; sets model `deepseek-v4-flash`, providers (Ollama on `192.168.12.50:11434`), plugin `oh-my-openagent@latest`.
-- `~/.dotfiles/.config/opencode/opencode.jsonc` — JSONC variant; check whether it's a duplicate or env-specific before editing.
+- `~/.dotfiles/.config/opencode/opencode.jsonc` — primary; sets default agent, model routing and permissions. `opencode.jsonc.bak` is a stale copy kept for reference.
+- `~/.dotfiles/.config/opencode/tui.json` — TUI settings. `node_modules/` and `package.json` in the same folder are opencode runtime files, git-ignored.
 - `~/.dotfiles/.config/opencode/AGENTS.md` — Ponytail persona (lazy-senior-dev operating rules). Sourced automatically.
 
 ## Layout (high-signal only)

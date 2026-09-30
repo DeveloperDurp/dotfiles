@@ -1,0 +1,26 @@
+{
+  "gopls": {
+    "decision": "declined",
+    "decidedAt": "2026-09-27T18:59:13.852Z"
+  },
+  "biome": {
+    "decision": "declined",
+    "decidedAt": "2026-09-27T13:12:19.264Z"
+  },
+  "bash": {
+    "decision": "declined",
+    "decidedAt": "2026-09-27T15:59:21.632Z"
+  },
+  "dockerfile": {
+    "decision": "declined",
+    "decidedAt": "2026-09-27T22:44:18.174Z"
+  },
+  "yaml-ls": {
+    "decision": "declined",
+    "decidedAt": "2026-09-27T22:44:18.299Z"
+  },
+  "typescript": {
+    "decision": "declined",
+    "decidedAt": "2026-09-27T23:26:46.858Z"
+  }
+}
