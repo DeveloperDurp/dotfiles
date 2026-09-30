@@ -1,7 +1,7 @@
 ---
 description: Heavy plan reviewer. Audit an implementation plan for feasibility, dependencies, acceptance criteria, and verification before work starts. Read-only.
 mode: subagent
-model: openai/gpt-6-sol
+model: openai/gpt-6.1-sol
 permission:
   doom_loop: deny
   edit: deny

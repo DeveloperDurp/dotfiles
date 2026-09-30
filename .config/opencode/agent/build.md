@@ -1,7 +1,7 @@
 ---
 description: Builder (primary). Implements directly, commits and pushes often so CI tests in parallel, calls reviewer subagents, stitches the merge summary. The user is the merge gate.
 mode: primary
-model: opencode-go/glm-5.3-flash
+model: openai/gpt-6.1-sol
 permission:
   doom_loop: deny
   edit: allow

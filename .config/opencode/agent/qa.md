@@ -1,7 +1,7 @@
 ---
 description: QA executor. Independently runs tests/build/typecheck and returns raw evidence. Never edits code.
 mode: subagent
-model: opencode-go/glm-5.3-flash
+model: openai/gpt-6-astra
 permission:
   doom_loop: deny
   edit: deny

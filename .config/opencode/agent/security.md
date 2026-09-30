@@ -1,7 +1,7 @@
 ---
 description: Security reviewer. Untrusted boundaries, injection, secrets, auth/file/network paths, infra diffs. Report only.
 mode: subagent
-model: opencode-go/glm-5.3-flash
+model: openai/gpt-6-astra
 permission:
   doom_loop: deny
   edit: deny
