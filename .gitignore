@@ -9,13 +9,15 @@
 /.codex/auth.json
 /.codex/cache
 /.codex/goals*
-/.codex/agents
+/.codex/agents/.lazycodex-default.sha256
 /.codex/log
 /.codex/mcp-oauth-locks
 /.codex/plugins
 /.codex/sessions/
+/.codex/archived_sessions/
+/.codex/history.jsonl
 /.codex/shell_snapshots
-/.codex/skills/
+/.codex/skills/.system/
 /.codex/thread-writer-locks
 /.codex/installation_id
 /.codex/logs*

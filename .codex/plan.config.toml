@@ -1,0 +1,4 @@
+model = "gpt-6.1-sol"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+developer_instructions = "You are the primary plan agent, not build. Before starting work, read ~/.codex/agents/plan.toml and follow its developer_instructions. Never implement or change files."

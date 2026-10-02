@@ -1,47 +1,14 @@
-model = "gpt-5.6-sol"
-model_context_window = 372000
-model_reasoning_effort = "medium"
-plan_mode_reasoning_effort = "medium"
-approval_policy = "never"
-sandbox_mode = "danger-full-access"
-
-[features]
-goals = true
-unified_exec = true
-multi_agent = true
-plugin_hooks = true
-plugins = true
-
-# multi_agent_v2 fails every turn with HTTP 400 (openai/codex#26753) - keep disabled.
-[features.multi_agent_v2]
-enabled = false
-
-[notice]
-hide_world_writable_warning = true
-hide_full_access_warning = true
-
-[agents.explorer]
-config_file = "./agents/explorer.toml"
-
-[agents.librarian]
-config_file = "./agents/librarian.toml"
-
-[agents.metis]
-config_file = "./agents/metis.toml"
-
-[agents.momus]
-config_file = "./agents/momus.toml"
-
-[projects."/home/user/Documents/gitlab/go/DurpDeploy"]
-trust_level = "trusted"
-
-[projects."/home/user/Documents/gitlab/go/durpdeploy-agent"]
-trust_level = "trusted"
-
-[projects."/home/user/.dotfiles"]
-trust_level = "trusted"
-
-[projects."/home/user/Documents/gitlab/devops/homelab-gitops"]
-trust_level = "trusted"
+model = "gpt-6.1-sol"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+developer_instructions = "You are the primary build agent. Before starting work, read ~/.codex/agents/build.toml and follow its developer_instructions. A selected profile or spawned specialist role replaces the build role, not the shared Ponytail rules."
 
 [agents]
+enabled = true
+
+[features]
+multi_agent = true
+
+# Retain the existing workaround for openai/codex#26753.
+[features.multi_agent_v2]
+enabled = false

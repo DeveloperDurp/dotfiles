@@ -1,6 +1,6 @@
 ---
 name: pr-plan
-description: PR pull-and-plan review. Use when the user names a PR, PR number, review URL, or asks to work on/review a PR ("pr #123", "review the PR", "implement the PR feedback"). Pulls full PR context via GitHub CLI, maps it to the codebase, and produces a proposed work plan for approval BEFORE writing any code. After approval, implements, pushes, and drives a CI + codex-review loop until CI is green and codex has no findings. Use ONLY for PR-based work; not for local-only tasks.
+description: PR pull-and-plan review. Use when the user names a PR, PR number, review URL, or asks to work on/review a PR/issue ("pr #123", "review the PR", "implement the PR feedback"). Pulls full PR context via GitHub CLI, maps it to the codebase, and produces a proposed work plan for approval BEFORE writing any code. After approval, implements, pushes, and drives a CI + codex-review loop until CI is green and codex has no findings. Use ONLY for PR-based work; not for local-only tasks.
 ---
 
 # PR Plan
