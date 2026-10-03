@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=T3 Code (Alpha)
-Exec="/home/user/Downloads/T3-Code-0.0.40-x86_64.AppImage" %U
+Exec=env T3CODE_TELEMETRY_ENABLED=false "/home/user/.local/opt/t3-code/t3-code.AppImage" %U
 Terminal=false
 NoDisplay=true
 StartupNotify=false

@@ -3,6 +3,13 @@
 .sentry-native
 .ssh
 
+# Claude runtime is not dotfiles; keep only intentional configuration.
+/.claude/*
+!/.claude/CLAUDE.md
+!/.claude/settings.json
+!/.claude/agents/
+!/.claude/skills
+
 /.codex/.tmp/
 /.codex/tmp/
 /.codex/.sandbox_migration
