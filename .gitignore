@@ -35,3 +35,4 @@
 /.omo/lsp-daemon
 .omo/ulw-research/20260824-herdr-tmux
 .omo/runtime/ast-grep/linux-x64
+/.config/opencode/lsp-install-decisions.json

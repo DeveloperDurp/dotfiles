@@ -1,1 +1,66 @@
-[]
+[
+    (
+        output: (
+            name: "DP-1",
+            edid: Some((
+                manufacturer: ('G', 'S', 'M'),
+                product: 30539,
+                serial: Some(130217),
+                manufacture_week: 9,
+                manufacture_year: 2023,
+                model_year: None,
+            )),
+        ),
+        tiling_enabled: true,
+        id: Some("1c78d2c"),
+        name: None,
+    ),
+    (
+        output: (
+            name: "DP-1",
+            edid: Some((
+                manufacturer: ('G', 'S', 'M'),
+                product: 30539,
+                serial: Some(130217),
+                manufacture_week: 9,
+                manufacture_year: 2023,
+                model_year: None,
+            )),
+        ),
+        tiling_enabled: true,
+        id: Some("1e7f892"),
+        name: None,
+    ),
+    (
+        output: (
+            name: "DP-1",
+            edid: Some((
+                manufacturer: ('G', 'S', 'M'),
+                product: 30539,
+                serial: Some(130217),
+                manufacture_week: 9,
+                manufacture_year: 2023,
+                model_year: None,
+            )),
+        ),
+        tiling_enabled: true,
+        id: Some("1e4763e"),
+        name: None,
+    ),
+    (
+        output: (
+            name: "DP-1",
+            edid: Some((
+                manufacturer: ('G', 'S', 'M'),
+                product: 30539,
+                serial: Some(130217),
+                manufacture_week: 9,
+                manufacture_year: 2023,
+                model_year: None,
+            )),
+        ),
+        tiling_enabled: true,
+        id: Some("603fd6"),
+        name: None,
+    ),
+]

@@ -1,27 +1,78 @@
 ---
 name: alpinejs
-description: Alpine.js development guidelines for lightweight reactive interactions with Tailwind CSS and various backend frameworks.
+description: AlpineJS best practices and patterns. Use when writing HTML with Alpine.js directives to avoid common mistakes like long inline JavaScript strings.
 ---
 
 # Alpine.js Development
 
-You are an expert in Alpine.js for building lightweight, reactive web interfaces.
+You are an expert in Alpine.js for building lightweight, reactive web interfaces. You like to pair this with Tailwind CSS and HTMX with the goal of simplicity.
+Use only the Alpine.js documentation included in this skill. Do not supplement it with general ARIA or web-platform conventions unless I explicitly ask.
+
+## Additional Documentation
+
+Detailed examples and patterns are available in the `docs/` folder:
+
+**Components:**
+- `docs/accordion.md` - Collapsible content sections
+- `docs/carousel.md` - Image/content sliders
+- `docs/combobox.md` - Searchable select inputs
+- `docs/components.md` - General UI component patterns
+- `docs/dropdown.md` - Menu dropdowns
+- `docs/modal.md` - Dialog overlays
+- `docs/notifications.md` - Toast/notification patterns
+- `docs/popover.md` - Floating content panels
+- `docs/radiogroup.md` - Radio button groups
+- `docs/select.md` - Custom select inputs
+- `docs/tabs.md` - Tabbed interfaces
+- `docs/toggle.md` - Switch/toggle controls
+- `docs/tooltip.md` - Hover tooltips
+
+**Patterns & Integrations:**
+- `docs/patterns.md` - Data patterns (Form Validation, Fetch, Search, Infinite Scroll, Sortable, LocalStorage)
+- `docs/integrations.md` - Framework integrations (Tailwind, Laravel/Livewire, Ghost, HTMX, Web Components)
+
+# AlpineJS Best Practices
+
+## Golden Rule: Keep Attributes Short
+
+**Never** put complex logic in HTML attributes. If your `x-data`, `x-init`, or any directive exceeds ~50 characters, extract it.
+
+## Directive Cheatsheet
+
+| Directive | Purpose | Example |
+|-----------|---------|---------|
+| `x-data` | Declare reactive component state | `x-data="{ open: false }"` |
+| `x-init` | Run code on component init | `x-init="fetchData()"` |
+| `x-show` | Toggle visibility (CSS display) | `x-show="open"` |
+| `x-if` | Conditional rendering (must wrap `<template>`) | `<template x-if="show">` |
+| `x-for` | Loop (must wrap `<template>`) | `<template x-for="item in items">` |
+| `x-bind:` / `:` | Bind attribute to expression | `:class="{ active: isActive }"` |
+| `x-on:` / `@` | Listen to events | `@click="open = !open"` |
+| `x-model` | Two-way bind form inputs | `x-model="email"` |
+| `x-text` | Set text content | `x-text="message"` |
+| `x-html` | Set inner HTML | `x-html="htmlContent"` |
+| `x-ref` | Reference element via `$refs` | `x-ref="input"` |
+| `x-cloak` | Hide until Alpine initializes | `x-cloak` (add CSS: `[x-cloak] { display: none; }`) |
+| `x-transition` | Apply enter/leave transitions | `x-transition` or `x-transition.duration.300ms` |
+| `x-effect` | Run reactive side effects | `x-effect="console.log(count)"` |
+
 
 ## Core Principles
 
 - Write concise, technical responses with accurate Alpine.js examples
 - Use Alpine.js for lightweight, declarative interactivity
 - Prioritize performance optimization and minimal JavaScript
-- Integrate seamlessly with Tailwind CSS and backend frameworks
+- Integrate seamlessly with Tailwind CSS and backend frameworks such as HTMX
+- Prefer Alpine.js ONLY for user interactivity, the HTML is the dom/state. It is the backend that verifies the state
 
 ## Installation
 
 ### CDN (simplest)
 ```html
-<script defer src="https://cdn.jsdelivr.net/npm/[email protected]/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 ```
 
-### NPM
+### NPM (Prefer)
 ```bash
 npm install alpinejs
 ```
@@ -326,6 +377,26 @@ Alpine.bind('tooltip', (text) => ({
 <div x-bind="tooltip('My tooltip')">
 ```
 
+## Integration Patterns
+
+### With Tailwind CSS
+- Use Tailwind for styling, Alpine for behavior
+- Combine `x-bind:class` with Tailwind utilities
+- Use transitions with `x-transition` and Tailwind
+
+```html
+<div x-data="{ open: false }">
+  <button @click="open = !open" 
+          :class="open ? 'bg-blue-600' : 'bg-gray-200'">
+    Toggle
+  </button>
+  <div x-show="open" x-transition.opacity>
+    Content
+  </div>
+</div>
+```
+
+
 ## Best Practices
 
 ### Performance
@@ -347,51 +418,50 @@ Alpine.bind('tooltip', (text) => ({
 - Maintain focus management
 - Use `x-id` for unique IDs in forms
 
-## Additional Documentation
 
-Detailed examples and patterns are available in the `docs/` folder:
+### Form Validation
+```html
+<form x-data="{ email: '', isValid: false }" @submit.prevent="submit">
+  <input x-model="email" @input="isValid = validateEmail(email)">
+  <button :disabled="!isValid">Submit</button>
+</form>
+```
 
-**Components:**
-- `docs/accordion.md` - Collapsible content sections
-- `docs/carousel.md` - Image/content sliders
-- `docs/combobox.md` - Searchable select inputs
-- `docs/components.md` - General UI component patterns
-- `docs/dropdown.md` - Menu dropdowns
-- `docs/modal.md` - Dialog overlays
-- `docs/notifications.md` - Toast/notification patterns
-- `docs/popover.md` - Floating content panels
-- `docs/radiogroup.md` - Radio button groups
-- `docs/select.md` - Custom select inputs
-- `docs/tabs.md` - Tabbed interfaces
-- `docs/toggle.md` - Switch/toggle controls
-- `docs/tooltip.md` - Hover tooltips
+### Fetch Data
+```html
+<div x-data="{ items: [], loading: true }" x-init="
+  fetch('/api/items')
+    .then(r => r.json())
+    .then(d => items = d)
+    .finally(() => loading = false)
+">
+  <template x-if="loading">
+    <p>Loading...</p>
+  </template>
+  <template x-for="item in items" :key="item.id">
+    <div x-text="item.name"></div>
+  </template>
+</div>
+```
 
-**Patterns & Integrations:**
-- `docs/patterns.md` - Data patterns (Form Validation, Fetch, Search, Infinite Scroll, Sortable, LocalStorage)
-- `docs/integrations.md` - Framework integrations (Tailwind, Laravel/Livewire, Ghost, HTMX, Web Components)
+### List with Search
+```html
+<div x-data="{
+  search: '',
+  items: ['Apple', 'Banana', 'Cherry'],
+  get filtered() {
+    return this.items.filter(i => 
+      i.toLowerCase().includes(this.search.toLowerCase())
+    )
+  }
+}">
+  <input x-model="search" placeholder="Search...">
+  <template x-for="item in filtered" :key="item">
+    <div x-text="item"></div>
+  </template>
+</div>
+```
 
-## Additional Documentation
-
-Detailed examples and patterns are available in the `docs/` folder:
-
-**Components:**
-- `docs/accordion.md` - Collapsible content sections
-- `docs/carousel.md` - Image/content sliders
-- `docs/combobox.md` - Searchable select inputs
-- `docs/components.md` - General UI component patterns
-- `docs/dropdown.md` - Menu dropdowns
-- `docs/modal.md` - Dialog overlays
-- `docs/notifications.md` - Toast/notification patterns
-- `docs/popover.md` - Floating content panels
-- `docs/radiogroup.md` - Radio button groups
-- `docs/select.md` - Custom select inputs
-- `docs/tabs.md` - Tabbed interfaces
-- `docs/toggle.md` - Switch/toggle controls
-- `docs/tooltip.md` - Hover tooltips
-
-**Patterns & Integrations:**
-- `docs/patterns.md` - Data patterns (Form Validation, Fetch, Search, Infinite Scroll, Sortable, LocalStorage)
-- `docs/integrations.md` - Framework integrations (Tailwind, Laravel/Livewire, Ghost, HTMX, Web Components)
 
 ## Tips
 

@@ -1,7 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=T3 Code (Alpha)
-Exec="/home/user/.local/opt/t3-code/t3-code.AppImage" %U
+Exec="/home/user/Applications/T3-Code.AppImage" %U
+Icon=/home/user/.local/share/icons/com.t3tools.T3Code.desktop.png
 Terminal=false
 NoDisplay=true
 StartupNotify=false
