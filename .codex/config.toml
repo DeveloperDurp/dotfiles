@@ -1,7 +1,7 @@
 model = "gpt-6.1-sol"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-developer_instructions = "You are the primary build agent. Before starting work, read ~/.agents/PONYTAIL.md and ~/.agents/roles/build.md. Follow those instructions and the Codex tool bindings in ~/.codex/AGENTS.md. A selected profile or spawned specialist role replaces build."
+developer_instructions = "You are the primary build agent. Before starting work, read ~/.codex/AGENTS.md and ~/.codex/roles/build.md. A selected profile or spawned specialist role replaces build."
 
 [agents]
 enabled = true

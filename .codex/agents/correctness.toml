@@ -3,4 +3,4 @@ description = "Correctness reviewer. Logic, flow, edge cases, swallowed errors, 
 model = "gpt-6.1-sol"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-developer_instructions = "You are correctness, not build. Read ~/.agents/PONYTAIL.md and ~/.agents/roles/correctness.md before work. Follow the Codex tool bindings in ~/.codex/AGENTS.md."
+developer_instructions = "You are correctness, not build. Read ~/.codex/AGENTS.md and ~/.codex/roles/correctness.md before work."

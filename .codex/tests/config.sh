@@ -1,3 +1,40 @@
 #!/usr/bin/env bash
 set -euo pipefail
-exec bash "$(dirname -- "${BASH_SOURCE[0]}")/../../.agents/tests/config.sh"
+python3 - "$(dirname -- "${BASH_SOURCE[0]}")/.." <<'PY'
+from pathlib import Path
+import sys
+import tomllib
+
+root = Path(sys.argv[1]).resolve()
+expected = {'build', 'plan', 'correctness', 'security', 'qa', 'explore', 'metis', 'oracle', 'prometheus'}
+config = tomllib.loads((root / 'config.toml').read_text())
+assert config['sandbox_mode'] == 'workspace-write'
+assert config['approval_policy'] == 'on-request' and config['agents']['enabled'] is True
+assert '~/.codex/roles/build.md' in config['developer_instructions']
+agents = {p.stem: tomllib.loads(p.read_text()) for p in (root / 'agents').glob('*.toml')}
+assert set(agents) == expected
+assert {p.stem for p in (root / 'roles').glob('*.md')} == expected
+for name, agent in agents.items():
+    assert agent['name'] == name and agent['description']
+    assert agent['approval_policy'] == 'on-request'
+    assert agent['sandbox_mode'] == ('workspace-write' if name in {'build', 'qa'} else 'read-only')
+    assert f'~/.codex/roles/{name}.md' in agent['developer_instructions']
+    assert (root / 'roles' / f'{name}.md').is_file()
+plan = tomllib.loads((root / 'plan.config.toml').read_text())
+assert plan['sandbox_mode'] == 'read-only' and plan['approval_policy'] == 'on-request'
+assert '~/.codex/roles/plan.md' in plan['developer_instructions']
+skills = [p for p in (root / 'skills').glob('*/SKILL.md') if p.parent.name != '.system']
+assert len(skills) == 16
+for skill in skills:
+    assert not skill.parent.is_symlink()
+    text = skill.read_text()
+    assert text.startswith('---\n') and f'\nname: {skill.parent.name}\n' in text and '\ndescription: ' in text
+for path in [root / 'AGENTS.md', root / 'config.toml', root / 'plan.config.toml', *list((root / 'agents').glob('*.toml')), *list((root / 'roles').glob('*.md'))]:
+    assert '~/.agents/' not in path.read_text(), path
+print('PASS: Codex has 9 local roles, safe profiles, and 16 independent skills')
+PY
+repo="$(dirname -- "${BASH_SOURCE[0]}")/../.."
+for filename in .codex/auth.json .codex/sessions/check .codex/history.jsonl .codex/skills/.system/check .codex/skills/frontend/node_modules/check; do
+  git -C "$repo" check-ignore --quiet "$filename"
+done
+printf '%s\n' 'PASS: Codex auth, sessions, bundled skills, and dependency caches remain ignored'

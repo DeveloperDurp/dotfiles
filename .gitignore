@@ -6,9 +6,12 @@
 # Claude runtime is not dotfiles; keep only intentional configuration.
 /.claude/*
 !/.claude/CLAUDE.md
+!/.claude/README.md
 !/.claude/settings.json
 !/.claude/agents/
+!/.claude/roles/
 !/.claude/skills
+!/.claude/tests/
 
 /.codex/.tmp/
 /.codex/tmp/

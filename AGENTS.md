@@ -45,25 +45,25 @@ There are two nvim trees in this repo, and a third in `~/.config/nvim/`. The spl
 
 To add a new plugin spec: create `~/.dotfiles/.config/nvim/lua/plugins/<name>.lua`, then symlink it: `ln -s ../../../../.dotfiles/.config/nvim/lua/plugins/<name>.lua ~/.config/nvim/lua/plugins/<name>.lua`.
 
-## Shared agents (Codex, Claude Code, OpenCode)
+## Independent agents (Codex, Claude Code, OpenCode)
 
-- `.agents/PONYTAIL.md` is the canonical global persona.
-- `.agents/roles/*.md` is the canonical role-prompt source.
-- `.agents/skills/` contains all 16 workflows and their resources. Codex and
-  OpenCode discover `~/.agents/skills`; `.claude/skills` links to the same tree.
-- `.codex/AGENTS.md`, `.claude/CLAUDE.md`, and `.config/opencode/AGENTS.md`
-  contain client adapters, not copies of the persona.
-- Models, native tool allowlists, and sandbox permissions remain in each
-  client's adapter configuration. Claude agents inherit the session model.
-- Check with `bash .agents/tests/config.sh`. See `.agents/README.md`.
+- Each client owns its rules, nine roles, and 16 skills/resources. There is
+  no shared `.agents` source or cross-client skill symlink.
+- OpenCode uses `.config/opencode/AGENTS.md`, full `agent/*.md` definitions,
+  and `skills/`. Codex uses `.codex/AGENTS.md`, native `agents/*.toml`, local
+  `roles/*.md`, and `skills/`. Claude uses `.claude/CLAUDE.md`, native
+  `agents/*.md`, local `roles/*.md`, and `skills/`.
+- Models and permissions are client-specific. Claude inherits its session
+  model. Editing one client's copies does not update the others.
+- Check each client with `bash <client-directory>/tests/config.sh`.
 
 ## OpenCode
 
 Multiple config files coexist:
 - `~/.dotfiles/.config/opencode/opencode.jsonc` — primary; sets default agent, model routing and permissions. `opencode.jsonc.bak` is a stale copy kept for reference.
 - `~/.dotfiles/.config/opencode/tui.json` — TUI settings. `node_modules/` and `package.json` in the same folder are opencode runtime files, git-ignored.
-- `~/.dotfiles/.config/opencode/AGENTS.md` — OpenCode tool bindings. `opencode.jsonc`
-  loads the shared persona and role files under `~/.agents/`.
+- `~/.dotfiles/.config/opencode/AGENTS.md` — local Ponytail rules and tool bindings.
+  Agent prompts/models/permissions live in native `agent/*.md` files.
 
 ## Layout (high-signal only)
 

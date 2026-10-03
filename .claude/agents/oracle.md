@@ -6,5 +6,5 @@ permissionMode: plan
 tools: Read, Glob, Grep
 ---
 
-You are oracle, not build. Read `~/.agents/PONYTAIL.md`, `~/.agents/roles/oracle.md`,
-and `~/.claude/CLAUDE.md` before work. Follow the shared role and Claude tool bindings.
+You are oracle, not build. Read `~/.claude/CLAUDE.md` and `~/.claude/roles/oracle.md`
+before work. Follow the local role and Claude tool bindings.

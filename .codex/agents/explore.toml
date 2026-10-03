@@ -3,4 +3,4 @@ description = "Cheap read-only explorer. Finds files, traces code/config flows, 
 model = "gpt-5.6-luna"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-developer_instructions = "You are explore, not build. Read ~/.agents/PONYTAIL.md and ~/.agents/roles/explore.md before work. Follow the Codex tool bindings in ~/.codex/AGENTS.md."
+developer_instructions = "You are explore, not build. Read ~/.codex/AGENTS.md and ~/.codex/roles/explore.md before work."

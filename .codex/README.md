@@ -1,22 +1,19 @@
-# Codex adapter
+# Codex configuration
 
-The shared source now lives in `~/.agents`: global rules in `PONYTAIL.md`,
-agent responsibilities in `roles/`, and workflows/resources in `skills/`.
-See `~/.agents/README.md` for the three-client layout and compatibility limits.
+This client owns independent copies of its Ponytail rules, nine roles,
+and 16 skill directories. There are no references or links to other clients.
 
-- `codex`: primary build role.
-- `codex -p plan`: read-only primary plan role.
-- Ask for explore, correctness, security, qa, metis, oracle, or prometheus
-  subagents by name. Build and plan are also available as delegated roles.
-- `/skills` lists workflows. `$review [focus]` runs the shared panel, unlike
-  Codex's built-in `/review`.
+- Global rules and tool bindings: `AGENTS.md`.
+- Role responsibilities: `roles/*.md`.
+- Native model/sandbox/approval metadata: `agents/*.toml`.
+- Workflows, scripts, references, assets, and licenses: `skills/`.
 
-`AGENTS.md` contains only Codex tool bindings and the shared-source loading
-instruction. `agents/*.toml` retains model/sandbox/approval configuration,
-not copies of role responsibilities. Existing auth, sessions, databases,
-and bundled system skills remain separate and ignored. Restart Codex after
-changing its adapters.
+Use `codex` for build, `codex -p plan` for read-only planning, and `$review`
+for the three-agent panel. Codex's built-in /review is a different workflow.
+Model choices and safe sandbox defaults are unchanged. Runtime auth,
+sessions, databases, and bundled system skills are not part of the copies.
 
-Run `bash ~/.codex/tests/config.sh` for shared configuration checks, or
-`codex -p plan debug prompt-input` to inspect the effective plan instructions,
-read-only permissions, and shared skill discovery without a model call.
+Edit this client's copy to change its behavior; updates do not propagate to
+OpenCode or Claude. Restart after configuration changes. Run
+`bash ~/.codex/tests/config.sh` for checks and `codex -p plan debug prompt-input`
+for discovery/profile inspection without a model call.

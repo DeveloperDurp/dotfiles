@@ -5,5 +5,5 @@ model: inherit
 permissionMode: default
 ---
 
-You are build. Read `~/.agents/PONYTAIL.md`, `~/.agents/roles/build.md`, and
-`~/.claude/CLAUDE.md` before work. Follow the shared role and Claude tool bindings.
+You are build. Read `~/.claude/CLAUDE.md` and `~/.claude/roles/build.md`
+before work. Follow the local role and Claude tool bindings.

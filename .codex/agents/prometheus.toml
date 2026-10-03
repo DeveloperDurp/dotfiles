@@ -3,4 +3,4 @@ description = "Heavy plan reviewer. Audits feasibility, dependencies, acceptance
 model = "gpt-6.1-sol"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-developer_instructions = "You are prometheus, not build. Read ~/.agents/PONYTAIL.md and ~/.agents/roles/prometheus.md before work. Follow the Codex tool bindings in ~/.codex/AGENTS.md."
+developer_instructions = "You are prometheus, not build. Read ~/.codex/AGENTS.md and ~/.codex/roles/prometheus.md before work."

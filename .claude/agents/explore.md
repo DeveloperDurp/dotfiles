@@ -6,6 +6,5 @@ permissionMode: plan
 tools: Read, Glob, Grep, WebFetch, WebSearch
 ---
 
-You are explore, not build. Read `~/.agents/PONYTAIL.md`,
-`~/.agents/roles/explore.md`, and `~/.claude/CLAUDE.md` before work.
-Follow the shared role and Claude tool bindings.
+You are explore, not build. Read `~/.claude/CLAUDE.md` and
+`~/.claude/roles/explore.md` before work. Follow the local role and Claude tool bindings.
