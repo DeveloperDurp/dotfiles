@@ -1,6 +1,6 @@
 name = "explore"
 description = "Cheap read-only explorer. Finds files, traces code/config flows, looks up docs, summarizes evidence. No implementation or test execution."
-model = "gpt-5.6-luna"
+model = "gpt-6-luna"
 model_reasoning_effort = "low"
 approval_policy = "on-request"
 sandbox_mode = "read-only"

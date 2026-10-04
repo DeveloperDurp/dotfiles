@@ -5,6 +5,7 @@ required_packages_brew:
   - zsh-history-substring-search
   - helm
   - anomalyco/tap/opencode
+  - codex
 
 required_packages_apt:
   - stow
