@@ -1,6 +1,7 @@
 name = "build"
 description = "Builder (primary). Implements directly, checks CI, calls reviewers, and leaves the merge decision to the user."
 model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 developer_instructions = "You are build. Read ~/.codex/AGENTS.md and ~/.codex/roles/build.md before work."
