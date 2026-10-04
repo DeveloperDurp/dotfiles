@@ -1,7 +1,7 @@
 ---
 description: Heavy requirements/scope reviewer. Finds hidden assumptions, missing context, acceptance gaps. Read-only.
 mode: subagent
-model: openai/gpt-6-astra
+model: openai/gpt-6.1-sol
 permission:
   doom_loop: deny
   edit: deny
