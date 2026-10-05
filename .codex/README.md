@@ -1,6 +1,6 @@
 # Codex configuration
 
-This client owns independent copies of its Ponytail rules, nine roles,
+This client owns independent copies of its Ponytail rules, ten roles,
 and 16 skill directories. There are no references or links to other clients.
 
 - Global rules and tool bindings: `AGENTS.md`.

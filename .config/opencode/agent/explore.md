@@ -1,7 +1,7 @@
 ---
 description: Cheap read-only explorer. Finds files, traces code/config flows, looks up docs, summarizes evidence. No implementation or test execution.
 mode: subagent
-model: openai/gpt-5.6-luna
+model: opencode-go/glm-5.3-flash
 permission:
   "*": deny
   read:

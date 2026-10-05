@@ -1,7 +1,7 @@
 ---
 description: Read-only planning consultant. Produces one decision-complete plan; implementation happens in build.
 mode: primary
-model: openai/gpt-6.1-sol
+model: opencode-go/glm-5.3-flash
 permission:
   doom_loop: deny
   edit: deny

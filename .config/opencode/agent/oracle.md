@@ -1,7 +1,7 @@
 ---
 description: Heavy architecture/debugging reviewer. Hard root causes, cross-boundary contracts, design trade-offs. Read-only.
 mode: subagent
-model: openai/gpt-6.1-sol
+model: opencode-go/glm-5.3-flash
 permission:
   doom_loop: deny
   edit: deny

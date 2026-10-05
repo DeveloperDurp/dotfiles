@@ -5,7 +5,7 @@ prompts with model/permission frontmatter in `agent/*.md`, and independent
 workflows/resources in `skills/`. `opencode.jsonc` contains only the schema
 and existing default/small model settings. No shared-file interpolation.
 
-All nine roles, 16 workflows, issue-to-PR support, and the incoming Alpine
+All ten roles, 16 workflows, issue-to-PR support, and the incoming Alpine
 component docs are retained. Other clients own separate copies; changes
 here do not update them. The existing /review command is unchanged.
 

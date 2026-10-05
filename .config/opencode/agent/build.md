@@ -1,7 +1,7 @@
 ---
 description: Builder (primary). Implements directly, checks CI, calls reviewers, and leaves the merge decision to the user.
 mode: primary
-model: openai/gpt-6.1-sol
+model: opencode-go/glm-5.3-flash
 permission:
   doom_loop: deny
   edit: allow

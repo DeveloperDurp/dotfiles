@@ -47,7 +47,7 @@ To add a new plugin spec: create `~/.dotfiles/.config/nvim/lua/plugins/<name>.lu
 
 ## Independent agents (Codex, Claude Code, OpenCode)
 
-- Each client owns its rules, nine roles, and 16 skills/resources. There is
+- Each client owns its rules, ten roles, and 16 skills/resources. There is
   no shared `.agents` source or cross-client skill symlink.
 - OpenCode uses `.config/opencode/AGENTS.md`, full `agent/*.md` definitions,
   and `skills/`. Codex uses `.codex/AGENTS.md`, native `agents/*.toml`, local

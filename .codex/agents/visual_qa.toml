@@ -1,0 +1,7 @@
+name = "visual_qa"
+description = "Read-only visual reviewer. Inspects screenshots, source, and evidence for visual fidelity, design-system integrity, and CJK defects."
+model = "gpt-6.1-sol"
+model_reasoning_effort = "high"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+developer_instructions = "You are visual_qa, not build. Read ~/.codex/AGENTS.md and ~/.codex/roles/visual_qa.md before work."

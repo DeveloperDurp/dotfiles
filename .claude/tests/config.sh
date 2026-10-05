@@ -7,7 +7,7 @@ import re
 import sys
 
 root = Path(sys.argv[1]).resolve()
-expected = {'build', 'plan', 'correctness', 'security', 'qa', 'explore', 'metis', 'oracle', 'prometheus'}
+expected = {'build', 'plan', 'correctness', 'security', 'qa', 'explore', 'metis', 'oracle', 'prometheus', 'visual_qa'}
 agents = {p.stem: p for p in (root / 'agents').glob('*.md')}
 assert set(agents) == expected
 assert {p.stem for p in (root / 'roles').glob('*.md')} == expected
@@ -26,6 +26,9 @@ for name, path in agents.items():
         assert fields['tools'] == 'Read, Glob, Grep, Bash'
 assert json.loads((root / 'settings.json').read_text())['permissions']['defaultMode'] == 'default'
 assert not (root / 'skills').is_symlink()
+visual_skill = (root / 'skills/visual-qa/SKILL.md').read_text()
+assert visual_skill.count('task(subagent_type="visual_qa",') == 3
+assert 'subagent_type="general"' not in visual_skill
 skills = list((root / 'skills').glob('*/SKILL.md'))
 assert len(skills) == 16
 for skill in skills:
@@ -34,7 +37,7 @@ for skill in skills:
     assert text.startswith('---\n') and f'\nname: {skill.parent.name}\n' in text and '\ndescription: ' in text
 for path in [root / 'CLAUDE.md', *list((root / 'roles').glob('*.md'))]:
     assert '~/.agents/' not in path.read_text(), path
-print('PASS: Claude has 9 local roles, restricted tools, and 16 independent skills')
+print('PASS: Claude has 10 local roles, restricted tools, and 16 independent skills')
 PY
 repo="$(dirname -- "${BASH_SOURCE[0]}")/../.."
 for filename in .claude/.credentials.json .claude/transcripts/check .claude/projects/check .claude/skills/synced/check .claude/skills/frontend/node_modules/check; do

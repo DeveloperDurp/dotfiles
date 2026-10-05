@@ -6,7 +6,7 @@ import sys
 import tomllib
 
 root = Path(sys.argv[1]).resolve()
-expected = {'build', 'plan', 'correctness', 'security', 'qa', 'explore', 'metis', 'oracle', 'prometheus'}
+expected = {'build', 'plan', 'correctness', 'security', 'qa', 'explore', 'metis', 'oracle', 'prometheus', 'visual_qa'}
 config = tomllib.loads((root / 'config.toml').read_text())
 assert config['sandbox_mode'] == 'workspace-write'
 assert config['approval_policy'] == 'on-request' and config['agents']['enabled'] is True
@@ -23,6 +23,9 @@ for name, agent in agents.items():
 plan = tomllib.loads((root / 'plan.config.toml').read_text())
 assert plan['sandbox_mode'] == 'read-only' and plan['approval_policy'] == 'on-request'
 assert '~/.codex/roles/plan.md' in plan['developer_instructions']
+visual_skill = (root / 'skills/visual-qa/SKILL.md').read_text()
+assert visual_skill.count('task(subagent_type="visual_qa",') == 3
+assert 'subagent_type="general"' not in visual_skill
 skills = [p for p in (root / 'skills').glob('*/SKILL.md') if p.parent.name != '.system']
 assert len(skills) == 16
 for skill in skills:
@@ -31,7 +34,7 @@ for skill in skills:
     assert text.startswith('---\n') and f'\nname: {skill.parent.name}\n' in text and '\ndescription: ' in text
 for path in [root / 'AGENTS.md', root / 'config.toml', root / 'plan.config.toml', *list((root / 'agents').glob('*.toml')), *list((root / 'roles').glob('*.md'))]:
     assert '~/.agents/' not in path.read_text(), path
-print('PASS: Codex has 9 local roles, safe profiles, and 16 independent skills')
+print('PASS: Codex has 10 local roles, safe profiles, and 16 independent skills')
 PY
 repo="$(dirname -- "${BASH_SOURCE[0]}")/../.."
 for filename in .codex/auth.json .codex/sessions/check .codex/history.jsonl .codex/skills/.system/check .codex/skills/frontend/node_modules/check; do

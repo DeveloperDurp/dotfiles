@@ -1,7 +1,7 @@
 ---
 description: Correctness reviewer. Logic, flow, edge cases, swallowed errors, test adequacy. Report only.
 mode: subagent
-model: openai/gpt-6.1-sol
+model: opencode-go/glm-5.3-flash
 permission:
   doom_loop: deny
   edit: deny

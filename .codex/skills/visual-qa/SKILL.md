@@ -104,7 +104,7 @@ Static screenshots miss what moves. For every interactive element and every anim
 
 This independent review is REQUIRED before any "done" claim. Do not self-review inside the main agent and call the UI verified - a self-graded pass is the failure mode this step exists to stop. Dispatch it yourself, every time, without waiting to be told. Give each reviewer the captures for every enumerated page from Step 2, not a sample, and tell it the page count so it can confirm none were skipped.
 
-Dispatch through the active client's native delegation tool in its generic role. Send both calls in one turn and use their returned results directly. Translate the illustrative task syntax below through the client adapter.
+Dispatch both passes through the active client's native delegation tool using the named `visual_qa` agent. Send both calls in one turn and use their returned results directly. Translate the illustrative task syntax below through the client adapter. If the named agent is unavailable, report the blocker; do not substitute a generic agent or pin a model in the skill.
 
 Send BOTH calls in a single message so they run concurrently. Each reviewer is read-only: it reviews and reports, it cannot modify files. Each returns PASS, REVISE, or FAIL with concrete, located findings. Pass A proves the surface is a real design-system implementation, not a mock-only or faked-image substitute. Pass B directly opens screenshots and inspects source/content for visual and CJK defects.
 
@@ -113,7 +113,7 @@ Paste evidence directly into each prompt: source code, the plain-text TUI captur
 ### Pass A - Design-system and functional integrity (deeper, strict)
 
 ```
-task(subagent_type="general",
+task(subagent_type="visual_qa",
   description="Visual QA pass A: design-system and functional integrity",
   prompt="""
 REVIEW TYPE: DESIGN-SYSTEM AND FUNCTIONAL INTEGRITY (read-only)
@@ -160,7 +160,7 @@ BLOCKING: items that must be fixed; empty if PASS
 ### Pass B - Visual fidelity and CJK precision (focused)
 
 ```
-task(subagent_type="general",
+task(subagent_type="visual_qa",
   description="Visual QA pass B: visual fidelity and CJK precision",
   prompt="""
 REVIEW TYPE: VISUAL FIDELITY AND CJK PRECISION (read-only)
@@ -250,7 +250,7 @@ If any page fails, you are not done - but treat the two blocker kinds differentl
 
 Run this step IN ADDITION to Steps 1-4 when the original user task has a concrete visual target: "clone this site", "move this Figma design to code", "rebuild this screen", "make it look exactly like X", or "build this Imagen/Stitch/generated mockup and overview". For these tasks the normal dual-oracle is necessary but NOT sufficient. After it returns, run the following TWO additional MANDATORY verifications and LOOP until BOTH pass.
 
-1. Pixel-perfect design-compare subagent (visual oracle). Dispatch a focused, read-only design-compare reviewer (recommend `gpt-5.6-sol` with xhigh reasoning). It must crop/zoom BOTH the reference (target / Figma export / source-site screenshot / generated page snapshot) and the ACTUAL screenshot into matching regions and read them **pixel-by-pixel** - header, nav, each card, spacing, type ramp, color tokens - not at a glance. It must also compare the overview text or annotations against the rendered content and DOM text. Anchor every claim with the bundled tool:
+1. Pixel-perfect design-compare subagent (visual oracle). Dispatch the named `visual_qa` agent with a focused, read-only design-compare task. The parent supplies matching crops/zooms of BOTH the reference (target / Figma export / source-site screenshot / generated page snapshot) and the ACTUAL screenshot. The reviewer must open them and read them **pixel-by-pixel** - header, nav, each card, spacing, type ramp, color tokens - not at a glance. It must also compare the overview text or annotations against the rendered content and DOM text. The parent runs the bundled tool and supplies its output to anchor every claim:
 
 ```
 node "$SKILL_DIR/scripts/visual-qa.mjs" image-diff <reference.png> <actual.png>
@@ -258,12 +258,12 @@ node "$SKILL_DIR/scripts/visual-qa.mjs" image-diff <reference.png> <actual.png>
 
    It judges whether layout geometry, spacing, design tokens (color, type, radius, shadow), and the design itself are identical to the target, region by region. Anything off by more than rounding is a finding.
 
-2. Code-level design-system fidelity (code oracle). Dispatch through your harness's own subagent tool.
+2. Code-level design-system fidelity (code oracle). Dispatch the named `visual_qa` agent through your harness's own subagent tool with the code-level task below.
 
    **Native delegation (illustrative operation syntax; use the client adapter):**
 
    `````
-   task(subagent_type="general",
+   task(subagent_type="visual_qa",
      description="Clone/design-system fidelity review",
      prompt="""
    TASK: Act as a clone / design-system fidelity reviewer. Read-only.
