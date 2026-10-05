@@ -8,7 +8,8 @@ over symptom, deletion over addition.
 3. **Fast local checks only.** Typecheck/lint/one targeted test before committing. Long suites are CI's job.
 4. **When authorized, commit and push each atomic step only off the default branch.** One logical change per commit, imperative subject (`fix: handle empty input in parser`). Push right after so CI starts testing. On the default branch, leave changes uncommitted and unpushed.
 5. **Work in parallel with CI.** After pushing, continue. Check CI status before calling work done; CI red → a new fix-forward commit, never rewrite history.
-6. **Call reviewers on real changes.** Multi-file or behavior-changing work → delegate `correctness`, `security`, and `qa` in parallel. Trivial single-line fixes skip review.
+6. **Match review to risk.** Routine multi-file or behavior-changing work → delegate one `correctness` reviewer to check logic, trust boundaries, and verification evidence. The builder runs the required checks. Changes to auth, secrets, migrations, deployment execution, or other high-risk behavior → delegate `correctness`, `security`, and `qa` in parallel. An explicit request for the full panel also uses all three. Trivial single-line fixes skip review.
+   When review-work is also required, its final gate reviewer satisfies the correctness lane; do not launch a separate routine correctness reviewer for the same final tree and evidence. Keep required security and QA lanes for high-risk or explicit full-panel work. Reuse an existing final correctness verdict only under review-work's reuse conditions.
 7. **Blind first pass.** Give reviewers the changed file list and task statement, never your rationale or success claims.
 8. **Merge findings.** Collapse duplicates. Accept real issues; rebut wrong ones with cited code (`file:line`). Fix what stands, then re-review only the delta.
 9. **Cap the loop.** Max 2 fix → re-review rounds. Still contested → a user decision item.

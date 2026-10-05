@@ -20,11 +20,18 @@ for name, agent in agents.items():
     assert agent['sandbox_mode'] == ('workspace-write' if name in {'build', 'qa'} else 'read-only')
     assert f'~/.codex/roles/{name}.md' in agent['developer_instructions']
     assert (root / 'roles' / f'{name}.md').is_file()
+assert agents['qa']['model'] == 'gpt-6-luna'
+assert agents['qa']['model_reasoning_effort'] == 'low'
+for name in ('plan', 'visual_qa'):
+    assert agents[name]['model'] == 'gpt-6.1-sol'
+    assert agents[name]['model_reasoning_effort'] == 'medium'
 plan = tomllib.loads((root / 'plan.config.toml').read_text())
+assert plan['model'] == agents['plan']['model']
+assert plan['model_reasoning_effort'] == agents['plan']['model_reasoning_effort']
 assert plan['sandbox_mode'] == 'read-only' and plan['approval_policy'] == 'on-request'
 assert '~/.codex/roles/plan.md' in plan['developer_instructions']
 visual_skill = (root / 'skills/visual-qa/SKILL.md').read_text()
-assert visual_skill.count('task(subagent_type="visual_qa",') == 3
+assert visual_skill.count('task(subagent_type="visual_qa",') == 2
 assert 'subagent_type="general"' not in visual_skill
 skills = [p for p in (root / 'skills').glob('*/SKILL.md') if p.parent.name != '.system']
 assert len(skills) == 16

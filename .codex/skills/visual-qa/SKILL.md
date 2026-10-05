@@ -102,6 +102,8 @@ Static screenshots miss what moves. For every interactive element and every anim
 
 ## Step 3 - Dispatch two read-only QA subagents in parallel
 
+For a concrete visual target, run reference-fidelity mode within these same two passes. The parent supplies matching reference/actual crops and zooms for every page, state, and viewport, plus the image-diff output. Pass A verifies the reference's component tree, layer structure, reusable tokens, and states in the source. Pass B opens both sets of images and compares them pixel-by-pixel, including overview text and annotations. Do not launch an additional reviewer pair.
+
 This independent review is REQUIRED before any "done" claim. Do not self-review inside the main agent and call the UI verified - a self-graded pass is the failure mode this step exists to stop. Dispatch it yourself, every time, without waiting to be told. Give each reviewer the captures for every enumerated page from Step 2, not a sample, and tell it the page count so it can confirm none were skipped.
 
 Dispatch both passes through the active client's native delegation tool using the named `visual_qa` agent. Send both calls in one turn and use their returned results directly. Translate the illustrative task syntax below through the client adapter. If the named agent is unavailable, report the blocker; do not substitute a generic agent or pin a model in the skill.
@@ -138,6 +140,7 @@ SHARED SCRIPT EVIDENCE (reference, not verdict):
 
 CHECK EACH:
 1. Real design system vs ad-hoc/mock-only: are styles driven by coherent design tokens and reused primitives, or one-off hardcoded values scattered per element? When a reference packet exists, the implementation must encode the reference's colors, type, spacing, radii, shadows, component anatomy, and states as reusable tokens/primitives that can extend to new pages. Treat mock-only screens, static compositions, or one-page hardcoded styling with no reusable system as BLOCKING unless the user explicitly requested a throwaway mock.
+   For reference-fidelity work, trace the component tree and layer hierarchy against the reference packet; matching pixels alone cannot prove a matching design system or live DOM structure.
 2. Faked-with-an-image anti-pattern: is the UI a real DOM/component tree, or a pasted raster/screenshot or background-image standing in for live elements? For TUI: a real layout that reflows, or hardcoded pre-rendered text at fixed widths?
 3. Alpha and transparency: handled correctly, with no unexpected opaque or black fills and correct PNG/CSS alpha? Cross-check alphaChannelIntact.
 4. Code style and implementation quality.
@@ -190,6 +193,7 @@ USE THE EVIDENCE:
 CHECK:
 1. Does the rendered output match what the user requested: layout, spacing, color, type, alignment?
 2. When a reference packet exists, compare ACTUAL against REFERENCE pixel-perfectly, region by region: page bounds, header/nav, hero, cards, grids, charts, media, typography, copy, color tokens, radius, shadow, border, icon size, spacing, alignment, scroll position, and state. Anything off beyond unavoidable rasterization/rounding is a finding. The overview text is part of the target: missing or rearranged reference content is a finding even if the screenshot looks plausible.
+   Open the supplied matching crops/zooms of both images and inspect them pixel-by-pixel. Missing required crops or image-viewing capability is an evidence blocker.
 3. CJK precision:
    - Web: natural CJK line breaking for display and body text. Inspect every page's screenshot for this, not a sample. A high `similarityScore` never excuses a break: each class below is REVISE/FAIL and blocking regardless of similarityScore. Flag every one of:
      - a particle or ending orphaned onto its own line, for example `핵심 자료 / 도` or `끝에서 / 만난다`.
@@ -218,11 +222,13 @@ When both passes return, merge them into a single report. Per dimension, mark go
 
 This is a hard stop rule, not a guideline. The UI is NOT done until ALL of these hold at once on the SAME current build:
 
-- An independent read-only reviewer subagent returned PASS with no BLOCKING findings.
-- That reviewer judged a FRESH capture of every enumerated page from Step 2 - no stale artifacts, no skipped pages.
+- BOTH independent passes A and B returned PASS with no BLOCKING findings on the same build.
+- Both reviewers judged a FRESH capture of every enumerated page from Step 2 - no stale artifacts, no skipped pages.
 - Every CJK and layout finding is resolved in the rendered output, not merely noted.
 
 If any page fails, you are not done - but treat the two blocker kinds differently. `[product]` findings: fix the source, re-capture the pages the fix touched, and dispatch a FRESH reviewer (never a followup to the previous one - stale reviewer context re-litigates settled findings). `[evidence]` findings: the product is not implicated - repair the capture pipeline, re-shoot only the defective artifacts, verify them against the live build, and re-dispatch without touching product code. Loop until the independent reviewer passes on the current build, and make the final approving round judge a complete fresh capture set. Do not stop because the automated script reports zero issues - the script aims the reviewer, it does not replace it. Do not stop because an earlier pass approved an older build. The only non-loop exit is to list the exact remaining gaps and get explicit user acceptance; never self-certify a silent PASS.
+
+For reference-fidelity work, both passes must confirm that the layer structure, design system, and rendered design match the target. After a product fix, re-run both passes on the same current build; neither a visual-only nor a code-only approval completes the task.
 
 ```markdown
 # Visual QA - Verdict: GOOD | NEEDS WORK
@@ -246,49 +252,6 @@ If any page fails, you are not done - but treat the two blocker kinds differentl
 [Satisfied, or the exact remaining gaps and who accepted them]
 ```
 
-## Step 5 - Reference-fidelity mode (when the task has a concrete visual target)
-
-Run this step IN ADDITION to Steps 1-4 when the original user task has a concrete visual target: "clone this site", "move this Figma design to code", "rebuild this screen", "make it look exactly like X", or "build this Imagen/Stitch/generated mockup and overview". For these tasks the normal dual-oracle is necessary but NOT sufficient. After it returns, run the following TWO additional MANDATORY verifications and LOOP until BOTH pass.
-
-1. Pixel-perfect design-compare subagent (visual oracle). Dispatch the named `visual_qa` agent with a focused, read-only design-compare task. The parent supplies matching crops/zooms of BOTH the reference (target / Figma export / source-site screenshot / generated page snapshot) and the ACTUAL screenshot. The reviewer must open them and read them **pixel-by-pixel** - header, nav, each card, spacing, type ramp, color tokens - not at a glance. It must also compare the overview text or annotations against the rendered content and DOM text. The parent runs the bundled tool and supplies its output to anchor every claim:
-
-```
-node "$SKILL_DIR/scripts/visual-qa.mjs" image-diff <reference.png> <actual.png>
-```
-
-   It judges whether layout geometry, spacing, design tokens (color, type, radius, shadow), and the design itself are identical to the target, region by region. Anything off by more than rounding is a finding.
-
-2. Code-level design-system fidelity (code oracle). Dispatch the named `visual_qa` agent through your harness's own subagent tool with the code-level task below.
-
-   **Native delegation (illustrative operation syntax; use the client adapter):**
-
-   `````
-   task(subagent_type="visual_qa",
-     description="Clone/design-system fidelity review",
-     prompt="""
-   TASK: Act as a clone / design-system fidelity reviewer. Read-only.
-
-   Be skeptical but fair. The executor may have overstated success and may have faked the design — inspect the diff, source code, and reference artifacts before approving.
-
-   Input: goal, success criteria, changed files, full diff, reference/target design (screenshots, Figma exports, source-site captures), evidence paths.
-
-   Review for:
-   1. Real component tree: live, reused primitives and extensible state variants render the UI, NOT a pasted screenshot, raster image, or `background-image` standing in for live DOM elements.
-   2. Token-driven styling: design tokens drive colors, spacing, and typography, NOT hardcoded one-off pixel or hex values.
-   3. Layer and layout structure: the DOM hierarchy and layout match the target structure.
-   4. Visual fidelity: the rendered design itself matches the reference.
-
-   Return:
-   - recommendation: APPROVE or REQUEST_CHANGES.
-   - blockers: concrete issues with file/line references; empty if APPROVE.
-   - reportPath: evidence artifacts you inspected.
-
-   Do NOT suggest or implement fixes.
-   """
-   )
-   `````
-
-RULE (mandatory, non-negotiable): the reference-fidelity task is NOT done until BOTH the pixel-compare AND the code-level design-system fidelity reviewer confirm that the **layer structure, the design system, and the design itself** match the target. If EITHER fails, it is a MANDATORY retry: re-implement the gaps and re-run BOTH verifications from the top. Repeat the retry loop until both pass on the same revision. Never declare reference-fidelity complete on a single pass, on visual-only evidence, or on code-only evidence - both oracles must confirm on the same build.
 
 ## Reference evidence is not the verdict
 

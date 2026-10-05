@@ -141,7 +141,9 @@ never go silent for the whole task.
 ## Tool bindings
 
 - Skills are independent local copies. Invoke with `$skill-name` or /skills.
-  `$review [focus]` runs the panel workflow; Codex's built-in /review differs.
+  `$review [focus]` uses one reviewer for routine changes and the full panel
+  for high-risk changes or an explicit full-panel request. Codex's built-in
+  /review differs.
 - Delegate with spawn_agent using the named agent type and message. Use
   wait, send_input, and close_agent to collect results, continue a reviewer,
   and release threads. Generic work uses default.

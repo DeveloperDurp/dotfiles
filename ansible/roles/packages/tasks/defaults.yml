@@ -17,6 +17,9 @@
 - name: install go apps
   include_tasks: "./scripts/install_goapps.yml"
 
+- name: install watermarks-remover and global Git hooks
+  include_tasks: "./scripts/install_watermarks_remover.yml"
+
 - name: install flatpak
   include_tasks: "./scripts/install_flatpak.yml"
 

@@ -1,8 +1,10 @@
 ---
 name: review-work
-description: "Post-implementation gate review: run manual QA on the real surface yourself, then launch ONE gate reviewer (never a panel) to audit goal, constraints, code quality, security, missed context, and QA evidence. Use before a PR handoff or when the user explicitly asks to review completed work."
+description: "Post-implementation gate review: run or reuse current manual QA evidence, then use one qualifying final correctness review or launch ONE gate reviewer to audit goal, constraints, code quality, security, missed context, and QA evidence. Use before a PR handoff or when the user explicitly asks to review completed work."
 ---
 ## Spawning the reviewer
+
+Before spawning, check for an existing final `correctness` review from this session. Reuse it only if it covers the same final revision and uncommitted diff, goal, constraints, context findings, and current QA matrix/artifacts, explicitly covers every gate-checklist item below, and returns APPROVE (or MERGE with no blockers). Record the review identifier, inspected tree and evidence, scope, and verdict in the report. A narrower code review, missing checklist coverage, stale evidence, changed source, or changed requirements requires a fresh gate reviewer. Never reuse a visual-only verdict as a correctness gate. This reuse satisfies only the correctness lane; required security and QA reviews still apply.
 
 Spawn the gate reviewer with the active client's delegation tool in the `correctness` role
 and use its returned result directly. The spawned message is a
@@ -17,7 +19,7 @@ and still emit a final aggregate result.
 
 # Review Work - Gate Review Orchestrator
 
-Review completed implementation work through exactly two lanes: your own hands-on manual QA on the real surface, and ONE gate reviewer sub-agent that audits the whole change set against the goal, the constraints, and your QA evidence. The review passes only when the QA matrix has no failing row AND the gate reviewer returns APPROVE.
+Review completed implementation work through exactly two lanes: your own hands-on manual QA on the real surface, and ONE final correctness review that audits the whole change set against the goal, the constraints, and your QA evidence. Reuse a qualifying review or launch one gate reviewer. The review passes only when the QA matrix has no failing row AND the gate review is APPROVE.
 
 One reviewer, not a panel. A single gate reviewer holding the full context (goal, diff, history, QA evidence) catches what a fan-out of narrow reviewers misses between their seams, and it costs one agent instead of five. Never add review lanes; widen the gate reviewer's checklist instead.
 
@@ -103,7 +105,7 @@ Any FAIL ends the review here: report **REVIEW FAILED** with the failing rows an
 
 ## Phase 2: Launch the Gate Reviewer (one agent)
 
-Launch exactly one reviewer and use its returned verdict before continuing.
+Reuse a qualifying final correctness verdict under the conditions above; otherwise launch exactly one reviewer and use its returned verdict before continuing. Normalize a reused MERGE with no blockers to APPROVE and record its origin.
 
 `correctness` reads files and runs read-only commands: hand it the repo paths, the diff, CONTEXT_MINING, and the QA matrix. Paste full contents only for files outside the repo.
 

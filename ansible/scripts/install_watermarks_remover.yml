@@ -1,0 +1,51 @@
+- name: Find the user's home directory
+  ansible.builtin.getent:
+    database: passwd
+    key: "{{ USER }}"
+
+- name: Install and configure watermarks-remover
+  become_user: "{{ USER }}"
+  vars:
+    watermarks_home: "{{ ansible_facts['getent_passwd'][USER][4] }}"
+    watermarks_hooks: "{{ watermarks_home }}/.config/git/hooks"
+  block:
+    - name: Check the existing global hook directory
+      ansible.builtin.command: git config --global --get core.hooksPath
+      register: watermarks_existing_hooks
+      changed_when: false
+      failed_when: watermarks_existing_hooks.rc not in [0, 1]
+      check_mode: false
+
+    - name: Preserve any existing global hook configuration
+      ansible.builtin.assert:
+        that:
+          - watermarks_existing_hooks.rc == 1 or watermarks_existing_hooks.stdout == watermarks_hooks
+        fail_msg: "An existing global core.hooksPath must be integrated before enabling watermarks-remover."
+
+    - name: Create the user data and Git configuration directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0700'
+      loop:
+        - "{{ watermarks_home }}/.local/share"
+        - "{{ watermarks_home }}/.config/git"
+
+    - name: Install the pinned watermarks-remover release
+      ansible.builtin.git:
+        repo: https://github.com/guillaumemeyer/watermarks-remover.git
+        dest: "{{ watermarks_home }}/.local/share/watermarks-remover"
+        version: 321d93d2efd6a8b26915c5eb5193d9d1701e2c4b
+        force: false
+
+    - name: Link the dotfiles-managed Git hooks
+      ansible.builtin.file:
+        src: "{{ watermarks_home }}/.dotfiles/.config/git/hooks"
+        dest: "{{ watermarks_hooks }}"
+        state: link
+
+    - name: Enable the global Git hooks
+      community.general.git_config:
+        scope: global
+        name: core.hooksPath
+        value: "{{ watermarks_hooks }}"

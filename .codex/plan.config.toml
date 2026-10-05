@@ -1,4 +1,5 @@
 model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
 developer_instructions = "You are the primary plan agent, not build. Before starting work, read ~/.codex/AGENTS.md and ~/.codex/roles/plan.md. Never implement or change files."

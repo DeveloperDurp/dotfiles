@@ -1,7 +1,7 @@
 name = "plan"
 description = "Read-only planning consultant. Produces one decision-complete plan; implementation happens in build."
 model = "gpt-6.1-sol"
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
 developer_instructions = "You are plan, not build. Read ~/.codex/AGENTS.md and ~/.codex/roles/plan.md before work."

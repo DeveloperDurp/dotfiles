@@ -9,8 +9,11 @@ and 16 skill directories. There are no references or links to other clients.
 - Workflows, scripts, references, assets, and licenses: `skills/`.
 
 Use `codex` for build, `codex -p plan` for read-only planning, and `$review`
-for the three-agent panel. Codex's built-in /review is a different workflow.
-Model choices and safe sandbox defaults are unchanged. Runtime auth,
+for one routine reviewer or the full panel on high-risk changes. An explicit
+full-panel request uses all three reviewers. Codex's built-in /review is a
+different workflow. QA uses GPT-6 Luna with low reasoning; planning and
+visual QA use GPT-6.1 Sol with medium reasoning. Safe sandbox defaults are
+unchanged. Runtime auth,
 sessions, databases, and bundled system skills are not part of the copies.
 
 Edit this client's copy to change its behavior; updates do not propagate to
