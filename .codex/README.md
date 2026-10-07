@@ -3,7 +3,8 @@
 This client owns independent copies of its Ponytail rules, ten roles,
 and 11 skill directories. There are no references or links to other clients.
 
-- Global rules and tool bindings: `AGENTS.md`.
+- Global workflow contract and tool bindings: `AGENTS.md`.
+- Ponytail programming rules: `skills/programming/SKILL.md`.
 - Role responsibilities: `roles/*.md`.
 - Native model/sandbox/approval metadata: `agents/*.toml`.
 - Workflows, scripts, references, assets, and licenses: `skills/`.
