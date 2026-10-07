@@ -1,6 +1,6 @@
 # designpowers Routing Contract
 
-`designpowers` routes design operating-layer guidance inside the existing frontend skill. It is not a replacement for `/frontend`, `/visual-qa`, `/ulw-plan`, `/ulw-execute`, `/review-work`, or any OpenAgent skill, and it must not create a second planner, builder, verification harness, or orchestration API.
+`designpowers` routes design operating-layer guidance inside the existing frontend skill. It is not a replacement for `/frontend`, `/visual-qa`, `/ulw-plan`, `/ulw-execute`, `/review`, or any OpenAgent skill, and it must not create a second planner, builder, verification harness, or orchestration API.
 
 ## Phase Routing
 
@@ -10,7 +10,7 @@
 | Approved plan execution; continuing an OpenAgent plan | `/ulw-execute` plus `lane-b-execution.md` | Keep execution under Boulder/ledger discipline and include current design-state constraints in worker assignments. |
 | Building, styling, redesigning, auditing, or performance-checking a web UI | frontend `design` + `perfection`; add `lane-b-execution.md` when designpowers context affects implementation | Preserve the frontend `DESIGN.md` gate, design/perfection routing, React tooling, real-browser checks, and implementation standards. |
 | Screenshots, visual regressions, clone fidelity, layout quality, alpha/CJK checks, or design QA | `/visual-qa` plus `lane-c-review.md` | Run objective evidence capture before design judgment and feed the same artifacts into persona/accessibility/heuristic review. |
-| Final implementation approval, QA my work, review changes, or significant completed implementation | `/review-work` plus `lane-c-review.md` and `lane-d-memory.md` | Include the design brief, state file path, visual artifacts, unresolved design debt, and accessibility-debt acknowledgements as review inputs. |
+| Final implementation approval, QA my work, review changes, or significant completed implementation | `/review` plus `lane-c-review.md` and `lane-d-memory.md` | Include the design brief, state file path, visual artifacts, unresolved design debt, and accessibility-debt acknowledgements as review inputs. |
 
 ## Planning Through `/ulw-plan`
 
@@ -22,7 +22,7 @@ When planning is needed, `designpowers` supplies design-specific context and let
 - taste direction, anti-references, and brand/design-system constraints;
 - content tone and plain-language requirements;
 - motion, responsive, and adaptive-interface requirements;
-- verification expectations: frontend checks, visual QA artifacts, persona walkthroughs, and review-work sign-off;
+- verification expectations: frontend checks, visual QA artifacts, persona walkthroughs, and review sign-off;
 - explicit Must Not Have constraints, including prohibited bridge/canvas tooling.
 
 ## Execution Through `/ulw-execute`
@@ -60,9 +60,9 @@ The frontend skill owns actual UI build quality. `designpowers` may point it at:
 
 The same build must satisfy objective visual evidence and design judgment, unless remaining gaps are explicitly recorded and accepted by the user.
 
-## Final Review Through `/review-work`
+## Final Review Through `/review`
 
-Use `/review-work` as the final gate for significant implementation work. The review packet should include:
+Use `/review` as the final gate for significant implementation work. The review packet should include:
 
 - original goal and design constraints;
 - changed files and diff;
@@ -72,7 +72,7 @@ Use `/review-work` as the final gate for significant implementation work. The re
 - persona walkthrough results;
 - design debt entries and any explicit accessibility-debt acknowledgement.
 
-`designpowers` does not approve its own work. It prepares design context so `/review-work` can evaluate whether the delivered UI satisfies the full request.
+`designpowers` does not approve its own work. It prepares design context so `/review` can evaluate whether the delivered UI satisfies the full request.
 
 ## Prohibited Routes
 

@@ -41,7 +41,7 @@ Every implementation must choose one of these branches before UI code changes:
 3. **Existing project with `DESIGN.md` or a component system:** read it, follow it, and update it before implementation only when the requested work needs a new token, primitive, state, motion rule, accessibility constraint, accepted debt, or reference-fidelity requirement.
 4. **Existing project with UI but no `DESIGN.md` and no reusable component layer:** STOP and ask the user one focused question: should you preserve the current look with copy-nearby styling, or extract a real `DESIGN.md` plus reusable components before continuing? Do not silently choose.
 
-The resulting `DESIGN.md` is the implementation contract: tokens, typography, spacing, primitives, motion, responsive behavior, accessibility constraints, and accepted debt must be named there before code uses them. Verify component primitives, states, and final screens with real visual QA evidence; pass design-system decisions, implementation evidence, and unresolved debt into `/review-work` for significant implementation work.
+The resulting `DESIGN.md` is the implementation contract: tokens, typography, spacing, primitives, motion, responsive behavior, accessibility constraints, and accepted debt must be named there before code uses them. Verify component primitives, states, and final screens with real visual QA evidence; pass design-system decisions, implementation evidence, and unresolved debt into `/review` for significant implementation work.
 
 ## Ruleset 1 — design (`references/design/`)
 
@@ -109,7 +109,7 @@ Domains: `product` `style` `typography` `color` `landing` `chart` `ux` `react` `
 
 ## Ruleset 4 — designpowers (`references/designpowers/`)
 
-`README.md` routes the pinned `Owl-Listener/designpowers` corpus into this workflow. It supplies design context — personas, accessibility and cognitive constraints, critique, debt, handoff, synthetic user testing, motion, role prompts — that must be distilled into `DESIGN.md` first, then used as the implementation contract. It replaces nothing: not this skill, not `/visual-qa`, `/ulw-plan`, `/ulw-execute`, or `/review-work`.
+`README.md` routes the pinned `Owl-Listener/designpowers` corpus into this workflow. It supplies design context — personas, accessibility and cognitive constraints, critique, debt, handoff, synthetic user testing, motion, role prompts — that must be distilled into `DESIGN.md` first, then used as the implementation contract. It replaces nothing: not this skill, not `/visual-qa`, `/ulw-plan`, `/ulw-execute`, or `/review`.
 
 ## Quick routes — most common requests
 

@@ -11,7 +11,7 @@ Verify a rendered UI against intent using objective script evidence plus two par
 
 - Use after you build or change any UI, before calling it done. Covers web/page UIs, TUI/terminal UIs, and paginated documents.
 - Use when output must match a mock, a baseline, or a stated design intent; when you suspect a regression; when CJK (Korean/Japanese/Chinese) text may clip, misalign, or wrap awkwardly; when a claimed design system might actually be a flat image; when a terminal layout may overflow or its borders may break.
-- Skip when there is no rendered surface (pure backend or library logic with no visual or terminal output). For broad post-implementation review use review-work; this skill is the visual specialist.
+- Skip when there is no rendered surface (pure backend or library logic with no visual or terminal output). For broad post-implementation review use review; this skill is the visual specialist.
 
 In the commands below, `$SKILL_DIR` is this skill's own directory (the folder containing this SKILL.md). The bundled Node evidence CLI lives at `scripts/visual-qa.mjs` inside it; the TypeScript source in `scripts/cli.ts` is for development.
 

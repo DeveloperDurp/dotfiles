@@ -2,6 +2,7 @@
 set -euo pipefail
 python3 - "$(dirname -- "${BASH_SOURCE[0]}")/.." <<'PY'
 from pathlib import Path
+import re
 import sys
 import tomllib
 
@@ -34,14 +35,20 @@ visual_skill = (root / 'skills/visual-qa/SKILL.md').read_text()
 assert visual_skill.count('task(subagent_type="visual_qa",') == 2
 assert 'subagent_type="general"' not in visual_skill
 skills = [p for p in (root / 'skills').glob('*/SKILL.md') if p.parent.name != '.system']
-assert len(skills) == 16
+expected_skills = {'alpinejs', 'debugging', 'frontend', 'git-master', 'pr-plan', 'programming', 'refactor', 'remove-ai-slops', 'review', 'ultimate-browsing', 'visual-qa'}
+assert {p.parent.name for p in skills} == expected_skills
 for skill in skills:
     assert not skill.parent.is_symlink()
     text = skill.read_text()
     assert text.startswith('---\n') and f'\nname: {skill.parent.name}\n' in text and '\ndescription: ' in text
+    for target in re.findall(r'\[[^\]]+\]\(([^\s)]+)\)', text):
+        if '://' in target or target.startswith('#'):
+            continue
+        reference = target.split('#', 1)[0]
+        assert (skill.parent / reference).exists(), (skill, target)
 for path in [root / 'AGENTS.md', root / 'config.toml', root / 'plan.config.toml', *list((root / 'agents').glob('*.toml')), *list((root / 'roles').glob('*.md'))]:
     assert '~/.agents/' not in path.read_text(), path
-print('PASS: Codex has 10 local roles, safe profiles, and 16 independent skills')
+print(f'PASS: Codex has 10 local roles, safe profiles, and {len(skills)} independent skills')
 PY
 repo="$(dirname -- "${BASH_SOURCE[0]}")/../.."
 for filename in .codex/auth.json .codex/sessions/check .codex/history.jsonl .codex/skills/.system/check .codex/skills/frontend/node_modules/check; do
