@@ -40,7 +40,8 @@
 
     - name: Link the dotfiles-managed Git hooks
       ansible.builtin.file:
-        src: "{{ watermarks_home }}/.dotfiles/.config/git/hooks"
+        # Stow recognizes relative links to its package as owned links.
+        src: ../../.dotfiles/.config/git/hooks
         dest: "{{ watermarks_hooks }}"
         state: link
 

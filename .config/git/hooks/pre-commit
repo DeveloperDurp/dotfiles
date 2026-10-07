@@ -1,46 +1,28 @@
 #!/usr/bin/env bash
+# Pre-commit hook: re-run golines on staged Go files so commits can't
+# land with lines > 80 chars. Stays in sync with `make golines-check` (same
+# flags). Only checks staged files, so a partial-stage of a dirty file
+# doesn't trip the hook on lines you didn't touch.
+#
+# Install: `make install-hooks` (copies this to .git/hooks/pre-commit).
 set -euo pipefail
 
-# Keep project hooks working when core.hooksPath points here.
-hook_name=${0##*/}
-# During git init, GIT_DIR exists before rev-parse can recognize the repo.
-git_dir=${GIT_DIR:-$(git rev-parse --absolute-git-dir)}
-common_dir=${GIT_COMMON_DIR:-$git_dir}
-if [[ -z ${GIT_COMMON_DIR:-} && -f "$git_dir/commondir" ]]; then
-    IFS= read -r common_dir < "$git_dir/commondir"
-    [[ "$common_dir" == /* ]] || common_dir="$git_dir/$common_dir"
-fi
-project_hook="$common_dir/hooks/$hook_name"
-if [[ -x "$project_hook" && "$(readlink -f "$project_hook")" != "$(readlink -f "$0")" ]]; then
-    "$project_hook" "$@"
-fi
-[[ "$hook_name" == pre-commit || "$hook_name" == pre-merge-commit ]] || exit 0
-
-scripts="$HOME/.local/share/watermarks-remover/service/scripts"
-if [[ ! -f "$scripts/check_staged.py" ]]; then
-    echo 'watermarks-remover is missing; run the Ansible installer before committing.' >&2
-    exit 1
+if ! command -v go >/dev/null 2>&1; then
+	echo "Go is required to run the version-locked formatter." >&2
+	exit 1
 fi
 
-cd "$(git rev-parse --show-toplevel)"
-snapshot=$(mktemp -d)
-trap 'rm -rf -- "$snapshot"' EXIT
-mkdir "$snapshot/files"
-git diff --cached --raw --no-renames --diff-filter=ACMT -z > "$snapshot/changes"
-
-files=()
-while IFS= read -r -d '' metadata && IFS= read -r -d '' path; do
-    # Do not follow staged symlinks or inspect submodule working trees.
-    if [[ "$metadata" == :??????' 100644 '* || "$metadata" == :??????' 100755 '* ]]; then
-        files+=("$path")
-    fi
-done < "$snapshot/changes"
-(( ${#files[@]} )) || exit 0
-
-for i in "${!files[@]}"; do
-    staged_path=${files[i]}
-    files[i]="$snapshot/files/$staged_path"
-    mkdir -p -- "$(dirname -- "${files[i]}")"
-    git cat-file blob ":$staged_path" > "${files[i]}"
-done
-python3 "$scripts/check_staged.py" "${files[@]}"
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+failed=0
+git diff --cached --name-only --diff-filter=ACMRT -z -- '*.go' >"$tmp/files"
+while IFS= read -r -d '' file; do
+	# Read the index, not the working tree: partial staging must be safe.
+	git show ":$file" >"$tmp/staged.go"
+	formatted=$(go tool golines -m 80 --ignore-generated -l "$tmp/staged.go")
+	if [ -n "$formatted" ]; then
+		printf 'golines: staged file needs formatting: %s\n' "$file" >&2
+		failed=1
+	fi
+done <"$tmp/files"
+exit "$failed"

@@ -1,0 +1,22 @@
+- name: Check existing links that conflict with Stow
+  become_user: "{{ USER }}"
+  ansible.builtin.stat:
+    path: "~{{ USER }}/{{ item.path }}"
+    follow: false
+  loop:
+    - path: .config/systemd/user/t3code.service.d/override.conf
+      src: ../../../../.dotfiles/.config/systemd/user/t3code.service.d/override.conf
+    - path: .local/bin/codium
+      src: ../../.dotfiles/.local/bin/codium
+  register: stow_conflicting_links
+
+- name: Point existing links at their Stow-managed files
+  become_user: "{{ USER }}"
+  ansible.builtin.file:
+    path: "~{{ USER }}/{{ item.item.path }}"
+    src: "{{ item.item.src }}"
+    state: link
+  loop: "{{ stow_conflicting_links.results }}"
+  loop_control:
+    label: "{{ item.item.path }}"
+  when: item.stat.islnk | default(false)

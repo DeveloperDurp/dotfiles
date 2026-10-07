@@ -21,6 +21,9 @@
     mode: '0770'     
     state: directory 
 
+- name: Prepare existing links for Stow
+  include_tasks: "./scripts/configure_stow_links.yml"
+
 - name: run stow
   become_user: user
   shell: "stow --adopt ."
